@@ -1,0 +1,13 @@
+Google:
+nctuda@gmail.com
+Ugboln269
+
+Googledev:
+https://console.developers.google.com
+
+Restaurant Menu App:
+Client ID
+206723564141-u8h2t5tnhj1jm8k2jvqurmjvqfive49f.apps.googleusercontent.com
+
+Client secret
+ cvzgQ6TS2Ey-ukDQ_LgjIMrI

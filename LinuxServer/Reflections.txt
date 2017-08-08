@@ -1,0 +1,199 @@
+Lesson 1: intro to linux, installation of VM and working environment
+Ntion on of free software:
+free as in beer (ability to get the software for free), free as in speech (not necessarly gratis, include other rights like seeing the code, redistribute,...)
+
+Vagrant used to create virtual environment
+
+Virutal box to launch virtual machines on the physical machine
+
+Linux distribution use:
+Red hat: Large entreprise/ Corporate customers
+UNbuntu: Ease of use on servers, desktops, laptops
+Linux Mint: Desktop users with proproetary media support
+Core OS: Clustered, containerized dev of apps
+
+In linux: / is the highest root of every directory
+
+/etc/ is where configuration files live
+
+/var/ for variable, files that you expect to grow or change in size (system log & app log are tipically here)
+
+/bin/ where the applications stand, to be used by everybody
+
+/sbin/ similar to bin but only to be used by the root user for maintenance purposes 
+
+Vagrant command:
+vagrant init ubuntu/trusty64
+vagrant up: to start or restart the VM
+vagrant status: to check the VM status
+vagrant halt: to shut the VM down forcefully 
+vagrant suspend: to suspend the virtual machine
+
+Rem: the VM is an entirely different computer from your physical machine, you can do whatever you want on it with no impact on the PM.
+
+ls -al (a show all stuff in the dirctry included the hidden ones, l to get more info, element starting with d are directory, with - are files)
+
+In Linux all standard user's home directories will be within the /home/ directory. The root user is a special case, it's home directory is in /root/.
+
+The /sbin directory holds all of the applications you may need as an administrator, but normal users typically won't use.
+
+Update your path
+http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path
+
+Display your path
+echo $PATH
+
+To chose a distribution, think to what will be your use.
+Red hat for enterprise
+Unbuntu for support and community
+Debian is unbuntu mother's distribution, it is known as very stable
+
+Lesson 2: Security
+
+A/ Security 101 to do first when setting a sever up.
+
+It is commmon to prevent remote login as root to prevent security problems.
+It removes a user name they know exist on this box
+-> if not set up then it is the first security pattern to put in place.
+
+The command sudo (super user do) can be used to launch command as a super user from a regular user
+
+-> Package source list can be found at /etc/apt/sources.list
+
+Rem Linux does not auto update so you'll have to do it on your own for safety reasons.
+
+-> Check the software udate list: sudo apt-get update (does not do anything on the system just check the update)
+-> To uograde the list: sudo apt-get upgrade (will ask you y/n, when having you roductive server you should test the upgrade on a test environment)
+
+-> Working with the packages:
+apt-get is the interface function to a lot of package related functions (man apt-get to see what it can do)
+
+e.g. sudo apt-get autoremove
+
+installation of finger
+finger user to retrieve info about a user.
+sudo apt-get install finger
+
+Important, most distributon have a "readble" list of its packages. 
+
+For Ubuntu it's packages.ubuntu.com
+
+Rem packages for Apache http server : Apache2 ; postgre sql postgresq ; mem cach: memcached
+
+Finger gets info about your user: cat /etc/passwd
+
+In linux system, root has always 0 as UID and as GUID, its home directory is /root
+
+Rem current machine generic IP is  127.0.0.1
+
+hence ro connect with a user ssh user@127.0.0.1 -p 2222 (-p indicates the connection port)
+
+to include sudoers look at  See sudoers(5) for more information on "#include" directives:
+
+Rem to add user in this list add files (using cp to copy old users). The file name does not matter, it is the content
+
+When adding new user for the default pwd to expire immediatly to force the user to reset a new passwd
+Command: sudo passwd -e username
+
+B/ Public key authentification
+
+-> User authentication with pwd is not very secure, hackers will try to break it, overloading the server with wrong pwd or breaking it.
+
+To manage connection one use the publc key encription
+
+Key generation command ssh-keygen
+
+Public Key encription (https://medium.com/@vrypan/explaining-public-key-cryptography-to-non-geeks-f0994b3c2d5)
+
+Steps summary (detail comes after)
+
+
+
+Public Key and Private key must always be generated locally (otherwise you can't claim that the private key staid Private)
+In my case on the laptop.
+
+Put the ssh keys in the following folder /Users/NICO/.ssh/ (in Users/UserName/.ssh) and the file name can be whatever you chose.
+Then a passphrase is added to prevent someone getting the file to use it to fast.
+For me its the question related to the otarie in small letters without punctuation sign.
+
+ssh-keygen genrerates two files, name and name.pub, the file name.pub will be place on the server for the authentification
+There are different cryptographique codes.
+
+On the server, in the student (the user) home directory, creates the .ssh directory, this is standard, and then the file authorized_keys that will contains all the authorized public keys.
+touch .ssh/authorized_keys
+
+The public key for this remote machine should be copied in authorized_keys
+
+And rights should be added on the server side on folder .ssh (chmod 700) and on file authorized_keys (chmod 644)
+
+Now from the remote machine I can use the -i flag to indicate I want to use a public key:
+ssh student@127.0.0.1 -p 2222 -i ~/.ssh/id_rsa_uda
+
+Then disable the pwd based login in /etc/ssh/sshd_config
+
+Then the ssh service needs to be reloaded to take this modif into consideration.
+sudo service ssh restart
+
+D/ User management
+
+when running the command ls -al and receiving the following result:
+-rw------- 1 student student  506 Oct 14 15:58 .bash_history
+
+In the 10 initial characters 
+1: - for file and d for directors
+2-4: read write access autorisation for the owner 
+5-7: read write access autorisation for the group
+8-10: read write access autorisation for everyone
+
+First name = owner
+Second name = group
+
+octale: 4 stands for r ; 2 stands for w ; 1 stands for x ; 0 stands for -
+hence 7 is rwx ; 6 is rw- ; 5 is r-x ; 4 is r-- ; 1 is --x
+
+this ocatle form are used in the chmod command with three value, for owner, group, evrybody.
+
+command to change file owner or group: chown newOwner file (chgrp) 
+
+E/ port
+
+Default port number:
+HTTP: 80 ; HTTPS: 443
+SSH: 22
+POP3: 110
+FTP: 21
+SMTP: 25
+
+ufw is the ubuntu firewall, sudo ufw status to check its status
+
+sudo ufw status: to show the firewall status 
+
+-> Configuration command
+sudo ufw default deny incoming (to prevent all entries, do not activate the FW now or the VM is dead. it cannot receive info).
+sudo ufw default allow outgoing
+
+-> To allow ssh , & since vagrant set the ssh on port 2222 we can add tcp connection on this port
+sudo ufw allow ssh
+sudo ufw allow 2222/tcp
+
+-> For an http server
+sudo ufw allow www
+
+-> Enabling the fw
+sudo ufw enable
+
+This is important to cinfigure the FW pretty early in the process since if its wrongly set up the server can be useless.
+
+Link to configure server (webapp, chat, mail,)
+
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04
+https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04
+https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-with-mail-in-a-box-on-ubuntu-14-04
+https://www.digitalocean.com/community/tutorials/how-to-install-the-lita-chat-bot-for-irc-on-ubuntu-14-04
+
+BD instllation on a different server:
+
+Most web applications require persistent data storage, typically using a database server. You will now install PostgreSQL to server your data using the command sudo apt-get install postgresql.
+
+Since you are installing your web server and database server on the same machine, you do not need to modify your firewall settings. Your web server will communicate with the database via an internal mechanism that does not cross the boundaries of the firewall. If you were installing your database on a separate machine, you would need to modify the firewall settings on both the web server and the database server to permit these requests.

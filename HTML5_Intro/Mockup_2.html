@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<header>
+	<meta charset="utf-8">
+
+	<style type="text/css">
+		#c {
+		    margin-left: auto;
+		    margin-right: auto;
+		    display: flex;
+		}
+    </style>
+
+
+</header>
+<body>
+
+<canvas id="c" width="400" height="400"></canvas>
+
+<script type="text/javascript">
+
+	canvas = document.querySelector('#c');
+	ctxt = c.getContext('2d');
+
+	ctxt.strokeStyle = 'black';
+	ctxt.lineWidth = 1;
+	ctxt.strokeRect(0,0, canvas.width, canvas.height );
+
+	/*
+	R - The color red (from 0-255)
+	G - The color green (from 0-255)
+	B - The color blue (from 0-255)
+	A - The alpha channel (from 0-255; 0 is transparent and 255 is fully visible)
+
+	red=imgData.data[0];
+	green=imgData.data[1];
+	blue=imgData.data[2];
+	alpha=imgData.data[3];
+	*/
+
+	//Paint green
+	function paintGreen (imgData) {
+
+		var imgData=ctxt.getImageData(0,0, canvas.width, canvas.height );
+		var nbPx =  imgData.data.length / 4;
+
+		for (var i = 0 ; i< nbPx; i++) {
+			if (i % 10 === 0) {
+				imgData.data[ 4 * i + 0] = 0;
+				imgData.data[ 4 * i + 1] = 255;
+				imgData.data[ 4 * i + 2] = 0;
+				imgData.data[ 4 * i + 3] = 255;	
+			}
+		} 
+		ctxt.putImageData(imgData , 0 , 0);
+	}
+
+	//paintGreen(imgData);
+
+	//Convrt to gray
+
+	var image = new Image();
+	image.onload = function () {
+		ctxt.drawImage(image, 0 , 0);
+		convertToGray();
+	}
+
+	image.src = 'images/dummy-400x400-Ocean.jpg'
+
+
+	function makePixelGrayScale( r , g , b, a ) {
+		var gray = (r * 0.2126 + g * 0.7152 + b * 0.0722);
+		return {r:gray , g:gray, b:gray, a:gray};
+	} 
+
+	function convertToGray () {
+
+		var imgData = ctxt.getImageData(0,0, canvas.width, canvas.height );
+		var nbPx =  imgData.data.length / 4;
+		var red, green, blue, alpha, pixel;
+
+		for (var i = 0 ; i< nbPx; i++) {
+			
+			red = imgData.data[ 4 * i + 0] ;
+			green = imgData.data[ 4 * i + 1]; 
+			blue = imgData.data[ 4 * i + 2];
+			alpha = imgData.data[ 4 * i + 3];
+
+			pixel = makePixelGrayScale (red , green , blue , alpha );
+			
+			imgData.data[ 4 * i + 0] = pixel.r;
+			imgData.data[ 4 * i + 1] = pixel.g; 
+			imgData.data[ 4 * i + 2] = pixel.b;
+			imgData.data[ 4 * i + 3] = pixel.a;
+		} 
+		ctxt.putImageData(imgData , 0 , 0);
+	}
+
+</script>
+
+</body>
+</html>

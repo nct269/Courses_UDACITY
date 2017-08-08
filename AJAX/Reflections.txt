@@ -1,0 +1,44 @@
+AJaX: Asynchronous JavaScript and XML requests (in the course will focus on th JS part).
+
+Instructions set aside to be executed when the request send an answer are called a callback.
+
+The strict minimum to do an AJAX request is a URL.
+[] in a doc often means it is optional
+
+API of different web sites can be used to put content in your website, e.g gmap API, NYTimes, Wikipedia
+
+Basic strucure, dev tool to see AJAX request from facebook and twitter to add content on the fly, reddit uses AJAX to load data in-line when user request informations, big website use external API to add functionalities to their website
+
+API DB: http://www.programmableweb.com/apis/directory
+Google API: https://developers.google.com/apis-explorer/#p/
+
+Which API I would like to use, such brainstormings have fuelled the web development
+
+Use the browser console network tab to see what's going on.
+
+Often the API request authentification, e.g. NY uses a key (I now have a NYT key).
+
+See in the course an example of use of the google streetview API, the NYT API, Wikipedia.
+
+-> function to send AJAX requests $.AJAX(URL, [callback function])
+	(getJson is a shortcut for JSON respinses)
+
+To see the respones to an AJAX request one can type the URL in the browser and analyse the result.
+
+TO anylse the request or the answer one can use the dev tool network tab.
+
+Difference between JSON and JSONP, JSONP is used on the browser side to circunvent the One origine policy (use CORS or JSONP?)
+
+With the jQuery function AJAX JSONP adds a callback parameter in the URL, and the return element is a Jquery function.
+
+No error handling is possible with JSONP, the response status is always success, hance use timeout function and cleartimeout in case of succes.	
+
+AJAX requests are typically used to render specific content. That's the way facebook and google do it, they work with this order:
+1/ Request genreic html
+2/ Request specific html
+3/ Render generic html
+4/ Render specific html
+
+This technic allows to get content on the screen very fast on the page.
+
+Requests can be set in the header script, and triggered once the DOM is ready, using $(function(){}); the callback rendering function will be executed once the answers are ready and sent back.

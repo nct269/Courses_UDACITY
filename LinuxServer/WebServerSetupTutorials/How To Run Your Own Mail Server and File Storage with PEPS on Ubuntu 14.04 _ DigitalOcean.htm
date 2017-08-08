@@ -1,0 +1,3857 @@
+<!DOCTYPE html>
+<html class="wf-proximanova-i4-active wf-proximanova-n1-active wf-proximanova-n3-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n7-active wf-active"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>How To Run Your Own Mail Server and File Storage with PEPS on Ubuntu 14.04 | DigitalOcean</title>
+
+<meta name="description" content="We all use email and online file storage services like Gmail or Dropbox. However, these services may not be suitable for the storage of sensitive data, both personal and professional. Do we trust their privacy policies when attaching an important busi">
+<meta name="keywords" content="Email">
+
+<meta name="og:title" content="How To Run Your Own Mail Server and File Storage with PEPS on Ubuntu 14.04 | DigitalOcean">
+<meta name="og:description" content="We all use email and online file storage services like Gmail or Dropbox. However, these services may not be suitable for the storage of sensitive data, both personal and professional. Do we trust their privacy policies when attaching an important busi">
+<meta name="og:site_name" content="DigitalOcean">
+<meta name="og:type" content="article">
+
+<meta name="twitter:site" content="DigitalOcean">
+<meta name="twitter:title" content="How To Run Your Own Mail Server and File Storage with PEPS on Ubuntu 14.04 | DigitalOcean">
+<meta name="twitter:description" content="We all use email and online file storage services like Gmail or Dropbox. However, these services may not be suitable for the storage of sensitive data, both personal and professional. Do we trust their privacy policies when attaching an important busi">
+<meta name="twitter:creator" content="DigitalOcean">
+<meta name="twitter:card" content="photo">
+<meta name="twitter:url" content="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04">
+
+<meta property="og:image" content="https://www.digitalocean.com/assets/community/default_social_sharing-4c803c152c4cc1974dfac71a69fdab63.png">
+<meta name="twitter:image" content="https://www.digitalocean.com/assets/community/default_social_sharing-4c803c152c4cc1974dfac71a69fdab63.png">
+
+  <link rel="canonical" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04">
+
+
+    <link rel="stylesheet" media="all" href="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/application-b84c8dd766c9ec8b5f3a3b2e454dad37.css">
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="gKGZjIMJ2/NRLrbJWBglqCjyaUbpqqMegb/j64ajbq0Raf+U4giYevTggY/R+3LtH6IPCnp8Zg4TC0rwDNx+0g==">
+    <script async="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/bat.js"></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/fbds.js" async=""></script><script type="text/javascript" async="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/quant.js"></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/conversion_async.js" async="" type="text/javascript"></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/roundtrip.js" async="" type="text/javascript"></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/analytics.js" async="" type="text/javascript"></script><script id="cio-tracker" data-site-id="e7cc779295927747a7c2" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/track.js" async="" type="text/javascript"></script><script async="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/cbgapi.loaded_0"></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/hn-button.js" id="hn-button.js" async=""></script><script gapi_processed="true" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/plusone.js" async="" type="text/javascript"></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/all.js" async="" id="facebook-jssdk"></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/widgets.js" async="" id="twitter-wjs"></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/gtm.js" async=""></script><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/analytics_002.js" async="" type="text/javascript"></script><script type="text/javascript" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/njm7orv.js"></script>
+    <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}</style><link media="all" href="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/l.css" rel="stylesheet"><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/701281621.js"></script>
+    <script type="text/javascript">
+      if(window.analytics=window.analytics||[],window.analytics.included)window.console&&console.error&&console.error("analytics.js included twice");else{window.analytics.included=!0,window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(a){return function(){var n=Array.prototype.slice.call(arguments);return n.unshift(a),window.analytics.push(n),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(a){var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+a+"/analytics.min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(n,t)},window.analytics.SNIPPET_VERSION="2.0.9",
+      window.analytics.load("puo3uv968t")}
+      window.analytics.page();
+    </script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.digitalocean.com/community/tutorials/feed">
+    <script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/application-75967e85df790b143e43a5b296c8a6aa.js"></script>
+  <style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow-x:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4IDGVTPEAFC4TM2QKYNQ53" type="text/javascript" async="true"></script><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_003.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_004.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_002.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_007.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_008.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_006.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_005.gif" height="1" width="1">
+<img alt="" style="display:none" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/tr.gif" height="1" width="1"><img style="border-style:none;" alt="" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/a.gif" height="1" width="1">
+<img src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/seg.gif" height="1" width="1">
+</div></head>
+  <body class="tutorials-controller tutorial-single" data-env="production" ,="" data-prefix="/community" data-user-id="" data-facebook-app-id="694818843983011">
+    <script>
+//<![CDATA[
+
+//]]>
+</script>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KHWBBT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KHWBBT');</script>
+<!-- End Google Tag Manager -->
+    
+
+    <div class="outside_viewport">
+        <div style="top: 72px;" class="table-of-contents  tocify sticky"><ul style="display: none;" class="tocify-header" id="tocify-header0"><li data-unique="prerequisites" class="tocify-item tocify-focus"><a>Prerequisites</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header1"><li data-unique="step-1-—-installing-docker" class="tocify-item"><a>Step 1 — Installing Docker</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header2"><li data-unique="step-2-—-deploying-peps" class="tocify-item"><a>Step 2 — Deploying PEPS</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header3"><li data-unique="step-3-—-logging-in-for-the-first-time" class="tocify-item"><a>Step 3 — Logging in for the First Time</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header4"><li data-unique="step-4-—-setting-up-your-domain" class="tocify-item"><a>Step 4 — Setting Up Your Domain</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header5"><li data-unique="step-5-—-setting-up-ssl-certificates" class="tocify-item"><a>Step 5 — Setting up SSL Certificates</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header6"><li data-unique="step-6-—-testing" class="tocify-item"><a>Step 6 — Testing</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header7"><li data-unique="conclusion" class="tocify-item"><a>Conclusion</a></li></ul></div>
+  <div id="share-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Share</h1>
+          <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+        </div>
+        <div class="modal-body">
+
+          <div class="social-sharing social-sharing-container">
+            <ul class="bottom ">
+              <li class="shareBtn" id="sbTwitter">
+                <a href="http://twitter.com/share?text=How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-icon share-popup" title="Share on Twitter">
+                  <span class="sIcon icon-bird"></span>
+                </a>
+                
+                <a href="http://twitter.com/share?text=How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-link share-popup" title="Share on Twitter">
+                  Twitter
+                </a>
+                
+              </li>
+
+              <li class="shareBtn" id="sbFacebook">
+                <a class="share-icon facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                  <span class="sIcon icon-facebook-B"></span>
+                </a>
+
+                <a class="share-link facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                  Facebook
+                </a>
+              </li>
+              <li class="shareBtn" id="sbGoogle">
+                <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-icon share-popup" title="Share on Google+">
+                  <span class="sIcon icon-google-plus-B"></span>
+                </a>
+
+                <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-link share-popup" title="Share on Google+">
+                  Google+
+                </a>
+              </li>
+              <li class="shareBtn" id="sbYC">
+                <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-icon share-popup " target="_blank" title="Submit to Hacker News">
+                  <span class="sIcon icon-hacker-news"></span>
+                </a>
+
+                <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-link share-popup" target="_blank" title="Submit to Hacker News">
+                  Hacker News
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="contents-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Contents</h1>
+          <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+        </div>
+        <div class="modal-body">
+
+          <div class="table-of-contents-modal open tocify"><ul style="display: none;" class="tocify-header" id="tocify-header0"><li data-unique="prerequisites" class="tocify-item tocify-focus"><a>Prerequisites</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header1"><li data-unique="step-1-—-installing-docker" class="tocify-item"><a>Step 1 — Installing Docker</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header2"><li data-unique="step-2-—-deploying-peps" class="tocify-item"><a>Step 2 — Deploying PEPS</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header3"><li data-unique="step-3-—-logging-in-for-the-first-time" class="tocify-item"><a>Step 3 — Logging in for the First Time</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header4"><li data-unique="step-4-—-setting-up-your-domain" class="tocify-item"><a>Step 4 — Setting Up Your Domain</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header5"><li data-unique="step-5-—-setting-up-ssl-certificates" class="tocify-item"><a>Step 5 — Setting up SSL Certificates</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header6"><li data-unique="step-6-—-testing" class="tocify-item"><a>Step 6 — Testing</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header7"><li data-unique="conclusion" class="tocify-item"><a>Conclusion</a></li></ul></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="share-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Share</h1>
+          <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+        </div>
+        <div class="modal-body">
+
+          <div class="social-sharing social-sharing-container">
+            <ul class="top ">
+              <li class="shareBtn" id="sbTwitter">
+                <a href="http://twitter.com/share?text=How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-icon share-popup" title="Share on Twitter">
+                  <span class="sIcon icon-bird"></span>
+                </a>
+                
+                <a href="http://twitter.com/share?text=How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-link share-popup" title="Share on Twitter">
+                  Twitter
+                </a>
+                
+              </li>
+
+              <li class="shareBtn" id="sbFacebook">
+                <a class="share-icon facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                  <span class="sIcon icon-facebook-B"></span>
+                </a>
+
+                <a class="share-link facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                  Facebook
+                </a>
+              </li>
+              <li class="shareBtn" id="sbGoogle">
+                <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-icon share-popup" title="Share on Google+">
+                  <span class="sIcon icon-google-plus-B"></span>
+                </a>
+
+                <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-link share-popup" title="Share on Google+">
+                  Google+
+                </a>
+              </li>
+              <li class="shareBtn" id="sbYC">
+                <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-icon share-popup " target="_blank" title="Submit to Hacker News">
+                  <span class="sIcon icon-hacker-news"></span>
+                </a>
+
+                <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-link share-popup" target="_blank" title="Submit to Hacker News">
+                  Hacker News
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+    <div id="newsletter-signup-dialog" class="newsletter-signups-dialog reveal" data-newsletter-signup-dialog="" data-article-target=".content-body">
+  <div class="pull-right">
+  <a href="javascript:;" class="newsletter-signups-dialog-dismiss" data-newsletter-signup-dismiss="">×</a>
+
+</div>
+<h4 class="newsletter-signups-dialog-title">
+  Sign up for our newsletter.
+</h4>
+<p class="newsletter-signups-dialog-description">
+  Get the latest tutorials on SysAdmin and open source topics.
+</p>
+<form class="newsletter-signup" id="new_newsletter_signup" data-newsletter-signup="true" action="/community/newsletter_signup" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden">
+
+  <input data-newsletter-signup-field="url" name="newsletter_signup[url]" id="newsletter_signup_url" type="hidden">
+  <input data-newsletter-signup-field="title" name="newsletter_signup[title]" id="newsletter_signup_title" type="hidden">
+
+  <div class="newsletter-signup-ajax-error" data-newsletter-signup-ajax-error=""></div>
+
+
+  <div class="form-group">
+    <input placeholder="email@example.com" required="required" class="field" name="newsletter_signup[email]" id="newsletter_signup_email" type="email">
+  </div>
+
+  <button data-disable-with="Sign Up" class="button blue-button">
+    Sign Up
+  </button>
+
+</form>
+
+</div>
+
+
+    </div>
+
+      <div class="mobile-nav">
+  
+<div class="account-buttons">
+    <div id="entrance">
+      <a id="sign-up" class="button" href="https://www.digitalocean.com/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+      <a id="log-in" class="button" href="https://www.digitalocean.com/community/auth/digitalocean">Log In</a>
+    </div>
+</div>
+    
+  <a class="close-panel icon-close" href="javascript:void(0);"></a>
+
+  <form class="mobile-search" action="/community/search" accept-charset="UTF-8" method="get"><input name="utf8" value="✓" type="hidden">
+    <span class="icon icon-search-thin"></span>
+    <input name="q" id="q" placeholder="Search" type="text">
+    <button name="button" type="submit" class="icon-btn">submit</button>
+</form>
+  
+<nav>
+
+  <ul>
+    <li><a href="https://www.digitalocean.com/community/tutorials">Tutorials</a></li>
+    <li><a href="https://www.digitalocean.com/community/questions">Questions</a></li>
+    <li><a href="https://www.digitalocean.com/community/projects">Projects</a></li>
+    <li class="mobile-nav-only"><a href="https://www.digitalocean.com/">Main Site</a></li>
+  </ul>
+</nav>
+
+  
+</div>
+
+
+      
+    	<header>
+  <div class="main-menu-container">
+    <div class="wrapper">
+      <div class="logo">
+        <a class="" href="https://www.digitalocean.com/">
+          <span class="icon icon-cloud"></span>
+</a>
+        <a class="" href="https://www.digitalocean.com/community">
+          <span class="logo-community-text">Community</span>
+</a>      </div>
+      
+      <a class="mobile-nav-toggle icon-menu-thin" data-role="left">
+        <span>Menu</span>
+      </a>
+
+      
+<nav>
+
+  <ul>
+    <li><a href="https://www.digitalocean.com/community/tutorials">Tutorials</a></li>
+    <li><a href="https://www.digitalocean.com/community/questions">Questions</a></li>
+    <li><a href="https://www.digitalocean.com/community/projects">Projects</a></li>
+    <li class="mobile-nav-only"><a href="https://www.digitalocean.com/">Main Site</a></li>
+  </ul>
+</nav>
+
+      
+      
+<div class="account-buttons">
+    <div id="entrance">
+      <a id="sign-up" class="button" href="https://www.digitalocean.com/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+      <a id="log-in" class="button" href="https://www.digitalocean.com/community/auth/digitalocean">Log In</a>
+    </div>
+</div>
+      <div class="header-search open">
+  <form action="/community/search" accept-charset="UTF-8" method="get"><input name="utf8" value="✓" type="hidden">
+    <span class="icon icon-search-thin"></span>
+    <input name="q" id="q" placeholder="Search" autocomplete="off" spellcheck="off" class="header-search-input" data-algolia-application-id="6ZHEUVKJ88" data-algolia-api-key="c5470567eae7fa1177d43222e18ba086" type="text">
+    <button name="button" type="submit" class="icon-btn">submit</button>
+</form></div>
+
+<div class="search-results-dropdown dropdown" data-root-path="https://www.digitalocean.com/community">
+  <div class="container">
+    <div class="header-search-results-list"></div>
+
+    <div id="btn-wrap">
+      <a class="more-search-results" data-search-path="/community/search" href="https://www.digitalocean.com/community/search">
+        <span class="icon-mag"></span>
+        View All Results
+</a>    </div>
+  </div>
+</div>
+
+<script type="text/template" id="autocomplete-hits-template">
+  <div class="inner-search">
+    <ul>
+        {{#hits}}
+          <li>
+            <span class='icon icon-{{type}}'></span>
+            <a href='{{url}}'>{{{_highlightResult.title.value}}}</a>
+          </li>
+        {{/hits}}
+    </ul>
+  </div>
+</script>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  
+
+  <div class="wrapper">
+    
+  </div>
+</header>
+      
+        <div class="flash-container"></div>
+
+
+      
+      
+      <div class="wrapper layout-wrapper">
+
+        
+
+
+
+
+
+
+<div class="section-content section-content-growable content">
+  <div class="postable-info-bar-container">
+  <div class="postable-info-bar">
+    <div class="left-section">
+        <div class="tutorial-author-avatar">
+          
+        </div>
+
+        <div class="author-and-date">
+          <div class="tutorial-author">
+            <div class="by">By: </div>
+            Henri Binsztok
+          </div>
+        </div>
+
+      <div class="upvotes upvoted tutorial-upvote"><form data-upvotable="tutorial_1600" data-upvotable-type="tutorial" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=1600&amp;upvote%5Bupvotable_type%5D=Tutorial" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="gKGZjIMJ2/NRLrbJWBglqCjyaUbpqqMegb/j64ajbq0Raf+U4giYevTggY/R+3LtH6IPCnp8Zg4TC0rwDNx+0g==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="" title="Do you find this tutorial helpful? Show the author by Hearting it!" data-placement="bottom"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count ">8</div></div>
+
+        <div class="tutorial-comments-count">
+          <span class="icon icon-new-comment"></span>
+          39
+        </div>
+
+
+    </div>
+
+    <div class="right-section">
+      <div class="section-item social-sharing-item">
+        <div class="sharing">
+  <a class="share-button" href="#" data-toggle="modal" data-target="#share-modal">
+    <span class="icon icon-share-square"></span>
+    <span class="share-button-text">
+      Share
+    </span>
+  </a>
+</div>
+
+
+      </div>
+
+        <div class="section-item table-of-contents-triggers"><div class="toc-trigger ">
+  <a href="javascript:void(0);">
+    <span class="title">Contents</span>
+    <span class="icon icon-close-light"></span>
+    <span class="icon icon-arrow-down"></span>
+  </a>
+</div>
+
+
+
+<div class="toc-trigger-mobile" data-toggle="modal" data-target="#contents-modal">
+  <a href="javascript:void(0);">
+    <span class="title">Contents</span>
+    <span class="icon icon-arrow-down"></span>
+  </a>
+</div>
+
+
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="container">
+
+      <div class="info-cta">
+    <a class="icon-close-light" href="javascript:void();"></a>
+    We hope you find this tutorial helpful. In addition to guides like 
+this one, we provide simple cloud infrastructure for developers. <a href="https://www.digitalocean.com/?utm_medium=community&amp;utm_source=community_gencta&amp;utm_campaign=needaserver&amp;utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04">
+        Learn more →
+</a>  </div>
+
+  
+    <h1 class="content-title">How To Run Your Own Mail Server and File Storage with PEPS on Ubuntu 14.04</h1>
+
+    <span class="meta-section tags">
+      <span class="meta-value"><span class="tutorial-date">May 22, 2015</span> <span class="hashtag-icon"></span> <a class="" href="https://www.digitalocean.com/community/tags/email?type=tutorials">Email</a> <a class="" href="https://www.digitalocean.com/community/tags/ubuntu?type=tutorials">Ubuntu</a></span>
+    </span>
+  </div>
+
+  <div class="container">
+    
+  </div>
+
+    <div class="content-body tutorial-content" data-growable-markdown="">
+      <h3 id="an-article-from-the-peps-team-at-mlstate">An Article from the <a href="https://github.com/MLstate/PEPS/">PEPS Team at MLstate</a></h3>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>We all use email and online file storage services like Gmail or 
+Dropbox. However, these services may not be suitable for the storage of 
+sensitive data, both personal and professional. Do we trust their 
+privacy policies when attaching an important business contract or 
+confidential information? Do we accept that all our data will be 
+collected, processed, and analyzed?</p>
+
+<p>There is a solution to this problem: PEPS is an email, file sharing, 
+and chat platform that uses end-to-end encryption. End-to-end encryption
+ ensures that encryption and decryption happen on your computer (the 
+client) and not on the server, which never sees confidential data in 
+clear text.</p>
+
+<p class="growable"><img src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/peps-macbook.png" alt="PEPS: email, file sharing and chat you can run on your own cloud instance"></p>
+
+<p>This tutorial will guide you through the process of deploying your 
+PEPS instance on a DigitalOcean Droplet so you can safely store your 
+data.</p>
+
+<div data-unique="prerequisites" name="prerequisites"></div><h2 id="prerequisites">Prerequisites</h2>
+
+<p>PEPS is distributed as Docker containers to make setup easy. You will
+ need a DigitalOcean Droplet with Ubuntu 14.04 x64 and the Docker 
+application installed on it. Specifically:</p>
+
+<ul>
+<li><p>An Ubuntu 14.04 x64 Droplet with 2 GB of memory if you have just a
+ few users. Select 4 GB of RAM or more if you need more users or you 
+just need more storage for your data.</p></li>
+<li><p>Purchase an SSL certificate to use in place of the self-signed 
+one; this is recommended for production environments. Alternatively, you
+ can create a free signed SSL certificate. Instructions for creating the
+ certificate are included later in this tutorial.</p></li>
+</ul>
+
+<p>The name of your Droplet matters: If you plan to send messages via email to external recipients, you want <em>Reverse DNS</em> configured to avoid your messages getting flagged as spam. Good news: DigitalOcean <a href="https://www.digitalocean.com/community/questions/how-do-i-set-up-reverse-dns-for-my-ip">automatically configures</a> the PTR record if your Droplet name is set to your FQDN (Fully Qualified Domain Name). If you plan to send email from <code>mail.example.com</code>, that should also be the name of your Droplet (even if your addresses are in the form of <code>user@example.com</code>).</p>
+
+<p>All the commands in this tutorial should be run as a non-root user. 
+If root access is required for the command, it will be preceded by <code>sudo</code>. <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Initial Server Setup with Ubuntu 14.04</a> explains how to add users and give them sudo access.</p>
+
+<div data-unique="step-1-—-installing-docker" name="step-1-—-installing-docker"></div><h2 id="step-1-—-installing-docker">Step 1 — Installing Docker</h2>
+
+<p>The first step is to install Docker. This tutorial is based on Docker 1.6.2. You have 2 options for installing Docker:</p>
+
+<ul>
+<li>Follow the instructions for Ubuntu 14.04 in <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-getting-started#how-to-install-docker">How To Install and Use Docker: Getting Started</a></li>
+<li>Add the Docker application when you create the Ubuntu 14.04 x64 Droplet</li>
+</ul>
+
+<p>You also need to add the non-root user you created (the one that will be running all the command in this tutorial) to the <code>docker</code> user group. Replace <span class="highlight">sammy</span> with your username:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">sudo usermod -aG docker <span class="highlight">sammy</span>
+</li></ul></code></pre>
+<p>You will also need to logout and log back in as your non-root user for this change to be active.</p>
+
+<div data-unique="step-2-—-deploying-peps" name="step-2-—-deploying-peps"></div><h2 id="step-2-—-deploying-peps">Step 2 — Deploying PEPS</h2>
+
+<p>Connect to your Droplet via SSH using <code>ssh <span class="highlight">sammy</span>@<span class="highlight">your_server_ip</span></code> (replace your username and server IP), and run the following commands to prepare the environment.</p>
+
+<p>First, clone the repository:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">git clone https://github.com/MLstate/PEPS
+</li></ul></code></pre>
+<p>Change to the <code>PEPS</code> directory:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">cd PEPS
+</li></ul></code></pre>
+<p>Configure your domain name, replacing <span class="highlight">example.com</span> with your domain name:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">echo <span class="highlight">example.com</span> &gt; domain
+</li></ul></code></pre>
+<p>This command creates a text file named <code>domain</code> with your domain name as the first and only line in the file.</p>
+
+<p>Install make:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">sudo apt-get update
+</li><li class="line" prefix="$">sudo apt-get install make
+</li></ul></code></pre>
+<p>Now it's time to build the containers, which will take about 10-20 
+minutes, so you can enjoy a coffee or schedule a stand-up meeting:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">make build
+</li></ul></code></pre>
+<p>If everything runs fine, it ends with something like the following (the ids are randomly generated and will differ):</p>
+<pre class="code-pre "><code langs="">Removing intermediate container 38d212189d43
+Successfully built 24fd74241e48
+</code></pre>
+<p>For the first launch, we are going to create temporary SSL/TLS 
+certificates and run the containers. (Both steps are almost instant, so 
+don't think you were going to take another coffee break.)</p>
+
+<p>If you already have SSL certificates at hand for your domain, skip this and copy your certificate and key instead (see Step 5).</p>
+
+<p>Create temporary SSL certificates with the command:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">make certificate
+</li></ul></code></pre>
+<p>Choose a simple passphrase, since you will be asked to type it 4 
+times, and the certificates are placeholders. Most of the questions can 
+be skipped: The only question that matters is <code>Common Name (e.g. server FQDN or YOUR name) []:</code> which should be the same as your domain.</p>
+
+<p>Here is an example dialog:</p>
+<pre class="code-pre "><code langs="">openssl genrsa -des3 -out server.key 1024
+Generating RSA private key, 1024 bit long modulus [...]
+Enter pass phrase for server.key:
+Verifying - Enter pass phrase for server.key:
+openssl req -new -key server.key -out server.csr
+Enter pass phrase for server.key:
+You are about to be asked to enter information that will be [...]
+Country Name (2 letter code) [AU]: <span class="highlight">DE</span>
+State or Province Name (full name) [Some-State]:
+Locality Name (eg, city) []:
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []: <span class="highlight">example.com</span>
+Email Address []:
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+cp server.key server.key.org
+openssl rsa -in server.key.org -out server.key # strip passphrase
+Enter pass phrase for server.key.org:
+writing RSA key [...]
+Getting Private key
+</code></pre>
+<p>Now, we're ready to launch PEPS with the following command:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">sudo make run
+</li></ul></code></pre>
+<div data-unique="step-3-—-logging-in-for-the-first-time" name="step-3-—-logging-in-for-the-first-time"></div><h2 id="step-3-—-logging-in-for-the-first-time">Step 3 — Logging in for the First Time</h2>
+
+<p>Connect to your Droplet using its IP address by visiting <code>https://<span class="highlight">your_server_ip</span></code> from your browser where <code><span class="highlight">your_server_ip</span></code> is the IP address of your Droplet.</p>
+
+<p>Since we are using temporary SSL certificates for now, your browser 
+will warn you that the site is insecure. Accept it anyway. With Chrome, 
+click <strong>Advanced</strong> to proceed.</p>
+
+<p class="growable"><img src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/ssl_chrome.png" alt="Chrome warns you about the wrong SSL certificate, we'll fix that later"></p>
+
+<p>At first run, you will be prompted to create an admin password. 
+Choose any of your liking, provided its complexity is sufficient.</p>
+
+<p class="growable"><img src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/first_run.png" alt="PEPS is working, choose your admin password"></p>
+
+<p>Due to end-to-end encryption in PEPS, the admin account can create 
+and delete users but will not be able to access any existing encrypted 
+user data.</p>
+
+<p>Once your admin password is set up, the main PEPS interface is shown.</p>
+
+<p class="growable"><img src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/peps_interface.png" alt="The PEPS interface with no data"></p>
+
+<p>Next, let's focus on setting up the domain and certificates properly.</p>
+
+<div data-unique="step-4-—-setting-up-your-domain" name="step-4-—-setting-up-your-domain"></div><h2 id="step-4-—-setting-up-your-domain">Step 4 — Setting Up Your Domain</h2>
+
+<p>Now that your instance runs fine, we still need to set the domain 
+properly, which involves using real SSL certificates, configuring DNS, 
+and more.</p>
+
+<p>Let's start with the DNS. Depending on your domain name provider, 
+either use their own interface to set up the DNS entries for your domain
+ or set up your own DNS server. If you want to setup your own DNS 
+server, you can use the <a href="https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04">How To Configure BIND as a Private Network DNS Server on Ubuntu 14.04</a> article, which is part of the <a href="https://www.digitalocean.com/community/tutorial_series/an-introduction-to-managing-dns">An Introduction to Managing DNS</a> article series.</p>
+
+<p>You must set both A and MX records. For instance, for the fictitious <code>example.com</code> domain hosted on <code>mail.example.com</code>:</p>
+<pre class="code-pre "><code langs="">mail.example.com.   10799   IN   A   <span class="highlight">your_server_ip</span>
+mail.example.com.   10799   IN   MX  example.com.
+</code></pre>
+<p>Your Droplet name should be <code>mail.example.com</code>. Don't 
+worry. You can rename the Droplet from your DigitalOcean account. Click 
+on the Droplet name to see its details, click the <strong>Settings</strong> tab, and then click the <strong>Rename</strong> tab. You might have to wait for DNS to get updated.</p>
+
+<p>You may also set additional records. Online checker <a href="http://mxtoolbox.com/">MXToolBox</a> is useful to verify your domain is set up properly and gives advice on several points.</p>
+
+<p>Note that DNS propagation can be a bit slow, but after a while (often 1 hour) you will be able to access PEPS from <code>https://example.com</code>.</p>
+
+<p><span class="note"><strong>Note:</strong> After you have finished 
+configuring PEPS, if you can't send or receive email from external 
+domains, double check your A and MX records. If they aren't set 
+correctly, you will not be able to send or receive email from domains 
+other than your own.<br></span></p>
+
+<div data-unique="step-5-—-setting-up-ssl-certificates" name="step-5-—-setting-up-ssl-certificates"></div><h2 id="step-5-—-setting-up-ssl-certificates">Step 5 — Setting up SSL Certificates</h2>
+
+<p>You will still have an invalid SSL certificate warning from your browser.</p>
+
+<p>It's now time to set up SSL certificates. If you don't already have SSL certificates you can buy them from a provider or even <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-with-a-free-signed-ssl-certificate-on-a-vps">set up a free SSL certificate</a> for non-commercial purposes.</p>
+
+<p>The <a href="https://www.digitalocean.com/community/tutorials/how-to-install-an-ssl-certificate-from-a-commercial-certificate-authority">How To Install an SSL Certificate from a Commercial Certificate Authority</a> article explains everything about SSL certificates, including how to purchase one.</p>
+
+<p>Be sure to copy both the key and certificate named <code>server.key</code> and <code>server.crt</code> in the <code>/etc/peps/</code> directory.</p>
+
+<p>Prepare them on your local computer, and copy the files to your 
+server by running from the directory that contains the certificates:</p>
+<pre class="code-pre command"><code langs=""><ul class="prefixed"><li class="line" prefix="$">scp server.key server.crt <span class="highlight">your_server_ip</span>:/etc/peps/
+</li></ul></code></pre>
+<p>where <code><span class="highlight">your_server_ip</span></code> is the IP address of your Droplet.</p>
+
+<p>When done, check that your browser can access <code>https://example.com</code> without SSL errors.</p>
+
+<div data-unique="step-6-—-testing" name="step-6-—-testing"></div><h2 id="step-6-—-testing">Step 6 — Testing</h2>
+
+<p>To create more users, log in as the admin user with <code>admin</code> as the username and with the password you created in <em>Step 3: Logging in for the First Time</em>. The admin user can create email accounts for your domain. Go to the <a href="https://github.com/MLstate/PEPS/wiki/Admin-Manual">PEPS Admin Manual</a> to learn how.</p>
+
+<p>First, try to send and receive email between two different users 
+within your domain. For example, try sending an email from 
+admin@example.com to sammy@example.com. If that is successful, try 
+having sammy respond to admin to make sure the reverse operation 
+succeeds.</p>
+
+<p>Now, send an email to an account outside of your domain. If this 
+fails, your A and MX records have not been configured correctly. Go back
+ to <em>Step 4: Setting Up Your Domain</em>. Don't forget to test receiving email from a user outside your domain as well.</p>
+
+<div data-unique="conclusion" name="conclusion"></div><h2 id="conclusion">Conclusion</h2>
+
+<p>Congratulations! You now have an instance of PEPS running on a 
+DigitalOcean Droplet. You can send messages, share files, and more (by 
+running plugins such as <a href="https://github.com/MLstate/PEPS-chat">chat</a>) securely.</p>
+
+<p>There are several manuals available:</p>
+
+<ul>
+<li><a href="https://github.com/MLstate/PEPS/wiki/User-Manual">User Manual</a></li>
+<li><a href="https://github.com/MLstate/PEPS/wiki/Admin-Manual">Admin Manual</a></li>
+<li>More documentation for developers wanting to use the PEPS API or for
+ operators regarding backup and more are available from the project wiki
+ on <a href="https://github.com/MLstate/PEPS/wiki">GitHub</a>.</li>
+</ul>
+
+<p>Also visit the <a href="https://facebook.com/endtoend">PEPS Facebook page</a> for the latest news about PEPS.</p>
+
+    </div>
+</div>
+
+<div class="tutorial-footer">
+  <div class="tutorial-footer-details">
+  <div class="section-content tutorial-public-actions">
+    <div class="share-subscribe-actions">
+      <div class="upvotes upvoted tutorial-upvote large-upvotes"><form data-upvotable="tutorial_1600" data-upvotable-type="tutorial" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=1600&amp;upvote%5Bupvotable_type%5D=Tutorial" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="gKGZjIMJ2/NRLrbJWBglqCjyaUbpqqMegb/j64ajbq0Raf+U4giYevTggY/R+3LtH6IPCnp8Zg4TC0rwDNx+0g==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="" title="Do you find this tutorial helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count ">8</div></div>
+      <span class="meta-section opt-in-switch off signed-out-subscribe">
+  <span class="meta-label subscribe-label">
+    <span class="subscription-label subscribe">Subscribe</span>
+    <span class="subscription-label subscribed">Subscribed</span>
+  </span>
+  <span class="meta-value"><a data-toggle="modal" data-target="#sign-in-modal" class="mini-switch-container" href="javascript:void(0);"><div class="mini-switch off signed-out-subscribe"><div class="switch-handle"></div></div></a></span>
+</span>
+
+      <div class="sharing">
+  <a class="share-button" href="#" data-toggle="modal" data-target="#share-modal">
+    <span class="icon icon-share-square"></span>
+    <span class="share-button-text">
+      Share
+    </span>
+  </a>
+</div>
+
+
+    </div>
+  </div>
+
+  <div class="section-content tutorial-contributors two">
+      <div class="tutorial-footer-user">
+        <div class="tutorial-footer-user-avatar-container">
+          
+        </div>
+        <div class="user-info">
+          <div class="tutorial-user-type">Author:</div>
+          Henri Binsztok
+        </div>
+      </div>
+
+      <div class="tutorial-footer-user">
+        <div class="tutorial-footer-user-avatar-container">
+          <a href="https://www.digitalocean.com/community/users/tfox"><div class="mod-avatar mod-avatar-small"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/d67be84c5e0a20b4c1cdb360319cdf4b5d9df7f6.png" alt="D67be84c5e0a20b4c1cdb360319cdf4b5d9df7f6"><span data-original-title="MOD" class="mod-star" title="" data-toggle="tooltip" data-container="body"><span class="mod-star-icon"></span></span></div></a>
+        </div>
+        <div class="user-info">
+          <div class="tutorial-user-type">Editor:</div>
+          <a class="" href="https://www.digitalocean.com/community/users/tfox">Tammy Fox</a>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+  
+  <div class="tutorial-ctas">
+  <div class="section-content">
+    <div class="cta-description">
+      <h2>Spin up an SSD cloud server in under a minute.</h2>
+
+      <p>Simple setup. Full root access. Straightforward pricing.</p>
+
+      <a class="cloud-tutorial-cta" href="https://www.digitalocean.com/?utm_medium=community&amp;utm_source=community_gencta&amp;utm_campaign=needaserver&amp;utm_content=how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04">Deploy Server</a>
+    </div>
+  </div>
+</div>
+    <div class="related-tutorials">
+    <div class="section-content">
+      <h2>Related Tutorials</h2>
+
+      <ul>
+        <li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/why-you-may-not-want-to-run-your-own-mail-server">Why You May Not Want To Run Your Own Mail Server</a></li>
+<li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/how-to-use-google-s-smtp-server">How To Use Google's SMTP Server</a></li>
+<li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-mailpile-on-ubuntu-14-04">How To Install Mailpile on Ubuntu 14.04</a></li>
+<li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/installing-the-rainloop-email-client-on-ajenti-v">Installing the RainLoop Email Client on Ajenti V</a></li>
+<li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/creating-a-website-and-an-email-account-on-ajenti-v">Creating a Website and an Email Account on Ajenti V</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="content-comments">
+  <div class="section-content">
+    <div class="tutorial commentable" id="tutorial_1600">
+
+  <div class="comments-header">
+    <h4 class="comments-count"><span>39 Comments</span></h4>
+  </div>
+
+  <div class="response no-avatar  response-form">
+
+  <div class="js-display-on-error flash error hidden"></div>
+  <form class="content-form disabled-form" id="new_comment" action="/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04/comments" accept-charset="UTF-8" data-remote="true" method="post"><input disabled="disabled" name="utf8" value="✓" type="hidden">
+    <div style="height: auto;" class="meltdown_wrap"><div class="meltdown_topmargin"></div><div class="meltdown_bar"><ul class="meltdown_controls meltdown_controls_preview"><li data-original-title="Toggle Preview" title="" class="meltdown_control-preview meltdown_control meltdown_controlbutton disabled"><span>Preview</span></li></ul><div class="preview-header">Markdown Preview</div><ul class="meltdown_controls meltdown_controls_main"><li data-original-title="Bold" title="" class="meltdown_control-bold meltdown_control meltdown_controlbutton disabled"><span unselectable="on">B</span></li><li data-original-title="Italics" title="" class="meltdown_control-italics meltdown_control meltdown_controlbutton disabled"><span unselectable="on">I</span></li><li data-original-title="Header 1" title="" class="meltdown_control-h1 meltdown_control meltdown_controlbutton disabled"><span unselectable="on">H1</span></li><li data-original-title="Header 2" title="" class="meltdown_control-h2 meltdown_control meltdown_controlbutton disabled"><span unselectable="on">H2</span></li><li data-original-title="Header 3" title="" class="meltdown_control-h3 meltdown_control meltdown_controlbutton disabled"><span unselectable="on">H3</span></li><li data-original-title="Unordered List" title="" class="meltdown_control-ul meltdown_control meltdown_controlbutton disabled"><span unselectable="on">UL</span></li><li data-original-title="Ordered List" title="" class="meltdown_control-ol meltdown_control meltdown_controlbutton disabled"><span unselectable="on">OL</span></li><li data-original-title="Link" title="" class="meltdown_control-link meltdown_control meltdown_controlbutton disabled"><span unselectable="on">Link</span></li><li data-original-title="Code" title="" class="meltdown_control-code meltdown_control meltdown_controlbutton disabled"><span unselectable="on">Code</span></li><li data-original-title="Highlight" title="" class="meltdown_control-highlight meltdown_control meltdown_controlbutton disabled"><span unselectable="on">Highlight</span></li><li data-original-title="Table" title="" class="meltdown_control-table meltdown_control meltdown_controlbutton disabled"><span unselectable="on">Table</span></li></ul></div><div class="meltdown_editor-wrap"><div class="meltdown_editor-deco"><textarea style="overflow: hidden; word-wrap: break-word; resize: none; height: 120px;" disabled="disabled" name="comment[content]" id="comment_content" placeholder="Leave a comment..." class="js-comment-content tutorial-comment-field meltdown_editor" data-markdown="true"></textarea></div></div><div class="meltdown_preview-wrap"><div class="meltdown_preview-wrap2"><div class="meltdown_preview-error-message">Could not load preview. <a href="#">Try again</a></div><div class="meltdown_preview-loading-message">Loading preview...</div><div class="meltdown_preview content-body"></div></div></div><div class="meltdown_bottommargin"></div></div>
+
+      <div class="log-in-notice "><a href="https://www.digitalocean.com/community/auth/digitalocean">Log In to Comment</a></div>
+
+    <div class="clearfix"></div>
+</form></div>
+
+
+  <div class="comments">
+    <ul class="response-list">
+          <a class="hidden" rel="nofollow" data-remote="true" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04/comments">Load</a>
+    <li style="" id="comment_32962" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/yugalxd"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/b6f402eab7b060f1d2766c9ff6c0d83934e8f167.jpg" alt="B6f402eab7b060f1d2766c9ff6c0d83934e8f167"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/yugalxd">Yugalxd</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=32962">May 27, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Hi, Do we need to install the <a href="https://github.com/MLstate/opalang" rel="nofollow">opalang</a> to get the chat in PEPS </p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_32962" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=32962&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="6E4trg46uTm2Yiu999CdhSgc2N+IK2v2R1dYFxNTNZF5hku2bzv6sBOsHPt+M8rAH0y+kxv9rubV4/EMmSwl7g==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=32962" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_32962">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_33504" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33504">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>For now yes, but we will package the chat in the main distribution soon.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33504" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33504&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="RVfM0gSwJ0GisAdy43UHAJJtuBAF6g9D+JWQnZ+Qy3zUn6rKZbFkyAd+MDRqllBFpT3eXJY8ylNqITmGFe/bAw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33504" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33504">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33504"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_32962"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33288" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/tika"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a05dde3542dd965e06e9cd41367fb0f0cda3cc6.jpg" alt="4a05dde3542dd965e06e9cd41367fb0f0cda3cc6"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/tika">tika</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33288">June  4, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>When I make run, I get the following error:<br>
+root@mydrop:/PEPS# <strong>sudo make run</strong></p>
+
+<p>mkdir -p /data/solr/peps<em>mail /data/solr/peps</em>file /data/solr/peps<em>user /data/solr/peps</em>contact<br>
+mkdir -p /data/db<br>
+mkdir -p /etc/peps<br>
+cp domain /etc/peps<br>
+cp -a server.key server.crt /etc/peps<br>
+docker run -d -h localhost --name peps<em>mongod -v /data/db:/data/db:rw mongod<br>
+FATA[0000] Error response from daemon: Conflict. The name "peps</em>mongod"
+ is already in use by container 294346d18454. You have to delete (or 
+rename) that container to be able to reuse that name. <br>
+make: *** [run] Error 1</p>
+
+<p>I cannot login in using: <strong>https://mydomain.com</strong></p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33288" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33288&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="S78uob2Ow5JiOYmKW0YqiTXLQW0vCm1zEjcMJeuxRvjad0i53I+AG8f3vszSpX3MApsnIbzcqGOAg6U+Yc5Whw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33288" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33288">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_33290" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/tika"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a05dde3542dd965e06e9cd41367fb0f0cda3cc6.jpg" alt="4a05dde3542dd965e06e9cd41367fb0f0cda3cc6"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/tika">tika</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33290">June  4, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>I see this message now :<br>
+Removing intermediate container 4467960822ce<br>
+Successfully built 18d310f0dcbd</p>
+
+<p>But still cannot login to PEPS</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33290" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33290&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="FCR7gyphaoZ8XQljIDlQQCr6/W01+Kl5pNlzJdznYQKF7B2bS2ApD9mTPiWp2gcFHaqbIaYubGk2bdo+VphxfQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33290" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33290">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33290"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li id="comment_33505" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33505">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>You may have typed
+ one command twice or skipped one, or one external resource needed to 
+build the container was unavailable (a Node.js package, etc.). Consult 
+the list of containers running (or not) with <code>(sudo) docker ps -a</code>.</p>
+
+<p>You should have 5 containers running: <code>peps_mongod</code>, <code>peps_solr</code>, <code>peps_smtpout</code>, <code>peps_smtpin</code> and <code>peps_server</code>. Their status (in column STATUS) should be "Up".</p>
+
+<p>If a container is created byt not running, <code>docker start container_name</code>. Or you have a few commands in the <code>Makefile</code> in PEPS directory:</p>
+
+<ul>
+<li><code>make stop</code> to stop the 5 containers</li>
+<li><code>make start</code> to start the 5 containers</li>
+<li><code>make kill</code> to kill them</li>
+<li><code>make rm</code> to remove them all</li>
+</ul>
+
+<p>For instance, you can rebuild everything with: <code>make stop kill rm run</code>.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33505" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33505&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="QRVUY0OkgMLwH6uuBG0UhlTMlJyuNF5iTMb3vPcgxj7Q3TJ7IqXDS1XRnOiNjkPDY5zy0D3im3Lecl6nfV/WQQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33505" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33505">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33505"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33288"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33393" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/tika"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a05dde3542dd965e06e9cd41367fb0f0cda3cc6.jpg" alt="4a05dde3542dd965e06e9cd41367fb0f0cda3cc6"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/tika">tika</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33393">June  7, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>After doing: </p>
+
+<p>```sudo make run</p>
+<pre class="code-pre "><code langs="">I see the successful message:
+
+</code></pre>
+<p>Removing intermediate container 4467960822ce<br>
+Successfully built 18d310f0dcbd</p>
+<pre class="code-pre "><code langs="">
+Then, I point to my IP, **https**://my-ip, it says Page Not Available.
+When, I point to my IP, **http**://my-ip, it says lands to /var/www/html/
+
+ I have a virtual host at port 80? Should I have it for 443? Should I do something else?
+I appreciate your help.
+</code></pre></div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33393" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33393&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="p3iwLLvDm7a9g57HRFqKKv/Rqaaw4AfqLv6D0pTYGUM2sNY02sLYPxhNqYHNud1vyIHP6iM2wvq8SirJHqcJPA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33393" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33393">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_33419" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/modysoft"><img alt="mODYsOFT" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/5e0d49839f073aad610e38b14226b17d.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/modysoft">mODYsOFT</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33419">June  7, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Dear tika, any progress with your installation as I have here the same issue....</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33419" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33419&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="kDq3OZFpdsOa2eaAVX0K6pVVUfPar9Mi61PZ/PH8a9wB8tEh8Gg1Sj8X0cbcnl2vogU3v0l5FjJ553Dne4N7ow==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33419" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33419">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33419"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li id="comment_33506" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33506">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Check that the status is "Up" for all 5 containers (see previous comment).</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33506" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33506&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="cbOsjZZd5wzt4DP4I9avFW0QEWazAuKMq8GptQGMhFfge8qV91ykhUguBL6qNfhQWkB3KiDUJ5w5dQCui/OUKA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33506" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33506">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33506"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33393"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33418" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/modysoft"><img alt="mODYsOFT" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/5e0d49839f073aad610e38b14226b17d.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/modysoft">mODYsOFT</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33418">June  7, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Dear PEPS Team at MLstate,</p>
+
+<p>I do believe that you have to revise your article as I tried all your
+ instructions but the software didn't work at the stage of calling 
+https://MY<em>DRPLET</em>IP!!!</p>
+
+<p>Please any help on that?</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes upvoted comment-upvote"><form data-upvotable="comment_33418" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33418&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="hzHg7Tp+va3KYt4l9/HY8RfWwi+2Rv4dehXQA36bdVgW+Yb1W3/+JG+s6WN+Eo+0IIakYyWQOw3ooXkY9ORlJw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33418" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count ">1</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33418">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_33464" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/tika"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a05dde3542dd965e06e9cd41367fb0f0cda3cc6.jpg" alt="4a05dde3542dd965e06e9cd41367fb0f0cda3cc6"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/tika">tika</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33464">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>No, not at all. I am having the same issue. I cannot go to the https://ip-add </p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33464" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33464&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="eCeo0F/1qNfe4g1ggh2Kn5LA7w/HytLCbIdpOv4Absrp787IPvTrXnssOiYL/t3apZCJQ1QcF9L+M8AhdH9+tQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33464" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33464">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33464"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li id="comment_33507" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33507">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>See the previous comment to check the "Up" status for the 5 Docker containers.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33507" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33507&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="mMc3dMxowl8pIiyS/d6ybszsHeX+z43iSE6avwUfEEkJD1FsrWmB1ozsG9R0PeUr+7x7qW0ZSPLa+jOkj2AANg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33507" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33507">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33507"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li id="comment_33528" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/tika"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a05dde3542dd965e06e9cd41367fb0f0cda3cc6.jpg" alt="4a05dde3542dd965e06e9cd41367fb0f0cda3cc6"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/tika">tika</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33528">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p><a href="https://www.digitalocean.com/community/users/henri" class="username-tag">@henri</a>
+ , this might be helpful, while building at some point, I get this 
+warning in red color but it still continues as if nothing is happening: 
+(I don't know if that's something to look at)<br>
+<span class="highlight">npm WARN package.json haraka_local@0.0.1 No repository field</span></p>
+
+<p>Next, PEPS Server is exited automatically and log is:<br>
+<code>*** Running /etc/myinit.d/00regensshhostkeys.sh...<br>
+ *** Running /etc/myinit.d/10peps.sh...<br>
+1 modules are missing. Please run: sudo npm install -g opabsl.opp<br>
+ *** /etc/my_init.d/10peps.sh failed with status 1</code><br>
+I did run <span class="highlight">sudo npm install -g opabsl.opp </span>and did the thing again, guess what: same error.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33528" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33528&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="TV6gU2/zKAzAP7y7RiAzJpoEy9ICa30Uxk5+djtSXLzclsZLDvJrhWXxi/3Pw2RjrVStnpG9uARU+tdtsS1Mww==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33528" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33528">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33528"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33418"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33513" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/modysoft"><img alt="mODYsOFT" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/5e0d49839f073aad610e38b14226b17d.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/modysoft">mODYsOFT</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33513">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Dear Henri,</p>
+
+<p>yes one of the docker  peps_server isExited directly after running it no matter how many times.</p>
+
+<p>can you please tell me what could the reasons?</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33513" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33513&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="zF6pk7HD2+AXRW+HvOBKmstzAZZ+5seAJnApwx+A4L5dls+L0MKYabKLWME1Ax3f/CNn2u0wApC0xIDYlf/wwQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33513" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33513">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_33520" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33520">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Type <code>docker logs peps_server</code> and you should see the reason of the error.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33520" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33520&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="YtQ7QhTFha/Ur/lm/FTdvwuXCdQ3y7ViCVB8csnb+uDzHF1adcTGJnFhziB1t4r6PMdvmKQdcHKb5NVpQ6Tqnw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33520" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33520">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33520"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33513"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33525" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/modysoft"><img alt="mODYsOFT" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/5e0d49839f073aad610e38b14226b17d.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/modysoft">mODYsOFT</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33525">June  9, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Dear Henri,<br>
+I did run the command you send and here you are what I got </p>
+
+<p>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""<br>
+FATA[0000] Error response from daemon: no such id: pep<em>server <br>
+myuser@wisemail:~/PEPS$ sudo docker logs peps</em>server<br>
+*** Running /etc/my<em>init.d/00</em>regen<em>ssh</em>host<em>keys.sh...<br>
+*** Running /etc/my</em>init.d/10peps.sh...<br>
+1 modules are missing. Please run: sudo npm install -g opabsl.opp<br>
+*** /etc/my_init.d/10peps.sh failed with status 1</p>
+
+<p>*** Killing all processes...<br>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</p>
+
+<p>kindly note that I ran sudo npm install -g opabsl.opp several time 
+and in all cases not up and showing again and again the same ..</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33525" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33525&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="2Y3qfmtMmZvfNgBq9ch6M/M24jFEhGPnfBBFf+fju/hIRYxmCk3aEnr4Nyx8Ky12xGaEfddSpvfupOxkbZyrhw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33525" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33525">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_33617" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33617">June 11, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>opabsl is installed with the Opa container and not from a npm repository.</p>
+
+<p>Try removing the peps container:<br>
+<code>docker stop peps_server; docker rm peps_server; docker rmi opa; make build run</code></p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33617" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33617&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="ZK6uxqOzCcrev+sG3eN5HPOuMXuQJvIGD5inM0i2ltr1ZsjewrJKQ3tx3EBUAC5ZxP5XNwPwNxadLA4owsmGpQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33617" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33617">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33617"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33525"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33782" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/david-machakhelidze"><img alt="david.machakhelidze" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/917e35b6f05d07d20443e5f7140b571f.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/david-machakhelidze">david.machakhelidze</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33782">June 16, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>what does it mean?<br>
+/etc/my_init.d/10peps.sh failed with status 137</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33782" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33782&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="VO9mgOPpHiRVvneKMJje25OYhAohEfw1Idoc2VJg403FJwCYguhdrfBwQMy5e4mepMjiRrLHOSWzbrXC2B/zMg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33782" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33782">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_34282" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34282">June 29, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>It means that your Droplet is too small.</p>
+
+<p>The article states that 2G is the minimum.</p>
+
+<p>Best,</p>
+
+<p>Henri</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34282" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34282&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="CPtRxW6RD8zaSBXDqVaQZ4Q3PVkw283XYDBtyMS6w9iZMzfdD5BMRX+GIoUgtccis2dbFaMNCMfyhMTTTsXTpw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34282" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34282">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34282"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33782"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33790" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/david-machakhelidze"><img alt="david.machakhelidze" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/917e35b6f05d07d20443e5f7140b571f.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/david-machakhelidze">david.machakhelidze</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33790">June 16, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>now i can not receive mail.... error 550</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33790" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33790&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="JT+gnbH/oREQL5VPuup9F/QVpSYH7AndjnnSzZq8uk2098aF0P7imLXhogkzCSpSw0XDapQ6zM0czXvWEMOqMg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33790" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33790">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33790"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33811" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/porksmash"><img alt="porksmash" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/650ebbbc4d4d1b1f96964ccb57e193b3.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/porksmash">porksmash</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33811">June 16, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>During make build I am getting a 404:</p>
+<pre class="code-pre "><code langs="">2015-06-16 23:19:46 ERROR 404: Not Found.
+2015/06/16 19:19:46 The command [.....] returned a non-zero code: 8
+</code></pre></div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33811" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33811&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="rsO7S/F7ujv8n7qEcroRzISUJNOIwkk19t2W/wTytJw/C91TkHr5sllRjcL7WUaJs8RCnxsUjCVkaT/kjo2k4w==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33811" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33811">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_34121" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34121">June 24, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>This has been fixed, the version has been updated (upstream) to 4.10.4.<br>
+In your PEPS directory, <code>git pull</code> and rebuild containers.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34121" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34121&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="FAFSo4NKvmHfJ6aZu93NwvOJ/2rd4qnGbYPekYHPz/iFyTS74kv96Hrpkd8yPpqHxNmZJk40bNb/N3eKC7Dfhw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34121" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34121">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34121"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33811"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33835" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/tika"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a05dde3542dd965e06e9cd41367fb0f0cda3cc6.jpg" alt="4a05dde3542dd965e06e9cd41367fb0f0cda3cc6"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/tika">tika</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33835">June 17, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Let's make this straight. I had heard good things about PEPS. I am <strong>trying to use</strong> this for 2 weeks now. I <span class="highlight">cannot </span>run this. None of the support from the team is working. Am I supposed to look for a alternative? </p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33835" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33835&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="jAfiiudSVjxECqW0aEIvOyb7IpmdCcd8JcRHZFFqcXodz4SShlMVteHEkvLhoXh+EatE1Q7fAmy3cO5/2xVhBQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33835" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33835">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_34281" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34281">June 29, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Thanks for giving me access to your droplet.</p>
+
+<p>Turns out that you have a 512Mb Droplet, whereas the tutorial states that 2G is the minimum.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34281" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34281&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="2u4+OfZSPY4BfAqpPRZzsZq/lq/PaYTomR8f4Rk621JLJlghl1N+B6SyPe+09ST0re/w41y/QfgLq7b6k0XLLQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34281" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34281">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34281"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li id="comment_34287" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/tika"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a05dde3542dd965e06e9cd41367fb0f0cda3cc6.jpg" alt="4a05dde3542dd965e06e9cd41367fb0f0cda3cc6"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/tika">tika</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34287">June 29, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Oh I see. I was 
+using a test droplet of 512Mb. Let me go ahead and drop it in the 
+production droplet. Thank you for your assistance.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34287" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34287&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="TUbiDEQlNILsMB4BQXrZMzrqerTxlkgcB0BdXaVillfcjoQUJSR3C0n+KUfImY52Dboc+GJAjQyV9PRGLx2GKA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34287" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34287">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34287"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33835"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_33888" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/michaelcombs28"><img alt="michaelcombs28" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/84ae230c5b2c0c99de6f83eda4c53486.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/michaelcombs28">michaelcombs28</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33888">June 19, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>I checked the 
+peps_server logs and got error 137 with no other data. I followed the 
+guide to the T on a fresh ubuntu 14.04 droplet. Not sure what to make of
+ it, I'd rather not switch back to vbadmin / roundcube</p>
+
+<p>137 is usually memory errors right?</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_33888" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=33888&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="oCvlJn+QGhEzBAMxtmQGFMxvvUbW+KYTlcsvCaklt3Yx44M+HpFZmJbKNHc/h1FR+z/bCkUuYwMHf4YSI1qnCQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=33888" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_33888">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_34122" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34122">June 24, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>What is the size of your droplet?</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34122" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34122&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="ob83nJxWTkk7jgBCWlKvPzTBXzbkuUbxaV/ffJH1XqMwd1GE/VcNwJ5ANwTTsfh6A5E5endvg+H763ZnG4pO3A==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34122" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34122">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34122"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_33888"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_34089" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/tika"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a05dde3542dd965e06e9cd41367fb0f0cda3cc6.jpg" alt="4a05dde3542dd965e06e9cd41367fb0f0cda3cc6"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/tika">tika</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34089">June 23, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Now, I see problems with peps_smtpin:</p>
+<pre class="code-pre "><code langs="">tcp   peps_smtpin         
+013195831d66        peps                "/sbin/my_init"        14 seconds ago      Exited (1) Less than a second ago 
+</code></pre>
+<p>Logs:</p>
+<pre class="code-pre "><code langs="">*** Running /etc/my_init.d/00_regen_ssh_host_keys.sh...
+*** Running /etc/rc.local...
+*** Booting runit daemon...
+*** Runit started as PID 7
+Jun 23 22:12:00 localhost syslog-ng[13]: syslog-ng starting up; version='3.5.3'
+</code></pre></div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34089" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34089&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="ulLTWvoXEoLbw0OOoExdmE+Ne4NVQ8B3+slTjywvS/ArmrVCmxZRC34NdMgprwrdeN0dz8aVBWdoffqUplBbjw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34089" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34089">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_34280" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34280">June 29, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Thanks for giving me access to your droplet.</p>
+
+<p>Turns out that you have a 512Mb Droplet, whereas the tutorial states that 2G is the minimum.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34280" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34280&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="dExLLzICYrG3I+X81b4wDYNxhA/v0MKAkU5PGZprTZzlhC03UwMhOBLt0rpcXWdItCHiQ3wGB5AD+uYCEBRd4w==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34280" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34280">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34280"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34089"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_34155" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/techlab"><img alt="techlab" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/42f68485ed3efb9a83f74bb97e6e8a2f.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/techlab">techlab</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34155">June 25, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Does anyone know how to install PEPS on a Synology NAS ?</p>
+
+<p>Which has Docker installed, however has its own web interface.<br>
+https://www.synology.com/en-global/dsm/5.2</p>
+
+<p>It seems to be using the so-called Docker Hub Registry:<br>
+https://registry.hub.docker.com/</p>
+
+<p>However nobody seems to have added PEPS yet.</p>
+
+<p>As I am rather new to the whole Docker feature I would appreciate any
+ guidance. Perhaps I need to run some of the commands manually in a 
+console. If so then please let me know which.</p>
+
+<p>Best Regards,<br>
+Michel</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34155" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34155&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="FsVkMS4ojkhv9BrraBGV4p5t8169WXmtjGAQIL+aXOWHDQIpTynNwco6La3h8sKnqT2VEi6PvL0e1Lk7NeVMmg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34155" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34155">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34155"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_34203" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/elgs1980"><img alt="elgs1980" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/fc43a735e2c498f450a9908a5bd9ebf4.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/elgs1980">elgs1980</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34203">June 26, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Does PEPS include SMTP and IMAP4 services? Or do we still need postfix and dovecot?</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34203" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34203&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="sbH//2EWApHOCuNDGs61myxXFJz3erI6I8X9oRjjUoEgeZnnABdBGGvE1AWTLeLeGwdy0GSsdyqxcVS6kpxC/g==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34203" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34203">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_34279" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/henri"><img alt="henri" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/929c86b8ec5d35bc10322cce1a4eb4ed.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/henri">henri</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34279">June 29, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Yes and no:</p>
+
+<ul>
+<li>PEPS includes SMTP servers (both inbound and outbound)</li>
+<li>IMAP4 server is planned, see <a href="https://github.com/MLstate/PEPS/wiki/Roadmap" rel="nofollow">Roadmap</a></li>
+</ul>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34279" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34279&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="Tt//TazD0dMmXZJQC3T3XeubcwxY+/Gnj6pSAxZQfXzfF5lVzcKSWoOTpRaCl6AY3MsVQMstNLcdHvsYnC9tAw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34279" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34279">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34279"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34203"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_34283" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/elgs1980"><img alt="elgs1980" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/fc43a735e2c498f450a9908a5bd9ebf4.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/elgs1980">elgs1980</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34283">June 29, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Thanks. Henri. I'm
+ hoping IMAP4 will be available soon. Because I heavily need to access 
+my mails from my phone. Configuring postfix/dovecot/roundcube is way too
+ complicated and data migration needs a lot of determination. PEPS looks
+ very promising. I'm hoping configuration and data migration will be 
+less painful.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34283" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34283&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="IhifoFOBjXmBUi2FtpU/rZx4WbsFYNVoYJ2O4uhx5uqz0Pm4MoDO8CScGsM/dmjoqyg/95a2EHjyKSf5Yg72lQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34283" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34283">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34283"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_34437" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/xunshuairu"><img alt="xunshuairu" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/89b48d8e24d0a9a4c74a9099a181ff46.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/xunshuairu">xunshuairu</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34437">July  1, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>It seems like it only support English. I can modify text.opa file in source code, but how to support multi-language?</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_34437" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=34437&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="AjyztPDCyRtKV3wDYYZUSiWMIr4KIMVJivOAewem6XGT9NWskcOKku+ZS0XoZQMPEtxE8pn2AFkYRylgjdn5Dg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=34437" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_34437">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_34437"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_35744" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/smartsangeeth"><img alt="smartsangeeth" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/707c17c0c1219bc447938719161a68fd.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/smartsangeeth">smartsangeeth</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=35744">July 30, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Sir Can we install  PEPS  in a shared host like hostinger ?</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_35744" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=35744&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="7JWX0teO4QlLlFTE5t9W6WfLP6qKJGuBewsqMHAuzJ59XfHKto+igO5aY4JvPAGsUJtZ5hnyrpHpv4Mr+lHc4Q==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=35744" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_35744">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_35744"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_36211" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/iljadaderko"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/278b5bd19418c8fa24b516219474df70246f3977.jpg" alt="278b5bd19418c8fa24b516219474df70246f3977"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/iljadaderko">IljaDaderko</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=36211">August 12, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p><a href="https://www.digitalocean.com/community/users/henri" class="username-tag">@henri</a>
+ I can't figure out a way to link my peps email with email clients like 
+Thunderbird or Mail on mac. Went through comments, seems people have 
+mentioned it, but I am not able to figure out a way. Is there a guide 
+for this maybe? Thank you.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_36211" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=36211&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="aW7upBilIWTP8Y/OWoZhGkn7pn7klHp9J/8esXo1aLP4poi8eaRi7Wo/uIjTZTZffqvAMndCv221S7eq8Ep4zA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=36211" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_36211">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_36211"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_36346" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/iljadaderko"><img class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/278b5bd19418c8fa24b516219474df70246f3977.jpg" alt="278b5bd19418c8fa24b516219474df70246f3977"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/iljadaderko">IljaDaderko</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=36346">August 15, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Also how can I 
+locate and edit application files like css/js? There are some areas of 
+peps application that I think need polishing and I'd like to make those 
+small edits.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_36346" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=36346&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="xi/oAuAN+fWtiozsqyCv8+Du7t0R2nbfhjg8BQv7LeBX544agQy6fAhEu6oiw/i2176IkYIMs88UjJUegYQ9nw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=36346" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_36346">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_36346"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_36964" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/enrickolukman"><img alt="enrickolukman" class="avatar avatar-small" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/7f155def131ed71038400a8dae7f1ed9.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/enrickolukman">enrickolukman</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=36964">August 30, 2015</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>Everything good 
+except the domain setting. Already set the A and MX record, but I still 
+can access the through my domain. By the way I use namecheap domain 
+provides. Any clue? Should I setup on also DigitalOcean? </p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_36964" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=36964&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="WPj9n4X2YdfzTqkHT7eRDyUiGNb93awj8ghafO3wmMHJMJuH5PciXlaAnkHGVMZKEnJ+mm4LaTNgvPNnZ4+Ivg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04?comment=36964" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_36964">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_36964"></div>
+</div>
+    </div>
+
+  </li></ul><div class="comment-pagination"><span class="previous_page disabled">Previous</span> <em class="current">1</em> <a rel="next nofollow" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04/comments?page=2">2</a> <a class="next_page" rel="next nofollow" href="https://www.digitalocean.com/community/tutorials/how-to-run-your-own-mail-server-and-file-storage-with-peps-on-ubuntu-14-04/comments?page=2">Next</a></div>
+
+      <div style="display: none;" class="comments-spinner"><div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+</div>
+  </div>
+
+  <div class="load-more-container"><a class="load-more" href="javascript:void(0);"><span class="load-more-text">Load More Comments</span><div style="display: none;" class="comments-spinner"><div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+</div></a></div>
+</div>
+
+
+  </div>
+</div>
+
+<div class="creative-commons">
+  <a class="creative-commons-image" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img rel="license" alt="Creative Commons License" src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/creativecommons-654928f5ebfbb75f4543af8903eabfe4.png"></a>
+    <div class="license-text">This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</div>
+</div>
+
+
+
+
+
+        <div class="clearfix"></div>
+    	</div>
+
+    	<footer class="footer">
+  <div class="footer-icon">
+    <span class="icon icon-sammy"></span>
+  </div>
+
+  <div class="copyright">
+    Copyright © 2015 DigitalOcean™ Inc.
+  </div>
+
+  <ul class="main-nav-links">
+    <li><a href="https://www.digitalocean.com/community">Community</a></li>
+    <li><a href="https://www.digitalocean.com/community/tutorials">Tutorials</a></li>
+    <li><a href="https://www.digitalocean.com/community/questions">Questions</a></li>
+    <li><a href="https://www.digitalocean.com/community/projects">Projects</a></li>
+    <li><a href="https://www.digitalocean.com/community/tags">Tags</a></li>
+    <li>
+      <a href="https://www.digitalocean.com/community/tutorials/feed">
+        RSS <span class="icon-rss"></span>
+</a>    </li>
+  </ul>
+
+  <br>
+
+  <ul class="secondary-nav-links">
+
+    <li><a href="https://www.digitalocean.com/legal/terms/">Terms, Privacy, &amp; Copyright</a></li>
+    <li><a href="https://www.digitalocean.com/security/">Security</a></li>
+      <li><a data-toggle="modal" data-target="#sign-in-modal" href="#">Report a Bug</a></li>
+    <li><a href="https://www.digitalocean.com/community/get-paid-to-write">Get Paid to Write</a></li>
+  </ul>
+</footer>
+
+
+
+
+
+    <div id="sign-in-modal" class="modal fade mini-modal" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Sign Up</h1>
+        <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+      </div>
+      <div class="modal-body">
+        <div class="sign-in-message">Not so fast, you must have an account before you can do that.</div>
+
+        <div class="sign-in-modal-actions">
+          <a class="sign-in-link button blue-button" data-default-url="/community/auth/digitalocean" href="https://www.digitalocean.com/community/auth/digitalocean">Log In</a>
+          <a class="sign-up-link button green-button" data-default-url="/community/auth/digitalocean?display=sessionless+register" href="https://www.digitalocean.com/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+  <script>
+    $(function() {
+      init_sharing();
+      new NewsletterSignup();
+      new GrowableMarkdown({ target: '[data-growable-markdown]' });
+    });
+  </script>
+
+  <div id="report-a-bug-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Report a Bug</h1>
+          <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+        </div>
+        <div class="modal-body">
+          <div class="report-a-bug-message text-center">Use this form to report bugs related to the Community</div>
+          <div class="report-a-bug-actions do-form">
+            <div class="form-wrap">
+              <form class="new_bug_report" id="new_bug_report" action="/community/bug_reports" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="gKGZjIMJ2/NRLrbJWBglqCjyaUbpqqMegb/j64ajbq0Raf+U4giYevTggY/R+3LtH6IPCnp8Zg4TC0rwDNx+0g==" type="hidden">
+                <fieldset>
+                  <div class="field">
+                    <input placeholder="Name" name="bug_report[name]" id="bug_report_name" type="text">
+                  </div>
+                  <div class="field">
+                    <input placeholder="Email" required="required" name="bug_report[email]" id="bug_report_email" type="text">
+                  </div>
+                  <div class="field">
+                      <textarea style="overflow: hidden; word-wrap: break-word; resize: none; height: 125px;" placeholder="Message" required="required" name="bug_report[message]" id="bug_report_message"></textarea>
+                  </div>
+
+                  <div class="field actions">
+                    <input name="commit" value="Submit" class="button" type="submit">
+                  </div>
+                </fieldset>
+</form>            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+<textarea id="autosizejs" class="autosizejs" tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px none; padding: 0px; box-sizing: content-box; word-wrap: break-word; height: 0px ! important; min-height: 0px ! important; overflow: hidden; transition: none 0s ease 0s ; font-family: &quot;proxima-nova&quot;,sans-serif; font-size: 17px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; word-spacing: 0px; text-indent: 0px; line-height: 23.8px; width: 58px;">Message
+</textarea><a style="display: none; position: fixed; z-index: 2147483647;" href="#top" id="scrollUp">Scroll to top</a><div style="position: absolute; top: 300px; width: 100%; border-top: 1px dotted rgb(0, 255, 255); z-index: 2147483647;" id="scrollUp-active"></div><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/jb3BUxkAISL.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div><script id="" type="text/javascript">adroll_custom_data={article_tag:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006705692'),tutorial_difficulty:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006705693'),content_type:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006705694'),author:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006705695'),is_community_page:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006705696'),user_signed_in:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006705697'),user_droplet_count:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006705698')};</script>
+<script id="" type="text/javascript">var _qevents=_qevents||[];(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https://secure":"http://edge")+".quantserve.com/quant.js";a.async=!0;a.type="text/javascript";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();_qevents.push({qacct:"p-ezk6DY8pwNxCt",labels:"_fp.event.Community"});</script>
+<noscript>
+<img src="//pixel.quantserve.com/pixel/p-ezk6DY8pwNxCt.gif?labels=_fp.event.Community" style="display: none;" border="0" height="1" width="1" alt="Quantcast">
+</noscript>
+<script id="" type="text/javascript">(function(){var a=window._fbq||(window._fbq=[]);if(!a.loaded){var b=document.createElement("script");b.async=!0;b.src="//connect.facebook.net/en_US/fbds.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);a.loaded=!0}a.push(["addPixelId","1428881624071898"])})();window._fbq=window._fbq||[];window._fbq.push(["track","PixelInitialized",{}]);</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1428881624071898&amp;ev=PixelInitialized"></noscript><script id="" type="text/javascript">(function(b,c,e,g,d){var f,a;b[d]=b[d]||[];f=function(){var a={ti:"4047822"};a.q=b[d];b[d]=new UET(a);b[d].push("pageLoad")};a=c.createElement(e);a.src=g;a.async=1;a.onload=a.onreadystatechange=function(){var b=this.readyState;b&&"loaded"!==b&&"complete"!==b||(f(),a.onload=a.onreadystatechange=null)};c=c.getElementsByTagName(e)[0];c.parentNode.insertBefore(a,c)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script><noscript><img src="//bat.bing.com/action/0?ti=4047822&amp;Ver=2" height="0" width="0" style="display:none; visibility: hidden;"></noscript>
+<script src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/pixel" id="" type="text/javascript"></script><div id="batBeacon0.3421208325497297" style="width:0px; height:0px; display:none; visibility:hidden;"><img src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/0_002.txt" id="batBeacon0.9048381076974963" style="width:0px; height:0px; display:none; visibility:hidden;" height="0" width="0"><img src="How%20To%20Run%20Your%20Own%20Mail%20Server%20and%20File%20Storage%20with%20PEPS%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/0.txt" id="batBeacon0.7567819060471693" style="width:0px; height:0px; display:none; visibility:hidden;" height="0" width="0"></div>
+</body></html>

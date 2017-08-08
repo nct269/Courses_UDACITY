@@ -1,0 +1,105 @@
+Library: D3.JS
+
+Command
+
+-> console-log("");
+Basic JS command to print in the console, useful for debugging purposes.
+
+<JQuery>
+-> $ indicates the use of Jquery
+It indicates an element on the page
+
+-> # indicates the variable name looked for.
+e.g. $("#main").append([ XYZ]);
+
+-> . indicates you look for objects of a class
+
+</JQuery>
+
+-> to append strings
+$("#main").append(['Nicolas Chignardet']);
+
+-> to append logical arithmetical operations
+$("#main").append([ 299792458 * 100 / 1000000000	]);
+
+-> Variable declaration
+Keyword var var_name = var_val;
+
+-> In JS [] (square brackets) is used for array and curly braces{} for dictionnaries or hastables
+[] is used as well tô access the array elements
+
+-> Object evaluate to True are called Truthy and evaluated to false are called Falsy
+Truthy: True, non-zero numbers, "strings" i.e. string with length>0 , objects, arrays, functions
+Falsy: False, 0, "" string with length=0, undefined (undefined variable), null, NaN Not a Number 
+
+-> JSON: Javascript object notation
+JSON linter http://jsonlint.com/	
+
+->Three ways to define ojects
+var bio = {"name" = "nct"};
+bio.name = "nct";
+bio["name"] = "nct"
+
+Rem JS was created in 1995
+
+Rem an array is just an object its key are the natural numbers.
+Therefore if student["nico", "meli", "mika"]; is an array student[1] and student student["1"] give the same thing, 1 is stringevaluated to 1. It is different from other languages.
+
+-> Anonymous function see doc
+
+-> JavaScript does not include block-level scope.
+Blocks, like if-statements and any of the loops you've learned about, do not create their own scope.
+
+->
+var x = 5;
+console.log(x); // 5
+var y = 10;
+
+is the same as
+
+var x, y; // this line simply declares x and y at the same time.
+x = 5;
+console.log(x); // 5
+y = 10;
+
+Notice how the declaration of y moved to the top of the scope. And also notice how the first line doesn't set a value for neither x nor y. After var x, y; both x and y are undefined. 
+
+The same behavior holds true for other types of variables, including functions. If you use the var functionName syntax, only the function's declaration (e.g. var functionName;) gets moved at the top of its scope. However, if you use function functionName() syntax, the function declaration and definition (the actual instructions inside the function) get moved to the top of the function's scope.
+
+E.g.
+
+Example 1
+
+example1();
+function example1() {
+    console.log("Ran the example");
+}
+
+You should see "Ran the example!" when you run this code.
+Example 2
+
+example2();
+var example2 = function() {
+    console.log("Ran the example");
+}
+
+You should see an undefined error when this code gets run.
+
+In both examples, the interpreter modifies the code. This is effectively how this code is interpreted.
+Example 1 Interpreted
+
+var example1;
+example1 = function() {
+    console.log("Ran the example");
+}
+example1();
+
+Example 2 Interpreted
+
+var example2;
+example2();
+example2 = function() {
+    console.log("Ran the example");
+}
+
+In both examples, the declarations get moved to the top of the scope. But notice how the definition comes along too in the first example, which allows us to use example1() right away.

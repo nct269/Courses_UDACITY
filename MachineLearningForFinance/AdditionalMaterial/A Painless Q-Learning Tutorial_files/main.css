@@ -1,0 +1,436 @@
+/* What this does is strip all default margins and padding from all elements.
+    Margins and padding must now be manually applied to most everything.       */
+* {
+ 	margin: 0;
+ 	padding: 0;
+}
+
+html {
+	height: 100%; /* for pushing the footer to the bottom of the page */
+}
+
+body {
+	background-color: #FFFFFF;
+	background-image: url('../images/header_backg2.png');
+	background-position: top center;
+	background-repeat: no-repeat;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10pt;
+	color: #000000;
+	height: 100%; /* for pushing the footer to the bottom of the page */
+}
+
+blockquote {
+	padding: 0px 20px 0px 20px;
+}
+
+a {
+	color: #526700;
+}
+
+a:hover {
+	color: #A7C74A;
+}
+
+a:visited {
+	color: #807B46;
+}
+
+a:visited:hover {
+	color: #A7C74A;
+}
+
+a .search_button {
+	text-decoration: none;
+	background-image: url('../images/search_button1.png');
+}
+
+a:hover .search_button {
+	text-decoration: none;
+	background-image: url('../images/search_button_on.png');
+}
+
+h1 {
+	font-family: "Times New Roman",Georgia,Serif;
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+.main_container {
+	min-height: 100%; /* for pushing the footer to the bottom of the page */
+	position: relative;
+	width: 925px;
+	margin: 0px auto -150px auto; /* the footer and its margin total 150px */
+}
+
+div.header {
+	position: relative;
+	width: 900px;
+	height: 160px;
+	background-image: url('../images/header_1a.png');
+	margin-bottom: 5px;
+}
+
+div.control_row {
+	position: absolute;
+	top: 16px;
+	left: 375px;
+	width: 525px;
+	height: 34px;
+	background-image: url('../images/button-bar1.png');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	margin: 0px auto 0px auto;
+}
+
+.crButton1 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 131px;
+	height: 34px;
+	line-height: 34px;
+	color: #FFFFFF;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size:11px;
+	font-weight:bold;
+	text-align: center;
+}
+
+.crButton1 a {
+	color: #FFFFFF;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size: 11px;
+	font-weight:bold;
+	text-align: center;
+	text-decoration: none;
+}
+
+.crButton1 a:hover {
+	color: #FFFFFF;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size: 12px;
+	font-weight:bold;
+	text-align: center;
+	text-decoration: none;
+}
+
+.crButton2 {
+	position: absolute;
+	left: 132px;
+	top: 0px;
+	width: 131px;
+	height: 34px;
+	line-height: 34px;
+	color: #FFFFFF;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size:11px;
+	font-weight:bold;
+	text-align: center;
+}
+
+.crButton2 a {
+	color: #FFFFFF;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size: 11px;
+	font-weight:bold;
+	text-align: center;
+	text-decoration: none;
+}
+
+.crButton2 a:hover {
+	color: #FFFFFF;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size: 12px;
+	font-weight:bold;
+	text-align: center;
+	text-decoration: none;
+}
+
+.search_box {
+	position: absolute;
+	left: 288px;
+	top: 7px;
+}
+
+#search_button {
+	position: absolute;
+	top: 7px;
+	left: 438px;
+	width: 58px;
+	height: 21px;
+}
+
+.navRow {
+	width: 898px;
+	height: 20px;
+	margin-bottom: 5px;
+}
+
+.navBranch {
+	width: 620px;
+	float: left;
+}
+
+.socialBookmarks {
+	width: 278px;
+	float: right;
+}
+
+div.indexPageCenterColumn {
+	width: 500px;
+	float: left;
+	background-image: url('../images/content_left_border1.png');
+	background-position: 0px 0px;
+	background-repeat: repeat-y;
+}
+
+.centerColumn {
+	width: 600px;
+	float: left;
+	background-image: url('../images/content_left_border1.png');
+	background-position: 0px 0px;
+	background-repeat: repeat-y;
+}
+
+.mainFooter {
+	height: 100px;
+	width: 100%;
+	float: left;
+	clear: both;
+	background-image: url('../images/footer_backg1.gif');
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+}
+
+.mainFooterStart {
+	position: relative;
+	width: 700px;
+	margin: 0px auto 0px auto;
+	height: 25px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-family: courier, sans-serif;
+	font-size: 10pt;
+	line-height: 25px;
+}
+
+.mainFooterContent {
+	position: relative;
+	width: 900px;
+	margin: 0px auto 0px auto;
+	background-color: #333333;
+	color: #FFFFFF;
+}
+
+.mainFooterRow1 {
+	position: relative;
+	width: 900px;
+	margin: 0px auto 0px auto;
+	height: 25px;
+	line-height: 25px;
+	font-size: 10pt;
+	text-align: center;
+}
+
+.mainFooterRow2 {
+	position: relative;
+	width: 900px;
+	margin: 0px auto 0px auto;
+	height: 25px;
+	line-height: 25px;
+	font-size: 8pt;
+	text-align: center;
+}
+
+.mainFooterEnd {
+	position: relative;
+	width: 700px;
+	margin: 0px auto 0px auto;
+	height: 25px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-family: courier, sans-serif;
+	font-size: 10pt;
+	line-height: 25px;
+}
+
+div.indexPageContentHeader {
+	width: 318px;
+	margin-bottom: 15px;
+	padding: 0px 0px 0px 160px;
+}
+
+.content_header {
+	width: 418px;
+	margin-bottom: 15px;
+	padding: 0px 0px 0px 160px;
+}
+
+div.indexPageContentTitle {
+	width: 398px;
+	margin-bottom: 15px;
+	padding: 0px 0px 0px 120px;
+}
+
+.content_title {
+	width: 498px;
+	margin-bottom: 15px;
+	padding: 0px 0px 0px 120px;
+}
+
+div.indexPageTopicTitle {
+	width: 473px;
+	height: 50px;
+	background-image: url('../images/content_title2.png');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+.topic_title {
+	width: 573px;
+	height: 50px;
+	background-image: url('../images/content_title2.png');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+div.indexPageTopicPassage {
+	width: 463px;
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	background-image: url('../images/content_header3.png');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	padding: 0px 0px 0px 35px;
+}
+
+.topic_passage {
+	width: 563px;
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	background-image: url('../images/content_header3.png');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	padding: 0px 0px 0px 35px;
+}
+
+div.topic_passage p {
+	margin-bottom: 10px;
+}
+
+.topic_passage_footer {
+	position: relative;
+	left: -15px;
+	top: -15px;
+	width: 598px;
+	height: 35px;
+	background-image: url('../images/content_footer2b.png');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+.dataTables1 {
+	border-collapse: collapse;
+	border: 1px solid #AAAAAA;
+}
+
+.dataTableCells1 {
+	padding: 2px 5px 2px 5px;
+	text-align: right;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10pt;
+}
+
+.pagingStrip {
+	width: 600px;
+	height: 20px;
+	text-align: center;
+}
+
+.lowerNavButton {
+	height: 22px;
+	color: #FFFFFF;
+	background-color: #A7C74A;
+	border: 1px solid #807B46;
+	line-height: 22px;
+	float: left;
+}
+
+.lowerNavButtonGray {
+	height: 22px;
+	color: #000000;
+	background-color: #CCCCCC;
+	border: 1px solid #999999;
+	line-height: 22px;
+	float: left;
+}
+
+.lowerNavButtonSpacer {
+	width: 5px;
+	height: 20px;
+	float: left;
+}
+
+.usernameLabel {
+	width: 100px;
+	height: 20px;
+	margin-top: 25px;
+}
+
+.userBox {
+	width: 250px;
+	height: 18px;
+	
+}
+
+.passwordLabel {
+	width: 100px;
+	height: 20px;
+	margin-top: 15px;
+}
+
+.passBox {
+	width: 250px;
+	height: 18px;
+}
+
+.loginButtonPanel {
+	width: 275px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.literaryQuote {
+	font-size: 8pt;
+}
+
+.randomQuote {
+	font-size: 12pt;
+}
+
+.randomQuoteAuthor {
+	font-size: 8pt;
+	text-align: center;
+}
+
+div.siteStatsBar {
+	width: 100%;
+	line-height: 25px;
+	margin-top: 25px;
+	float: left;
+	clear: both;
+	font-size: 12pt;
+	text-align: center;
+}
+

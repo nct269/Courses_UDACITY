@@ -1,0 +1,241 @@
+<!--?xml version="1.0" encoding="ISO-8859-1"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"><head>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<!--
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+              This file is generated from xml source: DO NOT EDIT
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      -->
+<title>Fichiers de configuration - Serveur Apache HTTP Version 2.2</title>
+<link href="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/manual.css" rel="stylesheet" media="all" type="text/css" title="Main stylesheet">
+<link href="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/manual-loose-100pc.css" rel="alternate stylesheet" media="all" type="text/css" title="No Sidebar - Default font size">
+<link href="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/manual-print.css" rel="stylesheet" media="print" type="text/css"><link rel="stylesheet" type="text/css" href="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/prettify.css">
+<script src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/prettify.js" type="text/javascript">
+</script>
+
+<link href="https://httpd.apache.org/docs/2.2/images/favicon.ico" rel="shortcut icon"><script src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/show_comments.lua" async="" type="text/javascript"></script><script src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/builder.js" async="" type="text/javascript"></script><link href="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/basic.css" type="text/css" rel="stylesheet"></head>
+<body id="manual-page"><div id="page-header">
+<p class="menu"><a href="https://httpd.apache.org/docs/2.2/mod/">Modules</a> | <a href="https://httpd.apache.org/docs/2.2/mod/directives.html">Directives</a> | <a href="http://wiki.apache.org/httpd/FAQ">FAQ</a> | <a href="https://httpd.apache.org/docs/2.2/glossary.html">Glossaire</a> | <a href="https://httpd.apache.org/docs/2.2/sitemap.html">Plan du site</a></p>
+<p class="apache">Serveur Apache HTTP Version 2.2</p>
+<img alt="" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/feather.gif"></div>
+<div class="up"><a href="https://httpd.apache.org/docs/2.2/"><img title="&lt;-" alt="&lt;-" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/left.gif"></a></div>
+<div id="path">
+<a href="http://www.apache.org/">Apache</a> &gt; <a href="http://httpd.apache.org/">Serveur HTTP</a> &gt; <a href="http://httpd.apache.org/docs/">Documentation</a> &gt; <a href="https://httpd.apache.org/docs/2.2/">Version 2.2</a></div><div id="page-content"><div id="preamble"><h1>Fichiers de configuration</h1>
+<div class="toplang">
+<p><span>Langues Disponibles: </span><a href="https://httpd.apache.org/docs/2.2/de/configuring.html" hreflang="de" rel="alternate" title="Deutsch">&nbsp;de&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/en/configuring.html" hreflang="en" rel="alternate" title="English">&nbsp;en&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/fr/configuring.html" title="Français">&nbsp;fr&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/ja/configuring.html" hreflang="ja" rel="alternate" title="Japanese">&nbsp;ja&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/ko/configuring.html" hreflang="ko" rel="alternate" title="Korean">&nbsp;ko&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/tr/configuring.html" hreflang="tr" rel="alternate" title="Türkçe">&nbsp;tr&nbsp;</a></p>
+</div>
+
+<p>Ce document décrit les fichiers utilisés pour configurer
+le Serveur HTTP Apache.</p>
+</div>
+<div id="quickview"><ul id="toc"><li><img alt="" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/down.gif"> <a href="#main">Fichiers de configuration principaux</a></li>
+<li><img alt="" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/down.gif"> <a href="#syntax">Syntaxe des fichiers de configuration</a></li>
+<li><img alt="" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/down.gif"> <a href="#modules">Modules</a></li>
+<li><img alt="" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/down.gif"> <a href="#scope">Portée des directives</a></li>
+<li><img alt="" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/down.gif"> <a href="#htaccess">Fichiers .htaccess</a></li>
+</ul><ul class="seealso"><li><a href="#comments_section">Commentaires</a></li></ul></div>
+<div class="top"><a href="#page-header"><img alt="top" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/up.gif"></a></div>
+<div class="section">
+<h2><a name="main" id="main">Fichiers de configuration principaux</a></h2>
+    
+    <table class="related"><tbody><tr><th>Modules Apparentés</th><th>Directives Apparentées</th></tr><tr><td><ul><li><code class="module"><a href="https://httpd.apache.org/docs/2.2/mod/mod_mime.html">mod_mime</a></code></li></ul></td><td><ul><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#ifdefine">&lt;IfDefine&gt;</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#include">Include</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/mod_mime.html#typesconfig">TypesConfig</a></code></li></ul></td></tr></tbody></table>
+
+    <p>La configuration d'Apache est effectuée en plaçant des <a href="https://httpd.apache.org/docs/2.2/mod/directives.html">directives</a> dans des fichiers de
+    configuration au format texte. Le fichier de configuration principal se nomme
+    en général
+    <code>httpd.conf</code>. La localisation de ce fichier est définie
+    à la compilation, mais peut être redéfinie à l'aide de l'option
+    de ligne de commande <code>-f</code>. En outre, d'autres fichiers de
+    configuration peuvent être ajoutés à l'aide de la directive
+    <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#include">Include</a></code>, et des caractères de
+    remplacement
+    peuvent être utilisés pour inclure de nombreux fichiers de configuration.
+    Des directives de tous types peuvent être placées dans chacun de ces fichiers
+    de configuration.  Les modifications dans les fichiers de configuration
+    principaux ne sont prises en compte par Apache que lorsque le serveur
+    est démarré ou redémarré.</p>
+
+    <p>Le serveur lit aussi un fichier contenant les types de document mime;
+    ce fichier est défini par la directive <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/mod_mime.html#typesconfig">TypesConfig</a></code>,
+    et se nomme <code>mime.types</code> par défaut.</p>
+  </div><div class="top"><a href="#page-header"><img alt="top" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/up.gif"></a></div>
+<div class="section">
+<h2><a name="syntax" id="syntax">Syntaxe des fichiers de configuration</a></h2>
+    
+
+    <p>Les fichiers de configuration d'Apache contiennent une directive
+    par ligne.
+    On peut utiliser l'anti-slash "\" comme dernier caractère d'une ligne
+    pour indiquer que la directive continue à la ligne suivante.
+    Il ne doit y avoir aucun caractère ni espace entre l'anti-slash et
+    la fin de la ligne.</p>
+
+    <p>Les directives dans les fichiers de configuration ne sont pas
+    sensibles à la casse, mais leurs arguments le sont souvent. Les lignes
+    qui débutent par le caractère "#" sont interprétées comme des
+    commentaires, et sont ignorées. Les commentaires ne doivent
+    <strong>pas</strong> apparaître sur la même ligne qu'une directive
+    de configuration. Les espaces précédant une directive
+    sont ignorés; vous pouvez par conséquent indenter les directives
+    afin d'améliorer la lisibilité. Les lignes vides sont
+    aussi ignorées.</p>
+
+    <p>On peut utiliser les variables d'environnement du shell dans les
+    lignes du fichier de configuration en utilisant la syntaxe
+    <code>${ENVVAR}</code>. Si "ENVVAR" est le nom d'une variable
+    d'environnement valide, sa valeur remplace l'expression
+    <code>${ENVVAR}</code> dans la ligne du fichier de configuration, et
+    le traitement continue comme si cette valeur avait été inscrite
+    directement dans le fichier de configuration. Si la variable ENVVAR
+    n'est pas trouvée, l'expression "${ENVVAR}" est conservée tel quel
+    pour une utilisation ultérieure dans le traitement du fichier de
+    configuration.</p>
+
+    <p>La longueur maximale d'une ligne du fichier de configuration,
+    après substitution des variables d'environnement, reconstitution des
+    lignes fragmentées et suppression des espaces de début et de fin,
+    est de 8192 caractères.</p>
+
+    <p>Vous pouvez vérifier l'absence d'erreurs de syntaxe dans vos fichiers
+    de configuration sans démarrer le serveur à l'aide de la commande
+    <code>apachectl configtest</code> ou de l'option de ligne de commande
+    <code>-t</code>.</p>
+  </div><div class="top"><a href="#page-header"><img alt="top" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/up.gif"></a></div>
+<div class="section">
+<h2><a name="modules" id="modules">Modules</a></h2>
+    
+
+    <table class="related"><tbody><tr><th>Modules Apparentés</th><th>Directives Apparentées</th></tr><tr><td><ul><li><code class="module"><a href="https://httpd.apache.org/docs/2.2/mod/mod_so.html">mod_so</a></code></li></ul></td><td><ul><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#ifmodule">&lt;IfModule&gt;</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/mod_so.html#loadmodule">LoadModule</a></code></li></ul></td></tr></tbody></table>
+
+    <p>Apache est un serveur modulaire. Ceci implique que seules les
+    fonctionnalités les plus courantes sont incluses dans le serveur de base.
+    Les fonctionnalités étendues sont fournies à l'aide de <a href="https://httpd.apache.org/docs/2.2/mod/">modules</a> qui peuvent être chargés dans Apache.
+    Par défaut, un jeu de <a href="https://httpd.apache.org/docs/2.2/mod/module-dict.html#Status">modules de base</a> est inclus dans le
+    serveur à la compilation. Si le serveur est compilé de façon à utiliser
+    les <a href="https://httpd.apache.org/docs/2.2/dso.html">modules chargés dynamiquement</a>,
+    alors les modules peuvent être compilés séparément et chargés à
+    n'importe quel moment à l'aide de la directive
+    <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/mod_so.html#loadmodule">LoadModule</a></code>.
+    Dans le cas contraire, Apache doit être recompilé pour ajouter ou
+    supprimer des modules.
+    Les directives de configuration peuvent être incluses de manière
+    conditionnelle selon la présence ou l'absence d'un module particulier
+    en les plaçant dans un bloc <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#ifmodule">&lt;IfModule&gt;</a></code>.</p>
+
+    <p>Pour voir quels modules ont été compilés avec le serveur,
+    vous pouvez utiliser l'option de ligne de commande <code>-l</code>.</p>
+  </div><div class="top"><a href="#page-header"><img alt="top" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/up.gif"></a></div>
+<div class="section">
+<h2><a name="scope" id="scope">Portée des directives</a></h2>
+    
+
+    <table class="related"><tbody><tr><th>Modules Apparentés</th><th>Directives Apparentées</th></tr><tr><td></td><td><ul><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#directory">&lt;Directory&gt;</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#directorymatch">&lt;DirectoryMatch&gt;</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#files">&lt;Files&gt;</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#filesmatch">&lt;FilesMatch&gt;</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#location">&lt;Location&gt;</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#locationmatch">&lt;LocationMatch&gt;</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#virtualhost">&lt;VirtualHost&gt;</a></code></li></ul></td></tr></tbody></table>
+
+    <p>Les directives placées dans les fichiers de configuration principaux
+    s'appliquent au serveur dans son ensemble. Si vous souhaitez modifier la
+    configuration d'une partie du serveur seulement, vous pouvez limiter la
+    portée de vos directives en les plaçant dans une section
+    <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#directory">&lt;Directory&gt;</a></code>, <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#directorymatch">&lt;DirectoryMatch&gt;</a></code>, <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#files">&lt;Files&gt;</a></code>, <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#filesmatch">&lt;FilesMatch&gt;</a></code>, <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#location">&lt;Location&gt;</a></code>, ou <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#locationmatch">&lt;LocationMatch&gt;</a></code>.
+    Ces sections limitent le champ d'application des directives qu'elles
+    contiennent à des URls ou des portions du système de fichiers particulières.
+    Elles peuvent aussi être imbriquées, ce qui permet
+    une configuration très fine.</p>
+
+    <p>Apache peut servir simultanément de nombreux sites web au travers des
+    <a href="https://httpd.apache.org/docs/2.2/vhosts/">Hôtes Virtuels</a>. La portée des directives peut ainsi
+    être limitée en les plaçant dans des sections
+    <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#virtualhost">&lt;VirtualHost&gt;</a></code>,
+    afin qu'elles ne s'appliquent qu'aux requêtes
+    pour un site web particulier.</p>
+
+    <p>Bien que la plupart des directives puissent être placées dans
+    chacune de ces sections, certaines d'entre elles n'ont aucun sens
+    dans certains contextes.
+    Par exemple, les directives qui contrôlent la création des processus
+    n'ont de sens que dans le contexte du serveur principal. Pour déterminer
+    quelles directives peuvent être placées dans quelles sections, consultez
+    le <a href="https://httpd.apache.org/docs/2.2/mod/directive-dict.html#Context">Contexte</a> de la
+    directive. Pour plus d'informations, nous fournissons des détails dans
+    <a href="https://httpd.apache.org/docs/2.2/sections.html">Comment fonctionnent les sections Directory,
+    Location et Files</a>.</p>
+  </div><div class="top"><a href="#page-header"><img alt="top" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/up.gif"></a></div>
+<div class="section">
+<h2><a name="htaccess" id="htaccess">Fichiers .htaccess</a></h2>
+    
+
+    <table class="related"><tbody><tr><th>Modules Apparentés</th><th>Directives Apparentées</th></tr><tr><td></td><td><ul><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#accessfilename">AccessFileName</a></code></li><li><code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride">AllowOverride</a></code></li></ul></td></tr></tbody></table>
+
+    <p>Apache permet la gestion décentralisée de la configuration
+    via des fichiers spéciaux placés dans l'arborescence du site web.
+    Ces fichiers spéciaux se nomment en général <code>.htaccess</code>,
+    mais tout autre nom peut être spécifié à l'aide de la directive
+    <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#accessfilename">AccessFileName</a></code>.
+    Les directives placées dans les fichiers <code>.htaccess</code>
+    s'appliquent au répertoire dans lequel vous avez placé le fichier,
+    ainsi qu'à tous ses sous-répertoires.
+    La syntaxe des fichiers <code>.htaccess</code> est la même que celle
+    des fichiers de configuration principaux. Comme les fichiers
+    <code>.htaccess</code> sont lus à chaque requête, les modifications de
+    ces fichiers prennent effet immédiatement.</p>
+
+    <p>Pour déterminer quelles directives peuvent être placées
+    dans les fichiers <code>.htaccess</code>, consultez le
+    <a href="https://httpd.apache.org/docs/2.2/mod/directive-dict.html#Context">Contexte</a> de la
+    directive. L'administrateur du serveur peut contrôler quelles
+    directives peuvent être placées dans les fichiers
+    <code>.htaccess</code> en définissant la directive
+    <code class="directive"><a href="https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride">AllowOverride</a></code>
+    dans les fichiers de configuration principaux.</p>
+
+    <p>Pour plus d'informations sur les fichiers <code>.htaccess</code>,
+    se référer au <a href="https://httpd.apache.org/docs/2.2/howto/htaccess.html">tutoriel .htaccess</a>.</p>
+  </div></div>
+<div class="bottomlang">
+<p><span>Langues Disponibles: </span><a href="https://httpd.apache.org/docs/2.2/de/configuring.html" hreflang="de" rel="alternate" title="Deutsch">&nbsp;de&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/en/configuring.html" hreflang="en" rel="alternate" title="English">&nbsp;en&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/fr/configuring.html" title="Français">&nbsp;fr&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/ja/configuring.html" hreflang="ja" rel="alternate" title="Japanese">&nbsp;ja&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/ko/configuring.html" hreflang="ko" rel="alternate" title="Korean">&nbsp;ko&nbsp;</a> |
+<a href="https://httpd.apache.org/docs/2.2/tr/configuring.html" hreflang="tr" rel="alternate" title="Türkçe">&nbsp;tr&nbsp;</a></p>
+</div><div class="top"><a href="#page-header"><img src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/up.gif" alt="top"></a></div><div class="section"><h2><a id="comments_section" name="comments_section">Commentaires</a></h2><div class="warning"><strong>Notice:</strong><br>This
+ is not a Q&amp;A section. Comments placed here should be pointed 
+towards suggestions on improving the documentation or server, and may be
+ removed again by our moderators if they are either implemented or 
+considered invalid/off-topic. Questions on how to manage the Apache HTTP
+ Server should be directed at either our IRC channel, #httpd, on 
+Freenode, or sent to our <a href="http://httpd.apache.org/lists.html">mailing lists</a>.</div>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+var comments_shortname = 'httpd';
+var comments_identifier = 'http://httpd.apache.org/docs/2.2/configuring.html';
+(function(w, d) {
+    if (w.location.hostname.toLowerCase() == "httpd.apache.org") {
+        d.write('<div id="comments_thread"><\/div>');
+        var s = d.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://comments.apache.org/show_comments.lua?site=' + comments_shortname + '&page=' + comments_identifier;
+        (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s);
+    }
+    else { 
+        d.write('<div id="comments_thread">Comments are disabled for this page at the moment.<\/div>');
+    }
+})(window, document);
+//--><!]]></script><div id="comments_thread"><p><h4><a name="comments_thread_post" href="javascript:void(0);" onclick="javascript:addReplyBox(this.parentNode,0);"><img src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/post.png" style="border: none;"></a> <span style="float: right"><a href="https://comments.apache.org/rss.lua?site=httpd&amp;page=http://httpd.apache.org/docs/2.2/configuring.html"><img src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/rss.png" align="absmiddle" height="16" hspace="5" width="16">RSS</a> &nbsp; <a href="https://comments.apache.org/portal.lua?site=httpd">Log in / register</a></span></h4></p><div id="comments_space"><div class="apaste_comment apaste_comment_2" level="1" id="comment_3365"><a name="comment_3365"></a><p style="margin-bottom: 10px;" class="comment_header"><b>zweibieren  </b><i>315 days ago  </i><small>    Rating: 0 (register an account in order to rate comments) </small></p><a onclick="javascript:addReplyBox(this.parentNode, 3365);" href="javascript:void(0);" class="apaste_menu"><img style="border: none;" src="Fichiers%20de%20configuration%20-%20Serveur%20Apache%20HTTP%20Version%202.2_fichiers/reply.png"></a><p>What
+ is the character set and encoding of directives files? My server was 
+bouncing URLs containing %C2%B7 but I could not redirect it by this 
+name. I had to write the character &#65533; (B7 or &amp;amp;middot;) instead. 
+So I guess the encoding is ISO 8859-1. Some encoding method would be 
+nice.</p></div><a name="comment_top"></a></div></div></div><div id="footer">
+<p class="apache">Copyright 2015 The Apache Software Foundation.<br>Autorisé sous <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.</p>
+<p class="menu"><a href="https://httpd.apache.org/docs/2.2/mod/">Modules</a> | <a href="https://httpd.apache.org/docs/2.2/mod/directives.html">Directives</a> | <a href="http://wiki.apache.org/httpd/FAQ">FAQ</a> | <a href="https://httpd.apache.org/docs/2.2/glossary.html">Glossaire</a> | <a href="https://httpd.apache.org/docs/2.2/sitemap.html">Plan du site</a></p></div><script type="text/javascript"><!--//--><![CDATA[//><!--
+if (typeof(prettyPrint) !== 'undefined') {
+    prettyPrint();
+}
+//--><!]]></script>
+</body></html>

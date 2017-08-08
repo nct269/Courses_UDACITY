@@ -1,0 +1,228 @@
+
+<HEAD>
+<!--TITLE>JavaScript Example 2</TITLE>
+
+<SCRIPT language="JavaScript">
+alert('Please Sign My Guestbook, NOW!');
+alert('I mean it, NOW!!!');
+alert('Did I mention I had a guestbook? Well SIGN IT!');
+alert('Oh, remember....THE GUESTBOOK! O.K.?!!');
+</SCRIPT-->
+
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/jQuery.js"></script>
+  <script src="js/helper.js"></script>
+
+</HEAD> 
+
+<body>
+
+    <div id="projects">
+      <h2>Projects</h2>
+    </div>
+
+</body-->
+
+
+<script type="text/javascript">
+
+
+
+var projects = {
+  "projects" : [
+      {
+        "title" : "Ziyou",
+        "date" : "2015",
+        "description" : "Create a fair trade clothing company",
+        "images" : [{"image":"images/197x148.gif"}, {"image":"images/197x148.gif"}, {"image":"images/197x148.gif"}]
+      },
+      {
+        "title" : "With french dressing",
+        "date" : "2015 + X?",
+        "description" : "Create a website for taylormade dresses",
+        "images" : [{"image":"images/197x148.gif"}, {"image":"images/197x148.gif"}, {"image":"images/197x148.gif"}]
+      }
+    ]
+};
+
+  console.log(projects.projects);
+
+  var array_helper = { formatSingleValue:function(Value,HTMLVar ){
+
+      var formattedVar = HTMLVar.replace("%data%", Value );
+
+      return formattedVar;
+  },
+    formatArrayWithSingleKey:function(Array, HTMLVar) { 
+      
+      var formattedVar = [];
+
+      for (i in Array ) {
+        //Works with single key ii always equal to 0 in our case
+
+        for (SinglekeyName in Array[i]) { 
+
+          formattedVar[i] = HTMLVar.replace("%data%", Array[i][SinglekeyName]);
+        };
+      };
+      return formattedVar;
+    }
+  };
+
+projects.display = function() {
+
+  for (var project in projects.projects) {
+    $("#projects").append(HTMLprojectStart);
+
+    var formattedTitle = array_helper.formatSingleValue(projects.projects[project].title , HTMLprojectTitle);
+    $(".project-entry:last").append(formattedTitle);
+
+    var formattedDates = array_helper.formatSingleValue(projects.projects[project].date , HTMLprojectDates);
+    $(".project-entry:last").append(formattedDates);
+
+    var formattedDescription = array_helper.formatSingleValue(projects.projects[project].description , HTMLprojectDescription);
+    $(".project-entry:last").append(formattedDescription);
+
+    //Look at the function 
+    var formattedImage = array_helper.formatArrayWithSingleKey(projects.projects[project].images, HTMLprojectImage);
+    $(".project-entry:last").append(formattedImage);
+
+  }
+};
+
+projects.display();
+
+</script>
+
+<!DOCTYPE html>
+<head>
+
+  <meta charset="utf-8">
+
+  <style>
+    
+
+
+    #map-canvas {
+      margin-left: auto;
+      margin-right: auto;
+      background-color: orange;
+      width: 800px;
+      height: 450px;
+    }
+  </style>
+
+  <script src="js/jQuery.js"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> 
+
+</head>
+<body>
+
+  <div id ="main">
+  </div>
+
+  
+
+
+  <script type="text/javascript">
+  //test, could as well go at the end
+  $("#main").append('<div id="map-canvas"></div>')
+
+
+  </script>
+
+  <!--Click location-->
+  <script type="text/javascript">
+    
+    clickLocations = [];
+
+    function logClicks(x,y) {
+      clickLocations.push(
+        {
+          x: x,
+          y: y
+        }
+      );
+      console.log('x location: ' + x + '; y location: ' + y);
+    }
+
+    //Listener
+    $(document).click(function(loc) {
+
+      var x = loc.screenX;
+      var y = loc.screenY;
+
+      logClicks(x,y); 
+    });
+  </script>
+
+  <!--Gmap-->
+  <script type="text/javascript">
+
+    function initializeMap() {
+      var mapCanvas = document.getElementById('map-canvas');
+      var map = new google.maps.Map(mapCanvas);
+    
+      var mapOptions = {
+        center: new google.maps.LatLng(42.3601, -71.0589), 
+        zoom: 8, 
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: false
+      };
+    
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+    
+      var locations = ["Boston","LA","NY"];
+
+      //Where google stores its images
+      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+
+      var markers = [];
+
+      markers[0] = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng( 43, -72),
+        title: 'marker0'
+        //label:"Boston"
+        //icon: iconBase
+      });
+
+      markers[1] = new google.maps.Marker({
+        //position: mapOptions.center,
+        map: map,
+        position: new google.maps.LatLng( 42, -71),
+        title: 'marker 1',
+      });
+
+      function Addwindow(curr_marker){
+      
+        // marker is an object with additional data about the pin for a single location
+        var marker = curr_marker;
+        
+
+        var Myinfowindow = new google.maps.InfoWindow({
+          content: curr_marker.title
+        });
+
+        // hmmmm, I wonder what this is about...
+        google.maps.event.addListener(curr_marker,'click', function() { 
+          
+          Myinfowindow.open(map, curr_marker);
+        });
+
+      };
+
+      for (i in markers) {
+        Addwindow(markers[i]);
+      }
+
+
+      console.log(locations);
+    }
+
+    // Calls the initializeMap() function when the page loads
+    window.addEventListener('load', initializeMap);
+
+  </script>
+</body>
+</html>

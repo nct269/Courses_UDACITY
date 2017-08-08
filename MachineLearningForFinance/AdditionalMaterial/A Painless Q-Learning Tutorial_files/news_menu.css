@@ -1,0 +1,52 @@
+
+.rightColumn {
+	float: left;
+}
+
+.newsMenu {
+	width: 135px;
+	float: left;
+	margin-left: 30px;
+	margin-bottom: 20px;
+	border-top: 3px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 3px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+}
+
+.newsMenuTitle {
+	background-color: #CCCCCC;
+	text-align: center;
+	font-weight: bold;
+}
+
+.newsMenuTopSpacer {
+	width: 135px;
+	height: 10px;
+}
+
+.rightMenuYearItem {
+	width: 125px;
+	line-height: 20px;
+	padding-left: 10px;
+}
+
+.rightMenuMonthItem {
+	width: 115px;
+	line-height: 20px;
+	padding-left: 20px;
+}
+
+.newsMenuBottomSpacer {
+	width: 135px;
+	height: 20px;
+}
+
+.searchNewsLinks {
+	width: 133px;
+	height: 120px;
+	margin-top: 40px;
+	margin-left: 17px;
+	text-align: left;
+	float: none;
+}

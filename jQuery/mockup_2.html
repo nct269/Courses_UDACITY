@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+
+This is the HTML document that you'll use jQuery to modify. To take the quiz, click over to app.js!
+
+-->
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <script src="js/jQuery.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <div>
+            <div id='family1'>
+                <h1>Family1</h1>
+                <div id='alex'>
+                    <h2>Alex</h2>
+                    <div id='jane'>
+                        <h3>Jane</h3>
+                    </div>
+                </div>
+                <div id='taylor'>
+                    <h2>Taylor</h2>
+                    <div id='bob'>
+                        <h3>Bob</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    //My way
+
+    /*
+    //Family2
+    var family2, bruce, madison, hunter;
+    family2 = $('<div></div>').insertAfter($('#family1'));   
+    family2.attr('id', 'family2');
+    family2.html('<h1>Family2</h1>');
+
+    //Child
+    family2.append($('<div></div>'));
+    bruce = family2.children().last();
+    bruce.attr('id', 'bruce');
+    bruce.html('<h2>Bruce</h2>');
+
+    //grandChildren1
+    bruce.append($('<div></div>'));
+    madison = bruce.children().last();
+    madison.attr('id', 'madison');
+    madison.html('<h3>Madison</h3>');
+
+    //grandChildren2
+    bruce.append($('<div></div>'));
+    hunter = bruce.children().last();
+    hunter.attr('id', 'hunter');
+    hunter.html('<h3>Hunter</h3>');*/
+
+    //UDA way
+
+    var family2, bruce, madison, hunter;
+
+    family2 = $('<div id="family2"><h1>Family2</h1></div>');
+    bruce = $('<div id="bruce"><h2>Bruce</h2></div>');
+    madison = $('<div id="madison"><h3>Madison</h3></div>');
+    hunter = $('<div id="hunter"><h3>Hunter</h3></div>');
+
+    family2.insertAfter(family1);
+    family2.append(bruce);
+
+    bruce.append(madison);
+    bruce.append(hunter);
+
+    </script>
+
+</body>
+</html>
+

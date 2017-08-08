@@ -1,0 +1,359 @@
+-> Lesson 1
+
+Panda Dataframe
+
+Good way to Read, manipulate, plot data
+
+Can handle sort of 3D matric of data D1:Time D2:StockName D3:Type of Data (price, volume, Adj Close...) 
+
+-Panda cmd: 
+
+Reading in a CSV file
+
+You can read in the contents of a CSV (comma-separated values) file into a Pandas dataframe using:
+df = pd.read_csv(<filename>)
+
+Selecting rows from a dataframe
+First 5 rows: df.head()
+Last 5 rows: df.tail()
+Similarly, last n rows: df.tail(n)
+
+Subrange of a frame[10:20]
+
+- Pandas is very powerful since you can index the rows by dates, it manipulates DatetimeIndex objects
+
+Rem often 252 trading days/year
+SPY (the SP500 ETF) is the ref for trading day def
+
+INdexing a DataFrame : import pandas as pd , df= pd.DataFrame(inde=pd.date_range(start_date,end_date)
+
+Rem, by default the pandas method join is a LEFT JOIN
+Doc on join: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.join.html
+
+Slicing: http://pandas.pydata.org/pandas-docs/stable/indexing.html
+
+YOu can divide an entire DF by a DF row e.g to normalize, df1 = df1 / df1[0] (faster than loop in higher level language)
+
+***NumPy*** is a Py wrapper around C & Fortran code 
+
+The inside of a pandas.dataframe is actually an NumPy ndarray
+nd1[0:2,0:2]=nd2[-2:,2:4] the right index in an interval is excluded
+
+Rem: NumPy supports a much greater number of number type than Python, so for dtype use NumPy.int instead of just int
+Function to intialize an nd array: np.ones , np.zeros
+For randon nb check Numpy.random
+
+Operations on the whole array nd.sum(), for operations on rows or coulumns use axis, 0 for rows & 1 for columns nd.sum(axis=0)
+
+argmax & argmin
+
+*** time library ***
+time.time() and substract to get an interval
+a[:,3] = 1 or a[:,3] = [1,5,8,7,6] in the second case be careful of the dimension 
+
+Boolean array
+a = np.array([(4,8,9),(4,9,6)])
+mean = a.mean()
+print a[a<mean]
+
+gives all the numbers below the mean, and they can be replace by the mean, e.g
+a[a<mean] = mean
+
+Usefull in finance to compare value with moving average ...
+
+Rem int / int gives an int, you need at least the numerator to be a float
+You can convert an array
+
+*** Global statistics can be calculated on the dataframe directly ***
+If works per colum since the dataframe isn deisgned to handle timeseries
+
+*** Rolling statistics can be calculated on the dataframe directly ***
+F-rolling average is called simple moving average by analyst, and interesting points are when it crosses the course
+
+
+!!! *** Important
+
+When given 2 dataframe, pandas will try to match them based on the index when performing arithmetics operations.
+Hence if one wants to work whit date shifted values one must use .values for one of the dataframe, preferably the one shifted
+e.g. df[1:] / df[:-1].values()
+
+with the shift function in pandas, it is a backshift, you go back the index is positive, meaning 
+df[1:]/df[:-1].values() equiv to df/df.shift(1)
+
+*** Missing value
+
+finance:
+When filling GAP in data series, fill forward first, in order not to pick into the future for any given date.
+THen fill backward, e.g. at inception.
+
+df.fillna(method='ffill')
+
+*** Graphe
+from matplotlib.pyplot: hist , plot(kind='scatter')
+e.g. dataframe.plot(kind='scatter', x='SPY', y='XOM')
+	 ptl.show()
+
+from numpy (as np) polyfit to get beta and alpha by fitting a degre 1 polynom (polynomial coefficient and intercept)
+beta , alpha = np.polyfit(daily_returns['SPY'], daily_returns['GLD'],1)
+
+Plot: plt.plot(daily_returns(['SPY'], beta * daily_returns(['SPY']   ))
+
+from dataframe .corr(method='pearson')
+
+*** Portfolio analytics 
+Portfolio daily value,
+
+first ptf return = 0, to remove it one can do daily_rets = daily_rets[1:]
+important indicators are then cumulative_ret, avg_daily_ret, stdev_daily_ret, sharpe_ratio (metric risk adjusted measure) E[rp - rf] / Stdev[rp - rf] this is exhante, to calulate it backward we use mean and stdev
+
+Important Sharpe ratio is meant to be an annual measure : SR annualized = K * SR , for daily K= sqrt(252), for weekly K=sqrt(52), for monthly K=sqrt(12)
+
+For daily returns SR = sqrt(252) * mean(daily_rets - daily_rf) / std(daily_rets)
+
+
+*** Optimzer: check code in Part1 lesson 9, portfolio optimization Part1 lesson 10, for range and constraints
+
+-> Lesson 2
+
+In lesson 02-02  rem today in the US 80% to 90% of retail orders are executed inter broker or via dark pool.
+.6 there is a nice sketche about what the dark pools do.
+.7 there is a sketche about order book arbitrage by HF.
+
+Order type
+Exhanchge: Buy/sell, Market/Limt
+Broker: Stop loss, stop gain, Trailing stop, ! Sell short (take negative position in a stock)
+h Flow
+Company valueation
+
+Intrinsic value = Cash Flow/DF
+Book value: Total asset without intangible assets and minus liabilities
+Market value
+
+If a stock's market cap is below the book value, buy it and split it to sell it for pieces. That's why a company mkt cap rarely goes below its book value. ()
+
+Type of news: company news, sector news, market news
+
+
+*** CAPM (capital asset pricing model) = r_i(t) = Beta_i * r_m(t) + Alpha_i(t) , market part and residual
+CAPM says Alpa is random and has an Expectation from Alpha = 0, but in reality though, it is not 0
+
+CAPM vs active management, if you believe active management, you can use ML algo to select your stocks, if you believe in CAPM then be passive
+
+Conclusion: 
+According to CAPM, the only way to beat the market is to cleverly choose beta. 
+
+Prof doesn't believe in CAPM
+
+*** APT: Beta to sectors
+
+*** Technical analysis: based on historical prices and volume only, computes stat called indicators, indicators are heuristics
+Moving average, % change in volume are T indicators
+When TA might be usefull: Individual indicators are weak, combinations are stronger 3 to 5 in a machine learning context, look for contrasts (stock vs market), work better over shorter time period than longer ones.
+
+Rem: in TA there's aways a graphical prez, and a quantitative one, which is the one that to be used for machine learning.
+
+- Momentum[t] = price[t] / price [t-n] - 1
+- Simple Moving Average (dev from MA) = price[t] / price[t-n:t].mean()
+Ranges: both case we see -0.5/+0.5
+
+Bollinger used to detect MA excursion.
+
+- BB[t] = ( price[t] - MA[t] ) / 2 stdev[t]
+Ranges: -1/+1
+
+All needs to be normalized : (Value - mean) / stdev
+
+*** Data
+Stock splits are used to reduce the price of options, it is all the most important for options that typically have a quotity of 100
+YOu should use the adjusted TS: adjusted for corporate actions and dividends
+
+Rem if you take data from providers, the adjusted close change along with the date at which you gather the data.
+
+Survivor bias: if you look at index members, you should consider the one when the strategy was launch, if you take the member from today you are biaised since you picked the survivors.
+
+It's very important to avoid biais free data
+
+Efficient Market Hypothesis (EMH) assumptions: Large number of investors in the market operating for profit, new information arrives randomly, prices adjust quickly, prices reflects all available information
+
+*** Fundamental law of active management: Performance = Skill * sqrt(Breadth) summarized by IR = IC * sqrt(Breadth) shown mathematically by Grinolds
+IR= (Sharpe Ration of excess return)
+
+Don't keep your eggs in the same basket, coin flip casino illustrate the FLAM
+
+Information ratio: IR= mean(alpha_ptf(t)) / stdev(alpha_ptf(t))
+
+Information coefficient: IC= Correlation of forecasts to returns (range from 0 to 1)
+
+*** Porfolio optimzation
+Mean var opt 
+inputs: Expected returns, Volatility, Covariance, Ptf target return
+outputs: set of weights matching the target return and minimizing the risk
+
+People don't use the efficient frontier and max SR ptf toi invest, but more in the reorting to show where their ptf stands.
+
+Lesson 3
+!!! *** ML
+ML provides a suit of tools that support a data centric ways to build predictive models (usually for prices in finance )
+
+- Supervised regression learning
+regression : making a numerical prodiction
+Supervised : provide example x,y
+Learning : Train with data
+
+e.g. Linear regression (parametric), KNN (K nearest neighbor) (instance based), decision trees, decision forests
+
+- Bascktest lesson 03-01-9
+
+*** Supervised regression learning
+
+Super basis: data set should be organised in two different sections, the training section and the testing section: called out of sample testing.
+Usually training is 60% of the data, test is 40% of the data
+
+(Xtrain, Ytrain) and (Xtest, Ytest)
+In finance one usually trains the model on earlier data and test it on latter data.
+
+Parametric regression: Linear model
+INstance based regression: K nearest neighbor (KNN), Kernel Regression (contributions of points are weighted)
+
+
+In 03-01- video 6 it shown how to make it for financial systems to get X,Y to put in the data
+
+Build a system at a fintech company:
+- Select X1, X2, Xn 
+- Select Y
+- Select a time period and a stock universe
+- Train with your ML algo to get a model
+- Predict, with a given X the model should give a Y
+
+In the example, they use factors to forecast one month returns 	with 3 months of data (they have 1d, 1w,2w)
+(they use a genetic algorithm to discover these factors)
+
+
+Instead of having a model making a price forecast , in Reinforcment learning, we have the system learning a policy wherher to buy or sell a stock.
+
+*** Regresssion
+Parametric regression, you build the model and query it (linear, polynomial)
+
+Instance based
+KNN: data centric or instance based approach, we keep the data and use them for queries
+
+Kernel regression: data are weighted with a kernel function
+
+*** Assessing Learning Algo
+
+In KNN, the most we decrease K the most likely we overfit.
+
+Measrues
+- RMSE = sqrt (sum (Ytest - Ypredict)^2 / N)
+
+when not enough data you can do cross validation (but not for financial data since it's picking into the future)
+
+- Correlation: Scater plot of the Ytest and Ypredict and measure the correlation, 1 is good, 0 not, c'est un nuage de points.
+Rem: Correl is not the slope of the curve, it is the dispersion of point around the curve
+
+Other factor to consider for a model:
+Space to save the model, compute time to train, compute time to query, ease to add new data
+(0 time to train KNN models)
+
+*** Ensemble learners: set of model learners combined together
+Why ensembles: it tends to have lower error and less overfitting (intitively the bias of the models can compensate to a certain extent)
+
+Way 1: Build ensembles: Train several parametrized polynomials of different degree + Train several KNN models using different subset of data
+Way 2: Bootsrap aggregating Bagging (rot: for each bag take ~60% of data of the learning data)
+
+Way 3: Boosting, Ada boost (for adaptive boost)
+It's a sort of sequential bagging taking into acount the eprodiction error for in sample but out of bag prediction, and d\ is more likely to pick data giving poor prodictions.
+
+Rem ada boost can overfit when the number of bags increases too much.
+
+Summary: Boosting and bagging are meta algorithms let you wrap your underlying learing algo in ST that is better
+- wrappers of existing method (the API should be called the same way whether there's baggin/boosting or not)
+- reduces error
+- reduces overfitage
+
+
+*** Reinforcment Learning (this is a pb, not a solution)
+
+Before we were about to B/S stocks with most significant price change, this ignore impportant issues such as certainty of the price change and when to exit the position.
+
+Reinforcment learning: is a problem to solve, not a solution
+
+Pi(S,A) for Policy of action A in state S, to determine Pi the technic is to maximize reward R.
+In terms of trading:
+Env E is the market
+A: Are actions we can take in the market (sell, buy, do nothing) 
+S: S are factors about our stocks that we can observe (including do I hold the stock or not)
+R: return we get to make the propoer trader
+
+Markov Decision Problems: Set of states S, Set of action A, Transition function T[S,A,S.], Reward function R[S,A]
+(T is proba that when in state S and taking action A, we'll end up in S')
+
+IN markov decision problem, when knowing T[] and R[], there are method to find Pi*, the policy that maximize the reward.
+Methods called for e.g. policy iteration, value iteration
+
+In fincance, most of the time we don't neither known transitions or the reward function:
+robot/trader has to interact with the world, see what happens, and work with that data to try to build a policy
+
+
+Similar to <X,Y> in Regression Learning, in Reinforcment Learning we have the experience tuple <S1,A1,S'1,R1>
+You do, get experience tuple <S1,A1,S'1,R1> , <S2,A2,S'2,R2> , ...
+
+Base on this you can either build a:
+
+Model-based reinforcement learning T[S,A,S'] and R[S,A] , build statisticaly
+
+Model-free method like Q-learning: develop a policy directly by looking at the data.
+
+Summarry
+RL solve MDPs (Markov Decisions Problems)
+MDPs define by: S, A, T[s,a,s.], R[s,a] 
+Goal find a policy Pi that maps a State to an Action, such as Pi maximizes the sum of a future reward (immediate + discounted)
+RL can be mapped to trading to define Pi as a trading policy
+
+
+*** Q-Learning (model free approach)
+Build a table  of utility values as agent interacts with the world, and these Q values can be used at each state to select the best action based on what it has learnt so far.
+It is guaranty to provide an optimal policy.
+
+Q can be viewed as a matrix or as a table: Q resprsents the value of taking action A in state S.
+two components to that: immediate reward + discounted reward taken for future actions.
+
+How to use it if you have it.
+Q[s,a] = immediate reward + discounted reward
+PI*(S) = argmax_a (Q[S,a]) 
+
+
+For finance, creating the state and discretizing the problem:
+TO built a list or a matrix of states, at the beginning states are integer 
+
+Our states are integer, so that we can address them in a Qtable or matrix (It is certainly the case that certain algo can deal with states as continuous values) 
+Discretize factors (e.g convert factors real values into an integer )
+Combine the factors: e.g. simply stack them
+
+Focus on Discretizing:
+stepsize = size(data)/steps
+data.sort()
+for i in range (0,steps)
+	threshold[i] = data(i+1 * stepsize)
+
+Q-learning Recap
+
+Building a model:
+- Defines states, actions, rewards
+- choose in-sample training period
+- iterate: Q-table update
+- backtest, go back to iterate state
+
+Testing a model
+- Backtest on later data
+
+
+Do https://classroom.udacity.com/courses/ud501/lessons/5247432317/concepts/53299733920923
+
+*** DynaQ
+To refine but idea is :
+interact with teal world to improve Q
+After each interaction make a Policy P* and R* based on current data
+Simulate experience to improve Q a few hundreds times
+
+Loop 

@@ -1,0 +1,258 @@
+
+//*** String manipulation
+var s = "audacity";
+
+var udacityizer = function(s) {  
+    // Right now, the variable s === "audacity"
+    // Manipulate s to make it equal to "Udacity"
+    
+    s = s[1].toUpperCase() + s.slice(2);
+    
+    return s;
+};
+
+// Did your code work? The line below will tell you!
+console.log(udacityizer(s));
+
+//*** Array manipulated with stack functions 
+
+var sampleArray = [0,0,7];
+
+var incrementLastArrayElement = function(_array) {
+    var newArray = [];
+    
+    // For example:
+    // _array = [1, 2, 3];
+    // turns into:
+    // newArray = [1, 2, 4];
+    
+    //Does a copy of the variable
+    newArray = _array.slice(0);
+
+    //remove the last value (hence it is saved)
+    var lastNumber = newArray.pop();
+
+    //add at the end
+    newArray.push(lastNumber + 1);
+    
+    return newArray;
+};
+
+console.log(incrementLastArrayElement(sampleArray));
+
+// *** 
+var name = "AlbERt EINstEiN";
+
+function nameChanger(oldName) {
+    var finalName = oldName;
+
+    var finalName = oldName;
+    var names = oldName.split(" ");
+    names[1] = names[1].toUpperCase();
+    names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase();
+    finalName = names.join(" ");
+    
+    // Don't delete this line!
+    return finalName;
+};
+
+console.log(nameChanger(name));
+
+//Objects declarations and initialization
+
+var bio = {
+	"name" : "John Doe",
+	"role" : "web developper",
+	"contacts" : {
+		"mobile" : "123-456-789",
+		"e-mail" : "foo@foo.com"
+	},
+	"welcome message" : "Hello world!",	
+	"skills" : ["cool", "awesome"],
+	"picURL" : "www.foo.com" 
+};
+
+
+var work = {};
+
+work.position = "Working on my own projects";
+work.employer = "Me";
+work.years = "0";
+work.city = "Boston";
+
+var education = {};
+
+education.name = "Dauphine";
+education.length = 5;
+education.city = "Paris";
+
+$("#main").append(work["position"]);
+$("#main").append(education.name);
+$("#main").append(bio.contacts.mobile);
+
+
+//Lesson 1
+
+$("#main").append(['Nicolas Chignardet']);
+
+$("#main").append([ 299792458 * 100 / 1000000000	]);
+
+var awesomeThoughts = "I am Nicolas and I am AWESOME";
+
+var funThoughts = awesomeThoughts.replace("AWESOME", "FUN");
+
+$("#main").append(funThoughts);
+$("#main").append("<br>");
+$("#main").append(awesomeThoughts);
+
+console.log(newstring);
+
+var formattedName = HTMLheaderName.replace("%data%", "Nicolas Chignardet" );
+var formattedRole = HTMLheaderRole.replace("%data%", "Working on my own project");
+var formattedContact = HTMLcontactGeneric.replace("%data%", "Working on my own project");
+
+
+$("#header").prepend([formattedRole]);
+$("#header").prepend([formattedName, " "]);
+
+var bio = {
+	"name" : "John Doe",
+	"role" : "web developper",
+	"contacts" : {
+		"mobile" : "123-456-789",
+		"e-mail" : "foo@foo.com"
+	},
+	"welcome message" : "Hello world!",	
+	"skills" : ["cool", "awesome"],
+	"picURL" : "www.foo.com" 
+};
+
+
+var work = {};
+
+work.position = "Working on my own projects";
+work.employer = "Me";
+work.years = "0";
+work.city = "Boston";
+
+var education = {};
+
+education.name = "Dauphine";
+education.length = 5;
+education.city = "Paris";
+
+
+
+//JSON
+
+var education = {
+	"schools" : [
+		{
+			"name": "ENSIMAG",
+			"Date": 2004,
+			"cities": "Grenoble",
+			"Majors": ["Theater", "Catch up session"] 
+		} ,
+		{
+			"name": "Dauphine",
+			"Date": 2006,
+			"cities": "Paris",
+			"Majors": ["market finance"] 
+		} 
+	],
+
+	"OnlineCourse" : [
+		{"Name" : "Web development"}
+	]
+}
+
+$("#main").append(work["position"]);
+$("#main").append(education.name);
+$("#main").append(bio.contacts.mobile);
+
+//Escaping
+var html = '<script src="http://hackyourwebsite.com/eviljavascript.js"></script>';
+
+var charEscape = function(_html) {
+    var newHTML = _html;
+
+    var entityMap = {
+	    "&": "&amp;",
+	    "<": "&lt;",
+	    ">": "&gt;",
+	    '"': '&quot;',
+	    "'": '&#39;',
+	    "/": '&#x2F;'
+  	};
+    
+    //Cool use of replace
+    // //g stands for all occurences
+    // [] inside is for all characteres
+    // 
+    newHTML = newHTML.replace(/[&<>"'/]/g, function nctEscape(x) { return entityMap[x]; } );
+
+    return newHTML;
+};
+
+// Did your code work? The line below will tell you!
+console.log(charEscape(html));
+
+//Access Bracket notation vs dot notations
+
+var weirdObject = {
+    "property": "Time for an astronomy lesson!",
+    "property1": "Cameron's minor in college was astronomy",
+    "property-2": "The 4 Galilean largest moons of Jupiter are:",
+    "property 3": "Io, Ganymede, Callisto, Europa",
+    "property$": "Saturn's moon Enceladus has liquid water ocean under its icy surface",
+    " property": "The Sun contains 99.87% of the mass of the entire solar system",
+    "property()": "There are 5 dwarf planets in our solar system:",
+    "property[]": "Pluto, Ceres, Eris, Haumea, Makemake",
+    "8property": "Mars has two tiny moons: Phobos and Deimos"
+};
+
+// Use console.log() to figure out if dot and/or bracket notation
+// will work to access the properties below. Mark true if you can use dot/bracket
+// notation to access the property, otherwise mark false.
+
+// For example, uncomment the line below to see if you can use dot notation to access `property1`.
+//console.log(weirdObject.property1);
+
+// I'll give you the first answer. The rest are set to false. Try out each property and
+// if you can use dot or bracket notation to access it, change the answer to true!
+
+// property
+var dotNotation0 = true;
+var bracketNotation0 = true;
+
+// property1
+var dotNotation1 = true;
+var bracketNotation1 = true;
+
+// property-2
+var dotNotation2 = false;
+var bracketNotation2 = true;
+
+// property 3
+var dotNotation3 = false;
+var bracketNotation3 = true;
+
+// property$
+var dotNotation4 = true;
+var bracketNotation4 = true;
+
+// *space*property
+var dotNotation5 = false;
+var bracketNotation5 = true;
+
+// property()
+var dotNotation6 = false;
+var bracketNotation6 = true;
+
+// property[]
+var dotNotation7 = false;
+var bracketNotation7 = true;
+
+// 8property
+var dotNotation8 = false;
+var bracketNotation8 = true;	 

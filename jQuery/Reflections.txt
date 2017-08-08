@@ -1,0 +1,52 @@
+-> jQuery is a function and as well a javaScript object.
+
+-> jQuery and $ are mapped to the same JS code. (in the doc, the function jQuery.XYZ can be called using the $.XYZ)
+
+-> jQuery can be loaded from your own server or served through a CDN (content dlivery network, e.g google, jQuery)
+
+Faster and can use the cache function of the browser
+
+-> Use minified version, it is considerably smaller
+
+-> jQuery -> $('div'); return a collection of the elements with this tag (by ID $('#XYZ');, by class name $('.XYZ');  )
+
+-> jQuery methods to access the dom related elements up the DOM: .parent() .parents() ; down the DOM:  .children() [to look for particular levls in the children use .find()] ; same DOM level: .siblings()
+and in these functions you can as well pass an ID or a class with the jQuery notations.
+
+-> Doc api.Query.com
+
+-> in jQuery functions syntaxe is frequently as follow: one parameter selects the specified value, two modifiy the specified value ( e.g. attr('id') return the id, att('id', 'foo') sets the element id to foo.
+
+-> Rem on css: jQuery can modify the style properties of an element, but it is inline css (i.e. in the DOM), for small example and back-up solutions it is ok, but it is not the good way to build a site.
+
+-> html(), text() -> jQuery allows to access either the HTML code or the content of an element
+
+-> Insertion of elements in the DOM 1/to add children: append(), prepend() 2/ to add sibblings and insertAfter(), insertBefore() (before() or after() can be used, just checkout the syntax is different).
+
+-> Security with jQuery, due to the ease with which it manipulates the DOM:
+By design, any jQuery constructor or method that accepts an HTML string — jQuery(), .append(), .after(), etc. — can potentially execute code. This can occur by injection of script tags or use of HTML attributes that execute code (for example, <img onload="">). Do not use these methods to insert strings obtained from untrusted sources such as URL query parameters, cookies, or form inputs. Doing so can introduce cross-site-scripting (XSS) vulnerabilities. Remove or escape any user input before adding content to the document.
+
+-> each() is a very important function!
+
+.each( function ): Iterate over a jQuery object, executing a function for each matched element. 
+
+e.g. $( "li" ).each(function( index ) {
+  console.log( index + ": " + $( this ).text() );
+});
+
+See difference between each & jQuery.each() (the second is an operator that can operate either on an array or on a jQ)
+
+-> each comes with th notion of $(this)
+
+-> Reasons to use jQuery
+Fast selection, easy DOM manipulation, cross-browser compatibility
+It makes the page load a bit longer, but this can be minored by the use of a CDN, you can benefit from the browser cahche functionality
+
+
+-> ant faster page loads? Use a CDN!
+
+It's also worth noting that because so many websites use jQuery, there's a very good chance that your users' browsers have already cached the same copy of jQuery that you want to use.
+
+If you use a CDN, your users' browsers will recognize that they already have a cached copy of jQuery from the same CDN when your site loads, which means that they don't need to download it again. So those extra KBs from jquery.min.js won't be downloaded and your site will load faster!
+
+-> Important: $(function(){}); alllow to execute a function not when it is met but when the DOM is ready 

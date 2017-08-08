@@ -1,0 +1,979 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head profile="http://gmpg.org/xfn/11">
+
+	<title>  Seven grayscale conversion algorithms (with pseudocode and VB6 source code) - Tanner Helland (dot) Com	</title>
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	<link rel="stylesheet" href="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/style.css" type="text/css" media="screen, projection">
+
+		<link rel="alternate" type="application/rss+xml" title="Tanner Helland (dot) Com RSS Feed" href="http://www.tannerhelland.com/feed/">
+	<link rel="alternate" type="application/atom+xml" title="Tanner Helland (dot) Com Atom Feed" href="http://www.tannerhelland.com/feed/atom/">
+	<link rel="pingback" href="http://www.tannerhelland.com/xmlrpc.php">
+	<link rel="shortcut icon" type="image/x-icon" href="http://www.tannerhelland.com/wp-content/themes/current/favicon.ico">
+
+	
+		
+		
+	<link rel="alternate" type="application/rss+xml" title="Tanner Helland (dot) Com » Seven grayscale conversion algorithms (with pseudocode and VB6 source code) Comments Feed" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.tannerhelland.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/wp-emoji-release.js"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="jetpack_css-css" href="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/jquery.js"></script>
+<script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/jquery-migrate.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.tannerhelland.com/xmlrpc.php?rsd">
+<link rel="prev" title="Norway" href="http://www.tannerhelland.com/3628/norway/">
+<link rel="next" title="How to Access Science and Medical Research without Paying an Arm and a Leg for It" href="http://www.tannerhelland.com/3705/legally-access-medical-research-free/">
+<link rel="canonical" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/">
+<link rel="shortlink" href="http://wp.me/pgmIw-WL">
+<link rel="stylesheet" href="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/wp-page-numbers.css" type="text/css" media="screen">
+<link rel="dns-prefetch" href="http://jetpack.wordpress.com/">
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://s1.wp.com/">
+<link rel="dns-prefetch" href="http://s2.wp.com/">
+<link rel="dns-prefetch" href="http://public-api.wordpress.com/">
+<link rel="dns-prefetch" href="http://0.gravatar.com/">
+<link rel="dns-prefetch" href="http://1.gravatar.com/">
+<link rel="dns-prefetch" href="http://2.gravatar.com/">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Seven grayscale conversion algorithms (with pseudocode and VB6 source code)">
+<meta property="og:url" content="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/">
+<meta property="og:description" content="At long last, here is the most-requested image processing technique for this site - a comprehensive collection of grayscale conversion techniques.  To my knowledge, this is the only project on the ...">
+<meta property="article:published_time" content="2011-10-01T19:34:50+00:00">
+<meta property="article:modified_time" content="2012-06-04T13:10:45+00:00">
+<meta property="og:site_name" content="Tanner Helland (dot) Com">
+<meta property="og:image" content="http://www.tannerhelland.com/wp-content/uploads/grayscale_gradient.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="500">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:image" content="http://www.tannerhelland.com/wp-content/uploads/grayscale_gradient.jpg?w=640">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/services.css"></head>
+
+
+<body>
+
+	<div id="tanheader">
+
+		<div class="tancenter">
+
+			<div id="tanlogo_container">
+				<div id="tanlogo"><a href="http://www.tannerhelland.com/"></a></div>
+			</div>
+
+			<div id="tanmenu_container">
+
+				<div id="tanmenu_container_left"></div>
+
+				<div id="tanmenu">
+
+					<ul id="menu">
+												<li><span class="writing"><a href="http://www.tannerhelland.com/writing-directory/">Writing</a></span></li>
+						<li><span class="programming"><a href="http://www.tannerhelland.com/programming-directory/">Programming</a></span></li>
+						<li><span class="music"><a href="http://www.tannerhelland.com/music-directory/">Music</a></span></li>
+						<li><span class="photodemon"><a href="http://photodemon.org/">PhotoDemon</a></span></li>
+						<li><span class="about"><a href="http://www.tannerhelland.com/about/">About</a></span></li>
+						<li><span class="subscribe"><a href="http://www.tannerhelland.com/subscribe/">Subscribe</a></span></li>
+						<li><span class="contact"><a href="http://www.tannerhelland.com/contact/">Contact</a></span></li>
+											</ul>
+
+				</div>
+
+				<div id="tanmenu_container_right"></div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="container">        
+        <div id="post_content">  
+        
+        			
+                
+        	<div id="home_left">
+        		
+        		<h2 class="post_cat">Category: <a href="http://www.tannerhelland.com/category/programming/graphics-code/" title="Browse all Graphics Code articles">Graphics Code</a>&nbsp;&nbsp;·&nbsp;&nbsp;Originally posted October 1, 2011&nbsp;&nbsp;·&nbsp;&nbsp;Last updated June 4, 2012</h2>
+        		
+            	<h1 class="post_name" id="post-3643">Seven grayscale conversion algorithms (with pseudocode and VB6 source code)</h1>
+
+            	
+            	
+            	
+								<div class="post_text">
+
+					<div class="post_itself">
+					
+            				<p>I have uploaded <a href="http://www.tannerhelland.com/programming-directory/">a great many image processing demonstrations over the years</a>,
+ but today’s project – grayscale conversion techniques – is actually the
+ image processing technique that generates the most email queries for 
+me.&nbsp; I’m glad to finally have a place to send those queries!</p>
+<p>Despite many requests for a grayscale demonstration, I have held off coding anything until I could really present something <em>unique</em>.&nbsp;
+ I don’t like adding projects to this site that offer nothing novel or 
+interesting, and there are already hundreds of downloads – in every 
+programming language – that demonstrate standard color-to-grayscale 
+conversions.&nbsp;&nbsp; So rather than add one more “here’s a grayscale
+ algorithm” article, I have spent the past week collecting every known 
+grayscale conversion routine.&nbsp; To my knowledge, this is the only 
+project on the Internet that presents seven unique grayscale conversion 
+algorithms, and at least two of the algorithms – custom # of grayscale 
+shades with and without dithering – were written from scratch for this 
+very article.</p>
+<p>So without further ado, here are seven unique ways to convert a full-color image to grayscale.&nbsp; <em>(Note:
+ I highly recommend reading the full article so you understand how the 
+various algorithms work and what their purposes might be, but <strong>if all you want is the source code, you’ll find it past all the pictures and just above the donation link</strong>.)</em></p>
+<p><strong>Grayscale – An Introduction</strong></p>
+<p><a href="http://en.wikipedia.org/wiki/Monochrome_photography" class="external">Black and white (or monochrome) photography</a>
+ dates back to the mid-19th century.&nbsp; Despite the eventual 
+introduction of color photography, monochromatic photography remains 
+popular.&nbsp; If anything, the digital revolution has actually <em>increased</em>
+ the popularity of monochromatic photography because any digital camera 
+is capable of taking black-and-white photographs (whereas analog cameras
+ required the use of special monochromatic film).&nbsp; Monochromatic 
+photography is sometimes considered the “sculpture” variety of 
+photographic art.&nbsp; It tends to abstract the subject, allowing the 
+photographer to focus on form and interpretation instead of simply 
+reproducing reality.</p>
+<p>Because the terminology <em>black-and-white</em> is imprecise – 
+black-and-white photography actually consists of many shades of gray – 
+this article will refer to such images as <em>grayscale</em>.</p>
+<p>Several other technical terms will be used throughout my explanations.&nbsp; The first is <a href="http://en.wikipedia.org/wiki/Color_space" class="external"><em>color space</em></a>.&nbsp; A <em>color space</em>
+ is a way to visualize a shape or object that represents all available 
+colors.&nbsp; Different ways of representing color lead to different 
+color spaces.&nbsp; The <a href="http://en.wikipedia.org/wiki/RGB_color_space" class="external">RGB color space is represented as a cube</a>, <a href="http://en.wikipedia.org/wiki/HSL_color_space" class="external">HSL can be a cylinder, cone, or bicone</a>, <a href="http://en.wikipedia.org/wiki/YIQ" class="external">YIQ</a> and <a href="http://en.wikipedia.org/wiki/YPbPr" class="external">YPbPr</a> have more abstract shapes.&nbsp; This article will primarily reference the RGB and HSL color spaces.</p>
+<p>I will also refer frequently to <em><a href="http://en.wikipedia.org/wiki/Color_channel" class="external">color channels</a>.</em>&nbsp;
+ Most digital images are comprised of three separate color channels: a 
+red channel, a green channel, and a blue channel.&nbsp; Layering these 
+channels on top of each other creates a full-color image.&nbsp; 
+Different color models have different channels (sometimes the channels 
+are colors, sometimes they are other values like <em>lightness</em> or <em>saturation</em>), but this article will primarily focus on RGB channels.</p>
+<p><strong>How all grayscale algorithms fundamentally work</strong></p>
+<p>All grayscale algorithms utilize the same basic three-step process:</p>
+<ol>
+<li>Get the red, green, and blue values of a pixel</li>
+<li>Use fancy math to turn those numbers into a single gray value</li>
+<li>Replace the original red, green, and blue values with the new gray value</li>
+</ol>
+<p>When describing grayscale algorithms, I’m going to focus on step 2 – 
+using math to turn color values into a grayscale value.  So, when you 
+see a formula like this:</p>
+<pre><code>Gray = (Red + Green + Blue) / 3</code></pre>
+<p>Recognize that the actual code to implement such an algorithm looks like:</p>
+<pre><code>
+For Each Pixel in Image {
+
+   Red = Pixel.Red
+   Green = Pixel.Green
+   Blue = Pixel.Blue
+
+   Gray = (Red + Green + Blue) / 3
+
+   Pixel.Red = Gray
+   Pixel.Green = Gray
+   Pixel.Blue = Gray
+
+}
+</code></pre>
+<p>On to the algorithms!</p>
+<p><strong>Sample Image:</strong></p>
+<div id="attachment_3645" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/secret_of_monkey_island/" rel="attachment wp-att-3645"><img class="size-large wp-image-3645" title="Secret_of_Monkey_Island" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/Secret_of_Monkey_Island-600x375.jpg" alt="Promo art for The Secret of Monkey Island: Special Edition, ©2009 LucasArts" height="375" width="600"></a><p class="wp-caption-text">This
+ bright, colorful promo art for The Secret of Monkey Island: Special 
+Edition will be used to demonstrate each of our seven unique grayscale 
+algorithms.</p></div>
+<p><strong>Method 1 – Averaging (aka “quick and dirty”)</strong></p>
+<div id="attachment_3646" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_average/" rel="attachment wp-att-3646"><img class="size-large wp-image-3646" title="grayscale_average" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_average-600x375.png" alt="Grayscale - average method" height="375" width="600"></a><p class="wp-caption-text">Grayscale image generated from the formula: Average(Red, Green, Blue)</p></div>
+<p>This method is the most boring, so let’s address it first.&nbsp; 
+“Averaging” is the most common grayscale conversion routine, and it 
+works like this:</p>
+<pre><code>Gray = (Red + Green + Blue) / 3</code></pre>
+<p>Fast, simple – no wonder this is the go-to grayscale algorithm for 
+rookie programmers.&nbsp; This formula generates a reasonably nice 
+grayscale equivalent, and its simplicity makes it easy to implement and 
+optimize (<a href="http://www.tannerhelland.com/43/vb-graphics-programming-4/">look-up tables</a>
+ work quite well).&nbsp; However, this formula is not without 
+shortcomings – while fast and simple, it does a poor job of representing
+ shades of gray relative to the way humans perceive luminosity 
+(brightness).&nbsp; For that, we need something a bit more complex.</p>
+<p><strong>Method 2 – Correcting for the human eye (sometimes called “luma” or “luminance,” though <a href="http://poynton.com/PDFs/YUV_and_luminance_harmful.pdf" class="external">such terminology isn’t really accurate</a>)</strong></p>
+<div id="attachment_3647" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_humaneye/" rel="attachment wp-att-3647"><img class="size-large wp-image-3647" title="grayscale_humaneye" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_humaneye-600x375.png" alt="Grayscale generated using values related to cone density in the human eye" height="375" width="600"></a><p class="wp-caption-text">Grayscale generated using a formula similar to (Red * 0.3 + Green * 0.59 + Blue * 0.11)</p></div>
+<p>It’s hard to tell a difference between this image and the one above, 
+so let me provide one more example.&nbsp; In the image below, method #1 
+or the “average method” covers the top half of the picture, while method
+ #2 covers the bottom half:</p>
+<div id="attachment_3648" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_average_and_humaneye/" rel="attachment wp-att-3648"><img class="size-large wp-image-3648" title="grayscale_average_and_humaneye" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_average_and_humaneye-600x375.png" alt="Grayscale methods 1 and 2 compared" height="375" width="600"></a><p class="wp-caption-text">If
+ you look closely, you can see a horizontal line running across the 
+center of the image. The top half (the average method) is more 
+washed-out than the bottom half.  This is especially visible in the 
+middle-left segment of the image, beneath the cheekbone of the 
+background skull.</p></div>
+<p>The difference between the two methods is even more pronounced when 
+flipping between them at full-size, as you can do in the provided source
+ code.&nbsp; Now might be a good time to download my sample project 
+(available at the bottom of this article) so you can compare the various
+ algorithms side-by-side.</p>
+<p>This second algorithm plays off the fact that cone density in the 
+human eye is not uniform across colors.&nbsp; Humans perceive green more
+ strongly than red, and red more strongly than blue.&nbsp; This makes 
+sense from an evolutionary biology standpoint – much of the natural 
+world appears in shades of green, so humans have evolved greater 
+sensitivity to green light.&nbsp; <em>(Note: this is oversimplified, but accurate.)</em></p>
+<p>Because humans do not perceive all colors equally, the “average 
+method” of grayscale conversion is inaccurate.&nbsp; Instead of treating
+ red, green, and blue light equally, a good grayscale conversion will 
+weight each color based on how the human eye perceives it.&nbsp; A 
+common formula in image processors (Photoshop, <a href="http://gimp-savvy.com/BOOK/index.html?node54.html" class="external">GIMP</a>) is:</p>
+<pre><code>Gray = (Red * 0.3 + Green * 0.59 + Blue * 0.11)</code></pre>
+<p>Surprising to see such a large difference between the red, green, and
+ blue coefficients, isn’t it?&nbsp; This formula requires a bit of extra
+ computation, but it results in a more dynamic grayscale image.&nbsp; 
+Again, downloading the sample program is the best way to appreciate 
+this, so I recommend grabbing the code, experimenting with it, then 
+returning to this article.</p>
+<p>It’s worth noting that there is disagreement on the best formula for 
+this type of grayscale conversion.&nbsp; In my project, I have chosen to
+ go with the original <a href="http://en.wikipedia.org/wiki/ITU-R" class="external">ITU-R</a> recommendation (BT.709, specifically) which is the historical precedent.&nbsp; This formula, sometimes called <a href="http://en.wikipedia.org/wiki/Luma_%28video%29" class="external">Luma</a>, looks like this:</p>
+<pre><code>Gray = (Red * 0.2126 + Green * 0.7152 + Blue * 0.0722)</code></pre>
+<p>Some modern digital image and video formats use a different 
+recommendation (BT.601), which calls for slightly different 
+coefficients:</p>
+<pre><code>Gray = (Red * 0.299 + Green * 0.587 + Blue * 0.114)</code></pre>
+<p>A full discussion of which formula is “better” is beyond the scope of
+ this article.&nbsp; For further reading, I strongly suggest <a href="http://poynton.com/" class="external">the work of Charles Poynton</a>.&nbsp;
+ For 99% of programmers, the difference between these two formulas is 
+irrelevant.&nbsp; Both are perceptually preferable to the “average 
+method” discussed at the top of this article.</p>
+<p><strong>Method 3 – Desaturation</strong></p>
+<div id="attachment_3669" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_desaturate/" rel="attachment wp-att-3669"><img class="size-large wp-image-3669" title="grayscale_desaturate" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_desaturate-600x375.png" alt="Grayscale generated from a Desaturate algorithm" height="375" width="600"></a><p class="wp-caption-text">A
+ desaturated image. Desaturating an image takes advantage of the ability
+ to treat the (R, G, B) colorspace as a 3-dimensional cube. Desaturation
+ approximates a luminance value for each pixel by choosing a 
+corresponding point on the neutral axis of the cube.</p></div>
+<p>Next on our list of methods is <em>desaturation</em>.</p>
+<p>There are various ways to describe the color of a pixel.&nbsp; Most 
+programmers use the RGB color model, where each color is described by 
+its red, green, and blue components.&nbsp; While this is a nice way for a
+ machine to describe color, the RGB color space can be difficult for 
+humans to visualize.&nbsp; If I tell you, “oh, I just bought a 
+car.&nbsp; Its color is RGB(122, 0, 255),” you probably can’t picture 
+the color I’m describing.&nbsp; If, however, I say, “I just bought a 
+car.&nbsp; It is a bright, vivid shade of violet,” you can probably 
+picture <span style="color: #7a00ff;">the color in question</span>.&nbsp; (Note: this is a hypothetical example.&nbsp; I do not drive a purple car.&nbsp; :)</p>
+<p>For this reason (among others), <a href="http://en.wikipedia.org/wiki/HSL_and_HSV" class="external">the HSL color space</a> is sometimes used to describe colors.&nbsp; HSL stands for <em>hue</em>, <em>saturation</em>, <em>lightness</em>.&nbsp; <em>Hue</em>
+ could be considered the name of the color – red, green, orange, yellow,
+ etc.&nbsp; Mathematically, hue is described as an angular dimension on 
+the color wheel (range [0,360]), where pure red occurs at 0°, pure green
+ at 120°, pure blue at 240°, then back to pure red at 360°.&nbsp; 
+Saturation describes how vivid a color is; a very vivid color has full 
+saturation, while gray has no saturation.&nbsp; Lightness describes the 
+brightness of a color; white has full lightness, while black has zero 
+lightness.</p>
+<p>Desaturating an image works by converting an RGB triplet to an HSL 
+triplet, then forcing the saturation to zero.  Basically, this takes a 
+color and converts it to its <em>least-saturated variant</em>.&nbsp; The
+ mathematics of this conversion are more complex than this article 
+warrants, so I’ll simply provide the shortcut calculation.&nbsp; A pixel
+ can be desaturated by finding the midpoint between the maximum of (R, 
+G, B) and the minimum of (R, G, B), like so:</p>
+<pre><code>Gray = ( Max(Red, Green, Blue) + Min(Red, Green, Blue) ) / 2</code></pre>
+<p>In terms of the RGB color space, desaturation forces each pixel to a 
+point along the neutral axis running from (0, 0, 0) to (255, 255, 
+255).&nbsp; If that makes no sense, take a moment to read <a href="http://en.wikipedia.org/wiki/RGB_color_space" class="external">this wikipedia article</a> about the RGB color space.</p>
+<p>Desaturation results in a flatter, softer grayscale image.&nbsp; If 
+you compare this desaturated sample to the human-eye-corrected sample 
+(Method #2), you should notice a difference in the contrast of the 
+image.&nbsp; Method #2 seems more like an <a href="http://www.anseladams.com/category_s/71.htm" class="external">Ansel Adams photograph</a>,
+ while desaturation looks like the kind of grayscale photo you might 
+take with a cheap point-and-shoot camera.&nbsp; Of the three methods 
+discussed thus far, desaturation results in the flattest (least 
+contrast) and darkest overall image.</p>
+<p><strong>Method 4 – Decomposition (think of it as <em>de-composition</em>, <em>e.g.</em> not the biological process!)</strong></p>
+<div id="attachment_3672" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_decompose_max/" rel="attachment wp-att-3672"><img class="size-large wp-image-3672" title="grayscale_decompose_max" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_decompose_max-600x375.png" alt="Decomposition - Max Values" height="375" width="600"></a><p class="wp-caption-text">Decomposition using maximum values</p></div>
+<div id="attachment_3673" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_decompose_min/" rel="attachment wp-att-3673"><img class="size-large wp-image-3673" title="grayscale_decompose_min" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_decompose_min-600x375.png" alt="Decomposition - Minimum Values" height="375" width="600"></a><p class="wp-caption-text">Decomposition using minimum values</p></div>
+<p>Decomposing an image (sounds gross, doesn’t it?) could be considered a
+ simpler form of desaturation.&nbsp; To decompose an image, we force 
+each pixel to the highest (maximum) or lowest (minimum) of its red, 
+green, and blue values.&nbsp; Note that this is done on a per-pixel 
+basis – so if we are performing a <em>maximum</em> decompose and pixel 
+#1 is RGB(255, 0, 0) while pixel #2 is RGB(0, 0, 64), we will set pixel 
+#1 to 255 and pixel #2 to 64.&nbsp; Decomposition only cares about which
+ color value is highest or lowest – not which channel it comes from.</p>
+<p>Maximum decomposition:</p>
+<pre><code>Gray = Max(Red, Green, Blue)</code></pre>
+<p>Minimum decomposition:</p>
+<pre><code>Gray = Min(Red, Green, Blue)</code></pre>
+<p>As you can imagine, a maximum decomposition provides a brighter 
+grayscale image, while a minimum decomposition provides a darker one.</p>
+<p>This method of grayscale reduction is typically used for artistic effect.</p>
+<p><strong>Method 5 – Single color channel</strong></p>
+<div id="attachment_3680" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_rechannel_red/" rel="attachment wp-att-3680"><img class="size-large wp-image-3680" title="grayscale_rechannel_red" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_rechannel_red-600x375.png" alt="Grayscale - red channel only" height="375" width="600"></a><p class="wp-caption-text">Grayscale generated by using only red channel values.</p></div>
+<div id="attachment_3681" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_rechannel_green/" rel="attachment wp-att-3681"><img class="size-large wp-image-3681" title="grayscale_rechannel_green" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_rechannel_green-600x375.png" alt="Grayscale - green channel only" height="375" width="600"></a><p class="wp-caption-text">Grayscale generated by using only green channel values.</p></div>
+<div id="attachment_3682" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_rechannel_blue/" rel="attachment wp-att-3682"><img class="size-large wp-image-3682" title="grayscale_rechannel_blue" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_rechannel_blue-600x375.png" alt="Grayscale - blue channel only" height="375" width="600"></a><p class="wp-caption-text">Grayscale generated by using only blue channel values.</p></div>
+<p>Finally, we reach the fastest computational method for grayscale 
+reduction – using data from a single color channel.&nbsp; Unlike all the
+ methods mentioned so far, this method requires no calcuations.&nbsp; 
+All it does is pick a single channel and make that the grayscale value, 
+as in:</p>
+<pre><code>Gray = Red</code></pre>
+<p>…or:</p>
+<pre><code>Gray = Green</code></pre>
+<p>…or:</p>
+<pre><code>Gray = Blue</code></pre>
+<p>Believe it or not, this shitty algorithm is the one <a href="http://en.wikipedia.org/wiki/Charge-coupled_device#Color_cameras" class="external">most digital cameras use for taking “grayscale” photos</a>.&nbsp;
+ CCDs in digital cameras are comprised of a grid of red, green, and blue
+ sensors, and rather than perform the necessary math to convert RGB 
+values to gray ones, they simply grab a single channel (green, for the 
+reasons mentioned in Method #2 – human eye correction) and call that the
+ grayscale one.&nbsp; For this reason, most photographers recommend <strong>against</strong>
+ using your camera’s built-in grayscale option.&nbsp; Instead, shoot 
+everything in color and then perform the grayscale conversion later, 
+using whatever method leads to the best result.</p>
+<p>It is difficult to predict the results of this method of grayscale 
+conversion.&nbsp; As such, it is usually reserved for artistic effect.</p>
+<p><strong>Method 6 – Custom # of gray shades</strong></p>
+<div id="attachment_3683" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_4_shades/" rel="attachment wp-att-3683"><img class="size-large wp-image-3683" title="grayscale_4_shades" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_4_shades-600x375.png" alt="Grayscale using only 4 shades" height="375" width="600"></a><p class="wp-caption-text">Grayscale using only 4 shades - black, dark gray, light gray, and white</p></div>
+<p>Now it’s time for the fun algorithms.&nbsp; Method #6, which I wrote 
+from scratch for this project, allows the user to specify how many 
+shades of gray the resulting image will use.&nbsp; Any value between 2 
+and 256 is accepted; 2 results in a black-and-white image, while 256 
+gives you an image identical to Method #1 above.&nbsp; This project only
+ uses 8-bit color channels, but for 16 or 24-bit grayscale images (and 
+their resulting 65,536 and 16,777,216 maximums) this code would work 
+just fine.</p>
+<p>The algorithm works by selecting X # of gray values, equally spread 
+(inclusively) between zero luminance – black – and full luminance – 
+white.&nbsp; The above image uses four shades of gray.&nbsp; Here is 
+another example, using sixteen shades of gray:</p>
+<div id="attachment_3684" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_16_shades/" rel="attachment wp-att-3684"><img class="size-large wp-image-3684" title="grayscale_16_shades" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_16_shades-600x375.png" alt="Grayscale using 16 shades of gray" height="375" width="600"></a><p class="wp-caption-text">In this image, we use 16 shades of gray spanning from black to white</p></div>
+<p>This grayscale algorithm is a bit more complex.  It looks something like:</p>
+<pre><code>
+ConversionFactor = 255 / (NumberOfShades - 1)
+AverageValue = (Red + Green + Blue) / 3
+Gray = Integer((AverageValue / ConversionFactor) + 0.5) * ConversionFactor
+
+Notes:
+-NumberOfShades is a value between 2 and 256
+-technically, any grayscale algorithm could be used to calculate AverageValue; it simply provides
+ an initial gray value estimate
+-the "+ 0.5" addition is an optional parameter that imitates rounding the value of an integer
+ conversion; YMMV depending on which programming language you use, as some round automatically
+</code></pre><code>
+</code><p><code></code></p>
+<p>I enjoy the artistic possibilities of this algorithm.&nbsp; The 
+attached source code renders all grayscale images in real-time, so for a
+ better understanding of this algorithm, load up the sample code and 
+rapidly scroll between different numbers of gray shades.</p>
+<p><strong>Method 7 - Custom # of gray shades with dithering (in this example, horizontal error-diffusion dithering)</strong></p>
+<div id="attachment_3685" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_4_shades_dithered/" rel="attachment wp-att-3685"><img class="size-large wp-image-3685" title="grayscale_4_shades_dithered" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_4_shades_dithered-600x375.png" alt="Grayscale - four shades, dithered" height="375" width="600"></a><p class="wp-caption-text">This
+ image also uses only four shades of gray (black, dark gray, light gray,
+ white), but it adds full error-diffusion dithering support</p></div>
+<p>Our final algorithm is perhaps the strangest one of all.&nbsp; Like 
+the previous method, it allows the user to specify any value in the 
+[2,256] range, and the algorithm will automatically calculate the best 
+spread of grayscale values for that range.&nbsp; However, this algorithm
+ also adds full dithering support.</p>
+<p>What is dithering, you ask?&nbsp; In image processing, <a href="http://en.wikipedia.org/wiki/Dithering#Digital_photography_and_image_processing" class="external">dithering uses optical illusions to make an image look more colorful than than it actually is</a>.&nbsp;
+ Dithering algorithms work by interspersing whatever colors are 
+available into new patterns - ordered or random - that fool the human 
+eye into perceiving more colors than are actually present.&nbsp; If that
+ makes no sense, take a look at <a href="http://en.wikipedia.org/wiki/Dithering#Algorithms" class="external">this gallery of dithered images</a>.</p>
+<p>There are many different dithering algorithms.&nbsp; The one I 
+provide is one of the simpler error-diffusion mechanisms: a 
+one-dimensional diffusion that bleeds color conversion errors from left 
+to right.</p>
+<p>If you look at the image above, you'll notice that only four colors 
+are present - black, dark gray, light gray, and white - but because 
+these colors are mixed together, from a distance this image looks much 
+sharper than the four-color non-dithered image under Method #6.&nbsp; 
+Here is a side-by-side comparison:</p>
+<div id="attachment_3686" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_4_shades_sidebyside/" rel="attachment wp-att-3686"><img class="size-large wp-image-3686" title="grayscale_4_shades_sidebyside" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_4_shades_sidebyside-600x375.png" alt="Side-by-side of dithered and non-dithered 4-color grayscale images" height="375" width="600"></a><p class="wp-caption-text">The left side of the image is a 4-shade non-dithered image; the right side is a 4-shade image WITH dithering</p></div>
+<p>When few colors are available, dithering preserves more nuances than a
+ non-dithered image, but the trade-off is a "dirty," speckled 
+look.&nbsp; Some dithering algorithms are better than others; the one 
+I've used falls somewhere in the middle, which is why I selected it.</p>
+<p>As a final example, here is a 16-color grayscale image with full 
+dithering, followed by a side-by-side comparison with the non-dithered 
+version:</p>
+<div id="attachment_3687" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_16_shades_dithered/" rel="attachment wp-att-3687"><img class="size-large wp-image-3687" title="grayscale_16_shades_dithered" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_16_shades_dithered-600x375.png" alt="Grayscale image, 16 shades, dithered" height="375" width="600"></a><p class="wp-caption-text">Hard to believe only 16 shades of gray are used in this image, isn't it?</p></div>
+<div id="attachment_3688" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_16_shades_sidebyside/" rel="attachment wp-att-3688"><img class="size-large wp-image-3688" title="grayscale_16_shades_sidebyside" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_16_shades_sidebyside-600x375.png" alt="Grayscale, 16 shades, dithered vs non-dithered" height="375" width="600"></a><p class="wp-caption-text">As
+ the number of shades of gray in an image increases, dithering artifacts
+ become less and less noticeable.  Can you tell which side of the image 
+is dithered and which is not?</p></div>
+<p>Because the code for this algorithm is fairly complex, I'm going to refer you to the download for details.  Simply open the <code>Grayscale.frm</code> file in your text editor of choice, then find the <code>drawGrayscaleCustomShadesDithered</code> sub.  It has all the gory details, with comments.</p>
+<p><strong>Conclusion</strong></p>
+<p>If you're reading this from a slow Internet connection, I apologize 
+for the image-heavy nature of this article.&nbsp; Unfortunately, the 
+only way to really demonstrate all these grayscale techniques is by 
+showing many examples!</p>
+<p>The source code for this project, like all image processing code on 
+this site, runs in real-time.&nbsp; The GUI is simple and streamlined, 
+automatically hiding and displaying relevant user-adjustable options as 
+you click through the various algorithms:</p>
+<div id="attachment_3689" style="width: 610px" class="wp-caption aligncenter"><a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/grayscale_source_code_gui/" rel="attachment wp-att-3689"><img class="size-large wp-image-3689" title="grayscale_source_code_GUI" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/grayscale_source_code_GUI-600x344.jpg" alt="GUI of the provided source code" height="344" width="600"></a><p class="wp-caption-text">GUI of the provided source code. The program also allows you to load your own images.</p></div>
+<p>Each algorithm is provided as a stand-alone method, accepting a 
+source and destination picturebox as parameters.&nbsp; I designed it 
+this way so you can grab whatever algorithms interest you and drop them 
+straight into an existing project, without need for modification.</p>
+<p>Comments and suggestions are welcome.&nbsp; If you know of any 
+interesting grayscale conversion algorithms I might have missed, please 
+let me know.</p>
+<p><em>(Fun fact: want to convert a grayscale image back to color?&nbsp; If so, check out <a href="http://www.tannerhelland.com/3552/colorize-image-vb6/">my real-time image colorization project</a>.)</em></p>
+
+					
+					
+						<div class="download_code"><a href="http://www.tannerhelland.com/code/Grayscale_noEXE.zip">download Seven Grayscale Algorithms (complete source code in VB6 format)</a><br></div>
+
+						<div class="download_code"><a href="http://www.tannerhelland.com/code/Grayscale.zip">download Seven Grayscale Algorithms (complete source code + Windows executable file)</a></div>
+
+						<div class="download_disclaimer">DISCLAIMER: These download files 
+are regularly scanned to ensure they remain free from malicious content.
+ Unfortunately, some virus scanners will flag these .zip files as 
+suspicious simply because they contain source code and/or executable 
+files. I have submitted my projects to a number of companies in an 
+attempt to rectify these false-positives. Some have been cooperative. 
+Others have not. If your virus scanner alerts you regarding these files,
+ please allow the file to be submitted for further analysis (if your 
+program allows for that). This should help ensure that any 
+false-positive warnings gradually disappear for all users.</div>
+
+					
+		
+			<div class="please_donate">
+				<div class="donate_button">
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<p><input name="cmd" value="_s-xclick" type="hidden">
+					<input name="hosted_button_id" value="5205484" type="hidden">
+					<input src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!" type="image">
+					<img alt="" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/pixel.gif" height="1" width="1"></p>
+					</form>
+				</div>
+
+				<p>This site - and its many free downloads - are funded by donations from visitors like you.<br>Please consider a small donation to fund server costs and to help me support my family.<br>Even $1.00 helps.  Thank you!</p>
+
+			</div>
+
+		
+					
+						<div class="BSD_license"><a rel="license" href="http://creativecommons.org/licenses/BSD/">All source code in the above zip file(s) is released under a BSD License.</a></div><p>&nbsp;</p>
+
+					
+					
+					
+
+			<h3 class="mast_bookmarks">bookmark and share this article</h3>
+				
+				<a href="mailto:?subject=Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29&amp;body=http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/" title="Email this article to a friend"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/email.png" alt="Email this article to a friend"></a>
+
+				<a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/print/" title="Print a copy of this article"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/print.png" alt="Print a copy of this article"></a>
+
+				<a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/feed/" title="Subscribe to article comments"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/rss.png" alt="Subscribe to article comments"></a>
+				
+				<a href="http://www.delicious.com/save" onclick="window.open('http://www.delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url='+encodeURIComponent('http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/')+'&amp;title='+encodeURIComponent('Seven grayscale conversion algorithms (with pseudocode and VB6 source code)'),'delicious', 'toolbar=no,width=550,height=550'); return false;" title="Bookmark this article on Delicious"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/delicious.png" alt="Bookmark this article on Delicious"></a>
+
+				<a href="http://reddit.com/submit" onclick="window.open('http://reddit.com/submit?url=' + encodeURIComponent('http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/')); return false;" title="Submit this article to reddit"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/reddit.png" alt="Submit this article to reddit"></a>
+
+				<a href="http://digg.com/submit?phase=2&amp;url=http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/&amp;title=Seven+grayscale+conversion+algorithms+%28with+pseudocode+and+VB6+source+code%29" title="Submit this article to Digg"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/digg.png" alt="Submit this article to Digg"></a>
+
+				<a href="http://www.stumbleupon.com/submit?url=http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/&amp;title=Seven+grayscale+conversion+algorithms+%28with+pseudocode+and+VB6+source+code%29" title="Submit this article to StumbleUpon"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/stumbleupon.png" alt="Submit this article to StumbleUpon"></a>
+
+				<a href="http://www.facebook.com/share.php?v=4&amp;u=http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/&amp;t=Seven+grayscale+conversion+algorithms+%28with+pseudocode+and+VB6+source+code%29" title="Share this article on Facebook"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/facebook.png" alt="Share this article on Facebook"></a>
+
+				<a href="http://www.twitter.com/share?url=http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/&amp;text=Great+article%3A+Seven+grayscale+conversion+algorithms+%28with+pseudocode+and+VB6+source+code%29&amp;related=tannerhelland" title="Tweet this article"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/twitter.png" alt="Tweet this article"></a>
+
+				
+			<br><br><h3 class="mast">related articles</h3>
+			<ul><li><span class="mast_ub"><a href="http://www.tannerhelland.com/4660/dithering-eleven-algorithms-source-code/" rel="bookmark" title="December 28, 2012">Image Dithering: Eleven Algorithms and Source Code</a></span></li>
+
+<li><span class="mast_ub"><a href="http://www.tannerhelland.com/3552/colorize-image-vb6/" rel="bookmark" title="April 28, 2011">How to Colorize an Image (in VB6)</a></span></li>
+
+<li><span class="mast_ub"><a href="http://www.tannerhelland.com/810/vb6-image-histograms-2/" rel="bookmark" title="March 25, 2009">Advanced Image Histograms in VB6 – Stretching and Equalizing</a></span></li>
+
+<li><span class="mast_ub"><a href="http://www.tannerhelland.com/381/blacklight-vb6/" rel="bookmark" title="January 20, 2009">Real-time Blacklight Effect (in VB6)</a></span></li>
+</ul><!-- Similar Posts took 42.839 ms -->
+                </div>
+
+		
+				</div>
+				
+				
+				<div id="comments"> 
+				
+					<div id="commenthead">
+					
+						<h3 class="mast">Discussion (14 comments)</h3>
+	    
+												
+					</div>
+							
+							
+					
+
+
+
+	
+	<ol id="commentlist">
+
+	
+	<li class="pingback even thread-even depth-1" id="comment-2639">
+
+		
+		<p>[…] can be desaturated by finding the midpoint between the maximum 
+of RGB and the minimum of RGB1, if you want more detailed calculations 
+use the method […]</p>
+
+		
+		<cite>By <span class="commentauthor"><a href="http://zerocool.is-a-geek.net/?p=329" rel="external nofollow" class="url">» Java color image to grayscale conversion algorithm(s) ZeroCool</a></span> | December 26, 2011, 5:05 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=2639#respond" onclick='return addComment.moveForm( "comment-2639", "2639", "respond", "3643" )' aria-label="Reply to » Java color image to grayscale conversion algorithm(s) ZeroCool">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-5266">
+
+		
+		<p>Hi Tanner, great explanation, examples and application. Great work, thanks.<br>
+Tom</p>
+
+		
+		<cite>By <span class="commentauthor">Tomas Soukup</span> | September 2, 2013, 4:10 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=5266#respond" onclick='return addComment.moveForm( "comment-5266", "5266", "respond", "3643" )' aria-label="Reply to Tomas Soukup">Reply to this comment</a> </cite>
+
+<ul class="children">
+
+	<li class="comment byuser comment-author-thelland bypostauthor even depth-2" id="comment-5268">
+
+		<div class="gravatar_right"><img id="grav-a6fe2326d7380ddf7aa3982b6b8a1087-0" alt="" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/a6fe2326d7380ddf7aa3982b6b8a1087.png" srcset="http://1.gravatar.com/avatar/a6fe2326d7380ddf7aa3982b6b8a1087?s=92&amp;d=mm&amp;r=r 2x" class="avatar avatar-46 photo grav-hashed grav-hijack" height="46" width="46"></div>
+		<p>Thanks for the kind comment, Tom.  Really glad the code was useful to you.</p>
+
+		
+		<cite>By <span class="commentauthor"><a href="http://www.tannerhelland.com/" rel="external nofollow" class="url">Tanner</a></span> | September 3, 2013, 7:52 am | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=5268#respond" onclick='return addComment.moveForm( "comment-5268", "5268", "respond", "3643" )' aria-label="Reply to Tanner">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="pingback odd alt thread-even depth-1" id="comment-5710">
+
+		
+		<p>[…] set by the author, you can also tweak the grayscale parameter 
+to make your image stand out. This article explains various grayscale 
+algorithm and their effects on the image. You can also search on the […]</p>
+
+		
+		<cite>By <span class="commentauthor"><a href="http://ntanjerome.org/blog/tancolor-js-a-nice-image-coloring-jquery-plugin/" rel="external nofollow" class="url">tancolor.js | a nice image coloring jquery plugin | Nicholas TJ</a></span> | November 12, 2013, 1:06 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=5710#respond" onclick='return addComment.moveForm( "comment-5710", "5710", "respond", "3643" )' aria-label="Reply to tancolor.js | a nice image coloring jquery plugin | Nicholas TJ">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-7602">
+
+		
+		<p>I really liked your explaination, that was very useful for me cuz 
+im making a (useless) tool for convrting images to text with a lot of 
+option</p>
+
+		
+		<cite>By <span class="commentauthor">pacco</span> | January 17, 2014, 1:30 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=7602#respond" onclick='return addComment.moveForm( "comment-7602", "7602", "respond", "3643" )' aria-label="Reply to pacco">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+
+	<li class="comment odd alt thread-even depth-1" id="comment-17020">
+
+		
+		<p>Thanks for this great article. The 4-level dithering really 
+reminded me of the good old days with a CGA monitor, when games would 
+get ported from multi-color machines to the old IBM PC CGA 4-color 
+scheme (Cyan Magenta White Black, or Red Yellow Green Black). </p>
+<p>You don’t appear to mention Gamma issues, which several other sites do.</p>
+<p><a href="http://entropymine.com/imageworsener/grayscale/" rel="nofollow" class="external">http://entropymine.com/imageworsener/grayscale/</a></p>
+<p><a href="http://cseweb.ucsd.edu/%7Eckanan/publications/Kanan_Cottrell_PloS_ONE_2012.pdf" rel="nofollow" class="external">http://cseweb.ucsd.edu/~ckanan/publications/Kanan_Cottrell_PloS_ONE_2012.pdf</a></p>
+
+		
+		<cite>By <span class="commentauthor"><a href="http://github.com/donbright" rel="external nofollow" class="url">don bright</a></span> | June 14, 2014, 2:18 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=17020#respond" onclick='return addComment.moveForm( "comment-17020", "17020", "respond", "3643" )' aria-label="Reply to don bright">Reply to this comment</a> </cite>
+
+<ul class="children">
+
+	<li class="comment byuser comment-author-thelland bypostauthor even depth-2" id="comment-17133">
+
+		<div class="gravatar_right"><img id="grav-a6fe2326d7380ddf7aa3982b6b8a1087-1" alt="" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/a6fe2326d7380ddf7aa3982b6b8a1087.png" srcset="http://1.gravatar.com/avatar/a6fe2326d7380ddf7aa3982b6b8a1087?s=92&amp;d=mm&amp;r=r 2x" class="avatar avatar-46 photo grav-hashed grav-hijack" height="46" width="46"></div>
+		<p>Hi Don.  Thanks for the kind comment.  Gamma can certainly be a 
+factor in color -&gt; grayscale conversion, as noted in your links.  In 
+modern PCs, it’s typically best to leave this step to the system display
+ driver, assuming the system is color-managed using a relevant ICC 
+profile (or WCS on Windows).  One of the difficult things with display 
+considerations like gamma is the risk of double or even 
+triple-processing pixels.  For example, if a monitor is correctly 
+configured to account for gamma, but we hard-code gamma correction into 
+our grayscale transform, the image will end up being transformed twice. 
+ Similarly if the original RGB data has already been gamma-corrected, as
+ it would have been if taken with a decent digital camera, we don’t want
+ to apply an extra gamma correction atop the one specified in the 
+image’s color profile.  Embedded color profiles will specify all of 
+this, and for advanced users, it would be best to rely on the data they 
+provide, rather than applying a uniform gamma correction to the RGB data
+ prior to grayscale conversion, or to the grayscale value itself.</p>
+<p>For embedded systems like digital cameras or some smartphones, your 
+links are absolutely correct – gamma should be handled at a much lower 
+level, using a correction relevant to whatever sensor is capturing the 
+image.</p>
+<p>Hope that clarifies things a bit.  Thanks for stopping by!</p>
+
+		
+		<cite>By <span class="commentauthor"><a href="http://www.tannerhelland.com/" rel="external nofollow" class="url">Tanner</a></span> | June 19, 2014, 7:51 am | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=17133#respond" onclick='return addComment.moveForm( "comment-17133", "17133", "respond", "3643" )' aria-label="Reply to Tanner">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-19314">
+
+		
+		<p>[…] Untuk menerapkan algoritma grayscale dengan berbagai macam 
+variasi kalkulasi yang memberikan hasil berbeda untuk setiap metodenya 
+dapat dilihat disini […]</p>
+
+		
+		<cite>By <span class="commentauthor"><a href="http://codelation.wordpress.com/2014/09/15/preproses-citra-digital-menggunakan-algoritma-grayscale-c/" rel="external nofollow" class="url">Preproses Citra Digital Menggunakan Algoritma Grayscale C# | Codelation</a></span> | September 14, 2014, 9:48 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=19314#respond" onclick='return addComment.moveForm( "comment-19314", "19314", "respond", "3643" )' aria-label="Reply to Preproses Citra Digital Menggunakan Algoritma Grayscale C# | Codelation">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-even depth-1" id="comment-22911">
+
+		
+		<p>i really like your article. but do you have any scientific journal 
+or book i can refer to?. i would like to put your algorithm in my thesis</p>
+
+		
+		<cite>By <span class="commentauthor">Michael Ryan</span> | December 28, 2014, 7:05 am | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=22911#respond" onclick='return addComment.moveForm( "comment-22911", "22911", "respond", "3643" )' aria-label="Reply to Michael Ryan">Reply to this comment</a> </cite>
+
+<ul class="children">
+
+	<li class="comment byuser comment-author-thelland bypostauthor odd alt depth-2" id="comment-22913">
+
+		<div class="gravatar_right"><img id="grav-a6fe2326d7380ddf7aa3982b6b8a1087-2" alt="" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/a6fe2326d7380ddf7aa3982b6b8a1087.png" srcset="http://1.gravatar.com/avatar/a6fe2326d7380ddf7aa3982b6b8a1087?s=92&amp;d=mm&amp;r=r 2x" class="avatar avatar-46 photo grav-hashed grav-hijack" height="46" width="46"></div>
+		<p>Hi Michael.  Thanks much for the comment.  Most of these algorithms
+ originate from applications, not researchers, so I’m afraid their roots
+ are not based in easily citeable research.</p>
+<p>The one paper I know of (off the top of my head) that’s helpful in this arena is this one:</p>
+<p><a href="http://cadik.posvete.cz/color_to_gray_evaluation/" rel="nofollow" class="external">http://cadik.posvete.cz/color_to_gray_evaluation/</a></p>
+<p>It includes a number of algorithms I haven’t included in this article.  Good luck with your thesis!</p>
+
+		
+		<cite>By <span class="commentauthor"><a href="http://www.tannerhelland.com/" rel="external nofollow" class="url">Tanner</a></span> | December 28, 2014, 8:13 am | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=22913#respond" onclick='return addComment.moveForm( "comment-22913", "22913", "respond", "3643" )' aria-label="Reply to Tanner">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-23469">
+
+		
+		<p>This notes are so helpful for me thanks Now I donlike to watch for 
+Brightness, Increased Resolution, and clarity of a image For My Image 
+Processing Project.</p>
+
+		
+		<cite>By <span class="commentauthor">Niranjan Cannon</span> | January 21, 2015, 12:29 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=23469#respond" onclick='return addComment.moveForm( "comment-23469", "23469", "respond", "3643" )' aria-label="Reply to Niranjan Cannon">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+
+	<li class="pingback odd alt thread-even depth-1" id="comment-24030">
+
+		
+		<p>[…] ada banyak algoritma yang dapat digunakan. Website ini cukup bagus untuk menjadi referensi <a href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/" rel="nofollow">http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/</a> . Pada program yang saya buat, saya melakukan filter dengan cara luminance yaitu dengan […]</p>
+
+		
+		<cite>By <span class="commentauthor"><a href="https://pioncatur.wordpress.com/2015/03/04/algoritma-perubah-gambar-menjadi-grayscale-menggunakan-python-dan-opencv/" rel="external nofollow" class="url">Algoritma Perubah Gambar Menjadi Grayscale Menggunakan Python dan OpenCV | Pion Catur</a></span> | March 3, 2015, 3:57 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=24030#respond" onclick='return addComment.moveForm( "comment-24030", "24030", "respond", "3643" )' aria-label="Reply to Algoritma Perubah Gambar Menjadi Grayscale Menggunakan Python dan OpenCV | Pion Catur">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-24455">
+
+		
+		<p>i tried out the desaturation separate channel powers worked way 
+better than what I had,  I tested out on really thin bands of 
+difference, averaging celled right off,  and it was alot better, but im 
+not sure if its perfect, because i didnt get total equal clarity, i 
+tried stuffing around with them,  but it seemed to change brightness.</p>
+
+		
+		<cite>By <span class="commentauthor">Magnus</span> | April 3, 2015, 6:22 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=24455#respond" onclick='return addComment.moveForm( "comment-24455", "24455", "respond", "3643" )' aria-label="Reply to Magnus">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+
+	<li class="comment odd alt thread-even depth-1" id="comment-25061">
+
+		<div class="gravatar_right"><img id="grav-f50b6c595e732ffd390b68cd9522179c-0" alt="" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/f50b6c595e732ffd390b68cd9522179c.png" srcset="http://0.gravatar.com/avatar/f50b6c595e732ffd390b68cd9522179c?s=92&amp;d=mm&amp;r=r 2x" class="avatar avatar-46 photo grav-hashed grav-hijack" height="46" width="46"></div>
+		<p>Thank you for this article that explained these differences so 
+clearly and showed the math involved!  I found it very helpful; it was 
+just what I was looking for.</p>
+
+		
+		<cite>By <span class="commentauthor"><a href="http://maytiacomic.com/" rel="external nofollow" class="url">Marscaleb</a></span> | June 7, 2015, 3:04 pm | <a class="comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/?replytocom=25061#respond" onclick='return addComment.moveForm( "comment-25061", "25061", "respond", "3643" )' aria-label="Reply to Marscaleb">Reply to this comment</a> </cite>
+
+</li><!-- #comment-## -->
+
+	</ol>
+
+ 
+
+
+<div id="respond">
+
+
+<h3 id="comment-form" class="mast">Share your thoughts below</h3>
+
+<div class="cancel-comment-reply">
+	<a rel="nofollow" id="cancel-comment-reply-link" href="http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/#respond" style="display:none;">Click here to cancel reply.</a></div>
+
+
+<form action="http://www.tannerhelland.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<fieldset>
+
+	<p>
+		<label for="author" class="com">Name *</label>
+		<input class="comtext" name="author" id="author" size="22" tabindex="1" type="text">
+	</p>
+
+	<p>
+		<label for="email" class="com">E-mail *</label>
+		<input class="comtext" name="email" id="email" size="22" tabindex="2" type="text">
+	</p>
+
+	<p>
+		<label for="url" class="com">Web site</label>
+		<input class="comtext" name="url" id="url" size="22" tabindex="3" type="text">
+	</p>
+
+
+
+<p><small>Comments support the following tags: &lt;a href="" 
+title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; 
+&lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del 
+datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; 
+&lt;strike&gt; &lt;strong&gt; </small></p>
+
+	<p>
+		<label for="comment" class="com">Comment:</label>
+		<textarea class="comtext" name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea>
+	</p>
+	
+</fieldset>
+
+<fieldset>
+
+	
+		<input name="submit" id="submit" tabindex="5" class="comsubmit" value="Submit Comment" type="submit">
+		<input name="comment_post_ID" value="3643" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+	
+	
+
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="a70505170a" type="hidden"></p><p class="comment-subscription-form"><input name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"></p>
+</fieldset>
+
+<input id="ak_js" name="ak_js" value="1439214097745" type="hidden"></form>
+
+</div>
+
+
+					
+				</div>
+            	
+            </div>
+            
+            
+            
+                            <div id="new_sidebar">
+										              
+                	<div id="side_categories">
+
+                    <h3 class="mast">Search</h3>
+                    
+                    <div id="search-form">                  
+                        <form method="get" id="searchform" action="http://www.tannerhelland.com/">
+                            
+						<div><label for="s" class="none">Search for:</label>
+						<input name="s" id="s" class="search_input" type="text">
+						
+						<label for="searchsubmit" class="none">Go</label>
+						<input id="searchsubmit" class="submit_input" value="" type="submit"></div>
+                            
+                        </form>
+                    </div>
+<p>&nbsp;</p>
+
+						<h3 class="mast">Categories</h3>
+
+						
+												
+						<ul class="cat">
+								<li class="cat-item cat-item-199"><a href="http://www.tannerhelland.com/category/asides/" title="&quot;Asides&quot; are short articles - generally speaking, they're longer than a tweet but shorter than a full-blown article.">Asides</a>
+</li>
+	<li class="cat-item cat-item-325"><a href="http://www.tannerhelland.com/category/commentary/">Blog</a>
+<ul class="children">
+	<li class="cat-item cat-item-129"><a href="http://www.tannerhelland.com/category/commentary/current-events/" title="Surprisingly insightful commentary on the current state of the world.">Current Events</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="http://www.tannerhelland.com/category/commentary/gaming/" title="Let's face it - video games are awesome.">Gaming</a>
+</li>
+	<li class="cat-item cat-item-403"><a href="http://www.tannerhelland.com/category/commentary/science-commentary/">Science</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.tannerhelland.com/category/commentary/tech/">Technology</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-139"><a href="http://www.tannerhelland.com/category/ubuntu-linux/">Linux and Open Source</a>
+<ul class="children">
+	<li class="cat-item cat-item-150"><a href="http://www.tannerhelland.com/category/ubuntu-linux/mandriva/">Mandriva</a>
+</li>
+	<li class="cat-item cat-item-348"><a href="http://www.tannerhelland.com/category/ubuntu-linux/nokia-n900/">Nokia N900</a>
+</li>
+	<li class="cat-item cat-item-380"><a href="http://www.tannerhelland.com/category/ubuntu-linux/pclinuxos/">PCLinuxOS</a>
+</li>
+	<li class="cat-item cat-item-141"><a href="http://www.tannerhelland.com/category/ubuntu-linux/ubuntu/">Ubuntu</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.tannerhelland.com/category/music/">Music</a>
+<ul class="children">
+	<li class="cat-item cat-item-15"><a href="http://www.tannerhelland.com/category/music/ambient/">Ambient</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://www.tannerhelland.com/category/music/castlevania-music/">Castlevania</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.tannerhelland.com/category/music/character-theme/">Character Themes</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://www.tannerhelland.com/category/music/choral/">Choral</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.tannerhelland.com/category/music/christmas/">Christmas</a>
+</li>
+	<li class="cat-item cat-item-91"><a href="http://www.tannerhelland.com/category/music/essays/">Essays</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://www.tannerhelland.com/category/music/evilvillain/">Evil / Villain</a>
+</li>
+	<li class="cat-item cat-item-107"><a href="http://www.tannerhelland.com/category/music/final-fantasy-remix/">Final Fantasy</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://www.tannerhelland.com/category/music/love/">Love and Romance</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.tannerhelland.com/category/music/other/">Other</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.tannerhelland.com/category/music/remix/">Remixes and Tributes</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="http://www.tannerhelland.com/category/music/rock-music/">Rock</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://www.tannerhelland.com/category/music/theme/">Themes</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.tannerhelland.com/category/music/vg-battle/">VG Battle</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://www.tannerhelland.com/category/music/vg-town/">VG Town</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-431"><a href="http://www.tannerhelland.com/category/photodemon/">PhotoDemon</a>
+</li>
+	<li class="cat-item cat-item-67"><a href="http://www.tannerhelland.com/category/programming/">Programming</a>
+<ul class="children">
+	<li class="cat-item cat-item-313"><a href="http://www.tannerhelland.com/category/programming/bioinformatics/">Bioinformatics</a>
+</li>
+	<li class="cat-item cat-item-208"><a href="http://www.tannerhelland.com/category/programming/game-code/">Game Code</a>
+</li>
+	<li class="cat-item cat-item-68"><a href="http://www.tannerhelland.com/category/programming/graphics-code/">Graphics Code</a>
+</li>
+	<li class="cat-item cat-item-69"><a href="http://www.tannerhelland.com/category/programming/tutorials/">Tutorials</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.tannerhelland.com/category/site-news/">Site News</a>
+</li>
+	<li class="cat-item cat-item-90"><a href="http://www.tannerhelland.com/category/writing/">Writing</a>
+<ul class="children">
+	<li class="cat-item cat-item-355"><a href="http://www.tannerhelland.com/category/writing/teal-writing/">Teal</a>
+</li>
+</ul>
+</li>
+						</ul>
+            		
+            		</div>
+
+
+                	<div id="side_subscribe">
+					<h3 class="mast">Subscribe to Updates</h3>
+					<ul class="subscrb">
+					<li><a href="http://www.tannerhelland.com/feed/">subscribe via RSS</a></li>
+					<li><a href="http://feedburner.google.com/fb/a/mailverify?uri=THIS_feed&amp;loc=en_US">subscribe via email</a></li>
+					</ul>
+
+                	</div>
+                	<p>&nbsp;</p>
+                	            		
+
+										
+										
+            	</div>
+     
+            
+	<div class="clearing"></div>        
+
+        </div> 
+        
+        
+    </div>
+
+        <div id="footer">
+        
+        	<div id="footer_autobar">
+        		Unless otherwise noted, all original content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons license permitting sharing with attribution (CC-BY-3.0)</a>. <br>
+			This site uses icons from the <a href="http://www.famfamfam.com/lab/icons/silk/">Silk icon set</a> by <a href="http://www.famfamfam.com/">Mark James</a>.<br>
+        		<a href="http://www.tannerhelland.com/feed/"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/feed.png" alt="All Articles (RSS)" style="vertical-align: top; margin: 1px 6px 0 1px;">all articles feed</a>
+        		<a href="http://www.tannerhelland.com/category/commentary/feed/"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/feed.png" alt="All Commentary/Blog Articles (RSS)" style="vertical-align: top; margin: 1px 6px 0 6px;">commentary feed</a>
+        		<a href="http://www.tannerhelland.com/category/ubuntu-linux/feed/"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/feed.png" alt="All Linux, Ubuntu, and FOSS Articles (RSS)" style="vertical-align: top; margin: 1px 6px 0 6px;">linux and open source feed</a>
+        		<a href="http://www.tannerhelland.com/category/programming/feed/"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/feed.png" alt="Programming Articles and Projects (RSS)" style="vertical-align: top; margin: 1px 6px 0 6px;">programming feed</a>
+        		<a href="http://www.tannerhelland.com/category/music/feed/"><img src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/feed.png" alt="New Music Releases (RSS)" style="vertical-align: top; margin: 1px 6px 0 6px;">music feed</a>
+        	</div>
+        
+        </div>
+   
+	<div style="display:none">
+	<div class="grofile-hash-map-a6fe2326d7380ddf7aa3982b6b8a1087">
+	</div>
+	<div class="grofile-hash-map-f50b6c595e732ffd390b68cd9522179c">
+	</div>
+	</div>
+<script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/form.js"></script>
+<script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/comment-reply.js"></script>
+<script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/wpgroho.js"></script>
+<script type="text/javascript" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/e-201533.js" async="" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.6.1',blog:'3900576',post:'3643',tz:'-6',srv:'www.tannerhelland.com'} ]);
+	_stq.push([ 'clickTrackerInit', '3900576', '3643' ]);
+</script>
+
+ 
+
+
+<img id="wpstats" src="Seven%20grayscale%20conversion%20algorithms%20%28with%20pseudocode%20and%20VB6%20source%20code%29%20-%20Tanner%20Helland%20%28dot%29%20Com_fichiers/g.gif"></body></html>

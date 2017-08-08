@@ -1,0 +1,25 @@
+
+In the previous morsel, we received the following error message because we weren't directly hosting the images we wanted to display.
+
+Uncaught SecurityError: Failed to execute 'toDataURL' on
+'HTMLCanvasElement': Tainted canvases may not be exported.
+
+There are couple of ways to get around this error and one (optionally) is to start a local web server.
+Using Python SimpleHTTPServer
+
+The simplest way is to use SimpleHTTPServer if you already have Python installed.
+
+Python comes already installed on most Mac OS X and Linux computers. In a terminal window, change to the directory that has your HTML files and run the following command:
+
+python -m SimpleHTTPServer
+
+After it starts, you can navigate to http://0.0.0.0:8000/index.html
+Using MAMP / MAMP Pro
+
+MAMP is an integrated server environment containing executables for running a web server, a database, and several programming languages. MAMP stands for Mac OS X, Apache, MySQL, and PHP/Perl/Python. Though it was originally developed for the Mac, there are versions that run on Windows.
+
+After installing MAMP, open it and start the server.
+
+Go to settings and set the directory to where you have saved your HTML files.
+
+Navigate to http://localhost:8888/MAMP/index.html

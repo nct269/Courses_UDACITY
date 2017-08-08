@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script async="" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/cbgapi.loaded_1"></script><script async="" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/cbgapi.loaded_0"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" href="http://www.copterlabs.com/wp-content/themes/copter2013/assets/ico/apple-touch-icon-144.png" sizes="144x144">
+<link rel="apple-touch-icon" href="http://www.copterlabs.com/wp-content/themes/copter2013/assets/ico/apple-touch-icon-114.png" sizes="114x114">
+<link rel="apple-touch-icon" href="http://www.copterlabs.com/wp-content/themes/copter2013/assets/ico/apple-touch-icon-72.png" sizes="72x72">
+<link rel="apple-touch-icon" href="http://www.copterlabs.com/wp-content/themes/copter2013/assets/ico/apple-touch-icon-57.png">
+<link rel="shortcut icon" href="http://www.copterlabs.com/wp-content/themes/copter2013/assets/ico/favicon.png">
+
+
+
+<link rel="stylesheet" href="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/main.css">
+
+
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>JSON: What It Is, How It Works, &amp; How to Use It</title>
+<meta name="robots" content="noodp,noydir">
+<meta name="description" content="An introduction to JSON (JavaScript Object Notation) and how it's used, including an in-depth JSON tutorial and an example JSON-powered jQuery plugin.">
+<link rel="canonical" href="http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/">
+<link rel="publisher" href="https://plus.google.com/107010302774291305989">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSON: What It Is, How It Works, &amp; How to Use It">
+<meta property="og:description" content="An introduction to JSON (JavaScript Object Notation) and how it's used, including an in-depth JSON tutorial and an example JSON-powered jQuery plugin.">
+<meta property="og:url" content="http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/">
+<meta property="og:site_name" content="Copter Labs">
+<meta property="article:publisher" content="https://www.facebook.com/copterlabs">
+<meta property="article:tag" content="Development">
+<meta property="article:tag" content="introduction">
+<meta property="article:tag" content="jQuery">
+<meta property="article:tag" content="JSON">
+<meta property="article:tag" content="tutorial">
+<meta property="article:tag" content="walkthrough">
+<meta property="article:section" content="Development">
+<meta property="article:published_time" content="2009-07-02T10:24:03+00:00">
+<meta property="article:modified_time" content="2014-12-24T12:14:28+00:00">
+<meta property="og:updated_time" content="2014-12-24T12:14:28+00:00">
+<meta property="fb:admins" content="1468448880">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="An introduction to JSON (JavaScript Object Notation) and how it's used, including an in-depth JSON tutorial and an example JSON-powered jQuery plugin.">
+<meta name="twitter:title" content="JSON: What It Is, How It Works, &amp; How to Use It">
+<meta name="twitter:site" content="@copterlabs">
+<meta name="twitter:domain" content="Copter Labs">
+<meta name="twitter:creator" content="@jlengstorf">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Copter Labs » Feed" href="http://www.copterlabs.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Copter Labs » Comments Feed" href="http://www.copterlabs.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Copter Labs » JSON: What It Is, How It Works, &amp; How to Use It Comments Feed" href="http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/feed/">
+		<script src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.copterlabs.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.2"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/wp-emoji-release.js"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="gforms_reset_css-css" href="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/formreset.css" type="text/css" media="all">
+<link rel="stylesheet" id="gforms_formsmain_css-css" href="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/formsmain.css" type="text/css" media="all">
+<link rel="stylesheet" id="gforms_ready_class_css-css" href="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/readyclass.css" type="text/css" media="all">
+<link rel="stylesheet" id="gforms_browsers_css-css" href="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/browsers.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/jquery-1.js"></script>
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/conditional_logic.js"></script>
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/jquery.js"></script>
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/jquery_003.js"></script>
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/gravityforms.js"></script>
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/jquery_002.js"></script>
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/chosen.js"></script>
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/html5.js"></script>
+<script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/combined.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.copterlabs.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.copterlabs.com/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="http://www.copterlabs.com/?p=125">
+
+<script src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/F6AIK5T.json" type="text/javascript" id="_carbonads_projs"></script><script src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/a" type="text/javascript"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+
+<body>
+
+<header>
+
+    <a href="http://www.copterlabs.com/" id="copter-logo">
+        <img src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/copter-labs.png" alt="Copter Labs—Smart Design for Smart People" title="Copter Labs">
+    </a><!--/#copter-logo-->
+
+    <nav id="main-nav">
+        <div class="menu-primary-navigation-container"><ul id="menu-primary-navigation" class="menu"><li id="menu-item-251" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-251"><a href="http://www.copterlabs.com/">Home</a></li>
+<li id="menu-item-291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-291"><a href="http://www.copterlabs.com/portfolio/">Portfolio</a></li>
+<li id="menu-item-290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-290"><a href="http://www.copterlabs.com/services/">Services</a></li>
+<li id="menu-item-266" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-266"><a href="http://www.copterlabs.com/team/">Team</a></li>
+<li id="menu-item-292" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-292"><a href="http://www.copterlabs.com/contact/">Contact</a></li>
+</ul></div> 
+    </nav><!--/#main-nav-->
+
+    <nav id="secondary-nav">
+        <div class="menu-secondary-navigation-container"><ul id="menu-secondary-navigation" class="menu"><li id="menu-item-260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260"><a href="https://basecamp.com/1814595/">Client Login</a></li>
+<li id="menu-item-536" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-536"><a href="http://www.copterlabs.com/blog/">Blog</a></li>
+<li id="menu-item-258" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-258"><a href="http://www.copterlabs.com/support/">Need help?</a></li>
+</ul></div> 
+    </nav><!--/#secondary-nav-->
+
+</header>
+
+<section id="main-content" class="blog">
+
+        <div class="post-wrapper">
+            <article class="post" data-url="http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/" data-id="125">
+                <h1>JSON: What It Is, How It Works, &amp; How to Use It</h1>
+
+ 
+                <p class="post-meta single">
+                    Posted by <span class="author vcard"><a href="http://www.copterlabs.com/author/jlengstorf/" title="View all posts by Jason Lengstorf" class="url fn n no-ajax">Jason Lengstorf</a></span> in <a href="http://www.copterlabs.com/blog/category/development/" rel="category tag">Development</a> 
+                </p><!--/.post-meta-->
+
+                <div class="post-sharing">
+                    <span class="rw-social-sharing">
+
+    <!-- Google +1 -->
+    <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe title="+1" data-gapiattached="true" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/fastbutton.htm" name="I0_1437159631682" id="I0_1437159631682" vspace="0" tabindex="0" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div>
+
+    <!-- Facebook Like Button -->
+    <iframe src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/like.htm" scrolling="no" style="border:none; overflow:hidden; width:100px; height:21px;" allowtransparency="true" class="facebook" frameborder="0">
+    </iframe>
+
+    <!-- Tweet Button -->
+    <iframe style="position: static; visibility: visible; width: 58px; height: 20px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button active twitter-tweet-button twitter-share-button twitter-count-none" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/tweet_button.htm" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+
+</span><!-- end .rw-social-sharing -->
+
+ 
+                </div><!--/.post-sharing-->
+<p>This week I want to cover a topic that I feel has become an important
+ part of any developer’s toolkit: the ability to load and manipulate 
+JSON feeds from other sites via AJAX. Many sites are sharing data using 
+JSON in addition to RSS feeds nowadays, and with good reason: <strong>JSON feeds can be loaded asynchronously much more easily than XML/RSS.</strong> This article will cover the following:</p>
+<ul>
+<li><strong>What is JSON?</strong></li>
+<li><strong>Why does JSON matter?</strong></li>
+<li><strong>How do we use JSON in a project?</strong></li>
+</ul>
+<p>We’ll also use our newfound skills with JSON at the end of this project to <strong>build a quick app that loads photos from Flickr without requiring a page refresh.</strong></p>
+<div class="demolink"><a class="no-ajax" href="http://www.copterlabs.com/demo/reading-json">See the Demo</a> | <a href="http://www.copterlabs.com/demo/EnnuiDesign_reading-json.zip">Download the Source</a></div>
+<h2>What Is JSON?</h2>
+<p><a href="http://en.wikipedia.org/wiki/JSON">JSON</a> is short for <strong>JavaScript Object Notation</strong>, and is <em>a way to store information in an organized, easy-to-access manner.&nbsp;</em>In a nutshell, it gives us a human-readable collection of data that we can access in a really logical manner.</p>
+<h3>Storing JSON Data</h3>
+<p>As a simple example, information about me might be written in JSON as follows:</p>
+<p>https://gist.github.com/2760279</p>
+<p>This creates an object that we access using the variable <code>jason</code>.
+ By enclosing the variable’s value in curly braces, we’re indicating 
+that the value is an object. Inside the object, we can declare any 
+number of properties using a <code>"name": "value"</code> pairing, separated by commas. To access the information stored in <code>jason</code>, we can <strong>simply refer to the name of the property we need.&nbsp;</strong>For instance, to access information about me, we could use the following snippets:</p>
+<p>https://gist.github.com/2760312</p>
+<h3>Storing JSON Data in Arrays</h3>
+<p>A slightly more complicated example involves storing two people in one variable. To do this, we <strong>enclose multiple objects in square brackets,&nbsp;</strong>which
+ signifies an array. For instance, if I needed to include information 
+about myself and my brother in one variable, I might use the following:</p>
+<p>https://gist.github.com/2760314</p>
+<p>To access this information, we need to access the array index of the 
+person we wish to access. For example, we would use the following 
+snippet to access info stored in <code>family</code>:</p>
+<p>https://gist.github.com/2760322</p>
+<p><em><strong>NOTE:</strong> This is beneficial if it will be necessary to loop through stored information, as it lends itself to a <code>for</code> loop with an automatically incrementing value.</em></p>
+<h3>Nesting JSON Data</h3>
+<p>Another way to store multiple people in our variable would be to <strong>nest objects.&nbsp;</strong>To do this, we would create something similar to the following:</p>
+<p>https://gist.github.com/2760326</p>
+<p>Accessing information in nested objects is a little easier to 
+understand; to access information in the object, we would use the 
+following snippet:</p>
+<p>https://gist.github.com/2760328</p>
+<p>Nested JSON and arrays can be combined as needed to store as much data as necessary.</p>
+<h2>Why Does JSON Matter?</h2>
+<p>With the rise of <a href="http://en.wikipedia.org/wiki/Ajax_%28programming%29">AJAX</a>-powered sites, it’s becoming more and more important for sites to be able to load data <strong>quickly and <em>asynchronously</em>,</strong>
+ or in the background without delaying page rendering. Switching up the 
+contents of a certain element within our layouts without requiring a 
+page refresh adds a “wow” factor to our applications, not to mention the
+ added convenience for our users. Because of the popularity and ease of 
+social media, many sites rely on the content provided by sites such as 
+Twitter, Flickr, and others. These sites provide RSS feeds, which are 
+easy to import and use on the server-side, but if we try to load them 
+with AJAX, we run into a wall: <strong><em>we can only load an RSS feed if we’re requesting it from the same domain it’s hosted on.</em></strong> An attempt to load my Flickr account’s RSS feed via jQuery’s <a href="http://docs.jquery.com/Ajax/jQuery.ajax"><code>$.ajax()</code></a> method results in the following JavaScript error:</p>
+<p>https://gist.github.com/2760335</p>
+<p>JSON allows us to overcome the cross-domain issue because <strong>we can use a method called <a href="http://remysharp.com/2007/10/08/what-is-jsonp/">JSONP</a> that uses a callback function to send the JSON data back to our domain.</strong>
+ It’s this capability that makes JSON so incredibly useful, as it opens 
+up a lot of doors that were previously difficult to work around.</p>
+<h2>How Do We Load JSON into a Project?</h2>
+<p><a href="http://www.shareasale.com/r.cfm?b=584692&amp;u=1041005&amp;m=43811&amp;urllink=&amp;afftrack=" target="_blank"><img class="alignright" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/Affiliates_300x120_StartFree.gif" alt="100% Off First Month - Learn coding, Web Design and More!" style="margin-top: 40px; margin-bottom: 15px" height="120" border="0" width="300"></a><br>
+One of the easiest ways to load JSON data into our web applications is to <strong>use the <a href="http://docs.jquery.com/Ajax/jQuery.ajax"><code>$.ajax()</code></a> method available in the jQuery library.&nbsp;</strong>The ease of retrieving data will vary based on the site providing the data, but a simple example might look like this:</p>
+<p>https://gist.github.com/2760340</p>
+<p>This example would request the latest feed items in JSON format and 
+output them to the browser. Obviously, we wouldn’t want to output raw 
+JSON data to the browser, but this example shows the basics of loading 
+JSON from an external source.</p>
+<h2>A Practical Example: Loading Flickr Streams with JSON and jQuery</h2>
+<div class="demolink"><a href="http://www.copterlabs.com/demo/reading-json">See the Demo</a> | <a href="http://www.copterlabs.com/demo/EnnuiDesign_reading-json.zip">Download the Source</a></div>
+<p>To show how JSON works in a real-world example, let’s <strong>load photos from Flickr using jQuery and the JSON version of Flickr’s “Latest” photo feed.</strong></p>
+<h3>Step 1: Create the AJAX Request</h3>
+<p>Flickr’s photostream feeds are relatively easy to access. All users 
+have a unique ID number, which we will send as part of the request to 
+this URL.</p>
+<p>https://gist.github.com/2760345</p>
+<p>The request we need to send asks for the latest photos from the user 
+in question, along with flags asking for a JSON-formatted response. The 
+request we need to send will look like this:</p>
+<p>https://gist.github.com/2760354</p>
+<p>In the above example, <strong>XXXXXXXX@NXX</strong> needs to be replaced with the user’s ID. We’ll be writing a function, so the user’s ID will be passed as an argument called <code>flickrID</code>. Our function will be called <code>loadFlickr()</code>. Let’s create the function that will load our JSON response:</p>
+<p>https://gist.github.com/2760361</p>
+<p>The returned JSON data will look something like this (note that I’ve 
+removed all but one of the returned photos for the sake of brevity):</p>
+<p>https://gist.github.com/2760362</p>
+<h3>Step 2: Process the JSON Data</h3>
+<p>What we’re going to do is <strong>display the thumbnails of the latest 16 photos, which will link to the medium-sized display of the image.</strong>
+ The Flickr JSON is a little confusing, and it doesn’t provide a direct 
+link to the thumbnail version of our photos, so we’ll have to use some 
+trickery on our end to get to it, which we’ll cover in just a moment. 
+Each photo entry is stored in an array called <code>items</code>, which we access in our AJAX call using <code>feed.items</code>.
+ To get to the data about each entry, we’ll loop through the items until
+ we’ve either hit the last available photo or 16 total photos; whichever
+ comes first. Let’s modify our function and set up the loop:</p>
+<p>https://gist.github.com/2760364</p>
+<p>The element we’re interested in is the “m” element stored within the 
+“media” element. This can be accessed within our loop using <code>feed.items[i].media.m</code>. <strong>We’re
+ going to run a regular expression on this value to get both the medium 
+and thumbnail image paths, which we’ll assemble into a linked thumbnail 
+image.</strong> Then, we’ll push the newly assembled HTML into the array of thumbs we created. After we’ve finished the loop, we’ll <strong>combine all the images into one string of HTML&nbsp;</strong>and replace the contents of our display element with the loaded thumbnails. Let’s add this functionality to our script:</p>
+<p>https://gist.github.com/2760365</p>
+<p>Note that I’ve also added a function called <code>addLB()</code> to the end of this function; this adds the <a href="http://leandrovieira.com/projects/jquery/lightbox/">lightbox</a>&nbsp;effect to our thumbnails, which is purely for aesthetics.</p>
+<h3>Step 3: Call Our Function</h3>
+<p>At this point, we’re ready to call our function. To load my Flickr stream, we would need to call our function as follows:</p>
+<p>https://gist.github.com/2760370</p>
+<p>The example posted will pull multiple users’ photostreams into the 
+containing box without causing a page refresh. Look at the source code 
+on <a href="http://www.copterlabs.com/demo/reading-json">the demo</a> to see how it was done. <em><strong>NOTE:</strong>
+ Keep in mind that this demo was to show how to load JSON data, and not 
+on how to implement the code to call the function. The JavaScript calls 
+are inline, which should NOT be used in a production script.</em></p>
+<div class="demolink"><a class="no-ajax" href="http://www.copterlabs.com/demo/reading-json">See the Demo</a> | <a href="http://www.copterlabs.com/demo/EnnuiDesign_reading-json.zip">Download the Source</a></div>
+<h2>Summary</h2>
+<p>Have you used JSON before? Is there anything you’d like to clarify or
+ see further clarified about JSON? Let me know in the comments!</p>
+<div style="text-align: center">
+<a href="http://www.shareasale.com/r.cfm?b=430951&amp;u=1041005&amp;m=43811&amp;urllink=&amp;afftrack=" target="_blank"><img class="aligncenter" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/500x40.png" alt="" border="0"></a>
+</div>
+                <div class="author-box">
+                    <h2>About Jason Lengstorf</h2>
+                    <img alt="" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/e4f8344ed7cc2d496b08dfd6a1accc51.jpg" srcset="http://2.gravatar.com/avatar/e4f8344ed7cc2d496b08dfd6a1accc51?s=120&amp;d=mm&amp;r=g 2x" class="avatar avatar-60 photo" height="60" width="60">Jason
+ Lengstorf lives in Portland, OR. He loves design, code, business, and 
+marketing. He also writes and speaks about design, code, business, and 
+marketing. 
+                    <a href="http://www.copterlabs.com/author/jlengstorf/">
+                        View all posts by Jason Lengstorf → 
+                    </a>
+                </div><!--/.author-box-->
+            <h3 id="comments-title">73 Responses to JSON: What It Is, How It Works, &amp; How to Use It</h3>
+
+
+            <ol>
+                <!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+<!-- #comment-## -->
+            </ol>
+
+						<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://www.copterlabs.com/wp-comments-post.php?wpe-comment-post=copterlabs" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" size="30" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" size="30" aria-describedby="email-notes" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true" required="required"></textarea></p>						<p class="form-allowed-tags" id="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a
+ href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; 
+&lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del 
+datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; 
+&lt;strike&gt; &lt;strong&gt; </code></p>
+						<p class="form-submit"><input name="submit" id="submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="125" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="ec257dcd46" type="hidden"></p><p style="display: none;"></p>					<input id="ak_js" name="ak_js" value="1437159631413" type="hidden"></form>
+							</div><!-- #respond -->
+			
+            </article><!-- end .post -->
+        </div><!--/.post-wrapper-->
+<aside id="sidebar">
+    <ul>
+        <li>
+            <h3>Like Copter Labs on Facebook</h3>
+            <div fb-iframe-plugin-query="app_id=&amp;container_width=357&amp;href=https%3A%2F%2Ffacebook.com%2Fcopterlabs&amp;locale=en_US&amp;sdk=joey&amp;send=true&amp;show_faces=true&amp;width=357" fb-xfbml-state="rendered" class="fb-like active fb_iframe_widget" data-href="https://facebook.com/copterlabs" data-send="true" data-width="357" data-show-faces="true"><span style="vertical-align: bottom; width: 357px; height: 28px;"><iframe class="" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/like_002.htm" style="border: medium none; visibility: visible; width: 357px; height: 28px;" title="fb:like Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f15e2ea8fd16c6c" frameborder="0" height="1000px" width="357px"></iframe></span></div>
+        </li>
+        <li>
+            <a target="_blank" href="http://www.shareasale.com/r.cfm?b=564891&amp;u=1041005&amp;m=43811&amp;urllink=&amp;afftrack="><img src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/Java_300x250.jpg" alt="Sign Up Today for Your 2 Week Free Trial!" border="0"></a>
+        </li>
+        <li>
+            <a target="_blank" href="http://www.shareasale.com/r.cfm?b=683885&amp;u=1041005&amp;m=41388&amp;urllink=&amp;afftrack="><img src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/WPEngine-HOHOHOSTING-300x250.jpg" alt="WP Engine WordPress Hosting Special offer code HOHOHOSTING" border="0"></a>
+        </li>
+        <li>
+            <script type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/fusion.js" id="_fusionads_js"></script><div id="fusionads"><span class="fusion-wrap"><a href="http://www.launchbit.com/taz/9533-6033-111/" class="fusion-img" target="_blank"><img src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/6033-5977-ae07acb388b926a9744f0754c00e2ed36d06de06-bsa.png" alt="" style="max-width:130px;" height="100" border="0" width="130"></a><a href="http://www.launchbit.com/taz/9533-6033-111/" class="fusion-text" target="_blank">App Marketing eBook See how web marketing tactics map to their mobile counterparts in this eBook.</a></span><a href="http://carbonads.net/" target="_blank" class="fusion-poweredby">ads via Carbon</a><img style="display: none;" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/a.gif" height="1" border="0" width="1"></div>
+        </li>
+        <li data-twttr-id="twttr-sandbox-0">
+            <h3>Follow Copter Labs on Twitter</h3>
+            <iframe title="Twitter Timeline" style="border: medium none; max-width: 100%; min-width: 180px; margin: 0px; padding: 0px; display: inline-block; position: static; visibility: visible; width: 357px;" allowfullscreen="" class="twitter-timeline twitter-timeline-rendered" allowtransparency="true" scrolling="no" id="twitter-widget-1" frameborder="0" height="400"></iframe>
+        </li>
+    </ul>
+</aside></section><!--/#main-content-->
+
+<section id="call-to-action">
+
+    <div class="ribbon">
+        <h2>We’re Ready When You Are</h2>
+        <p>Ready to build something awesome?</p>
+        <a href="http://www.copterlabs.com/contact">Start Here</a>
+    </div><!--/.ribbon-->
+
+</section><!--/#call-to-action-->
+
+<footer>
+
+    <ul id="footer-nav">
+        <li class="go-left">
+            All content © 2013 
+            <a href="http://www.copterlabs.com/" title="Copter Labs — Web Design in Portland, OR">Copter Labs</a>
+        </li><!--/.go-left-->
+        <li>
+            <a href="https://basecamp.com/1814595/">Client Login</a>
+        </li>
+        <li>
+            <a href="http://www.copterlabs.com/support/">Support</a>
+        </li>
+        <li>
+            <a href="http://www.copterlabs.com/contact/">Contact</a>
+        </li>
+    </ul><!--/#footer-nav-->
+
+    <ol id="footnotes">
+    </ol><!--/#footnotes-->
+
+</footer>
+
+
+
+<!-- Initializes Facebook ("Like" buttons and such) -->
+<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/xRlIuTsSMoE.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/xRlIuTsSMoE_002.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20879901-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script gapi_processed="true" type="text/javascript" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/form.js"></script>
+ 
+
+
+
+<div id="loading-notification"></div><iframe style="display: none;" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="JSON%20%20What%20It%20Is,%20How%20It%20Works,%20&amp;%20How%20to%20Use%20It_fichiers/postmessageRelay.htm" id="oauth2relay1956165928" name="oauth2relay1956165928"></iframe></body></html>

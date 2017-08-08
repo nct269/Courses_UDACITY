@@ -1,0 +1,2804 @@
+<!DOCTYPE html>
+<html class="wf-proximanova-i4-active wf-proximanova-n1-active wf-proximanova-n3-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n7-active wf-active"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04 | DigitalOcean</title>
+
+<meta name="description" content="A LEMP stack (Linux, Nginx, MySQL, and PHP) is a powerful set of software that can be configured to serve dynamic sites and web apps from your server. In this guide, we will discuss how to install a LEMP stack on an Ubuntu 14.04 server.">
+<meta name="keywords" content="Getting Started PHP MySQL Nginx">
+
+<meta name="og:title" content="How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04 | DigitalOcean">
+<meta name="og:description" content="A LEMP stack (Linux, Nginx, MySQL, and PHP) is a powerful set of software that can be configured to serve dynamic sites and web apps from your server. In this guide, we will discuss how to install a LEMP stack on an Ubuntu 14.04 server.">
+<meta name="og:site_name" content="DigitalOcean">
+<meta name="og:type" content="article">
+
+<meta name="twitter:site" content="DigitalOcean">
+<meta name="twitter:title" content="How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04 | DigitalOcean">
+<meta name="twitter:description" content="A LEMP stack (Linux, Nginx, MySQL, and PHP) is a powerful set of software that can be configured to serve dynamic sites and web apps from your server. In this guide, we will discuss how to install a LEMP stack on an Ubuntu 14.04 server.">
+<meta name="twitter:creator" content="DigitalOcean">
+<meta name="twitter:card" content="photo">
+<meta name="twitter:url" content="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04">
+
+<meta property="og:image" content="https://www.digitalocean.com/assets/community/default_social_sharing-4c803c152c4cc1974dfac71a69fdab63.png">
+<meta name="twitter:image" content="https://www.digitalocean.com/assets/community/default_social_sharing-4c803c152c4cc1974dfac71a69fdab63.png">
+
+  <link rel="canonical" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04">
+
+
+    <link rel="stylesheet" media="all" href="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/application-b84c8dd766c9ec8b5f3a3b2e454dad37.css">
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="h/qq2iHwx8G7OpPXLxK3Nz/lUIJ4LWnDqa1H/R2+WzEWMszCQPGESB70pJGm8eByCLU2zuv7rNM7Ge7ml8FLTg==">
+    <script async="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/bat.js"></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/fbds.js" async=""></script><script type="text/javascript" async="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/quant.js"></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/conversion_async.js" async="" type="text/javascript"></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/roundtrip.js" async="" type="text/javascript"></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/analytics.js" async="" type="text/javascript"></script><script id="cio-tracker" data-site-id="e7cc779295927747a7c2" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/track.js" async="" type="text/javascript"></script><script async="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/cbgapi.loaded_0"></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/hn-button.js" id="hn-button.js" async=""></script><script gapi_processed="true" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/plusone.js" async="" type="text/javascript"></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/all.js" async="" id="facebook-jssdk"></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/widgets.js" async="" id="twitter-wjs"></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/gtm.js" async=""></script><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/analytics_002.js" async="" type="text/javascript"></script><script type="text/javascript" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/njm7orv.js"></script>
+    <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}</style><link media="all" href="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/l.css" rel="stylesheet"><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/701281621.js"></script>
+    <script type="text/javascript">
+      if(window.analytics=window.analytics||[],window.analytics.included)window.console&&console.error&&console.error("analytics.js included twice");else{window.analytics.included=!0,window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(a){return function(){var n=Array.prototype.slice.call(arguments);return n.unshift(a),window.analytics.push(n),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(a){var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+a+"/analytics.min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(n,t)},window.analytics.SNIPPET_VERSION="2.0.9",
+      window.analytics.load("puo3uv968t")}
+      window.analytics.page();
+    </script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.digitalocean.com/community/tutorials/feed">
+    <script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/application-75967e85df790b143e43a5b296c8a6aa.js"></script>
+  <style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow-x:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4IDGVTPEAFC4TM2QKYNQ53" type="text/javascript" async="true"></script><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_003.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_004.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_002.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_007.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_008.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_005.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/out_006.gif" height="1" width="1">
+<img alt="" style="display:none" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/tr.gif" height="1" width="1"><img style="border-style:none;" alt="" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/a.gif" height="1" width="1">
+<img src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/seg.gif" height="1" width="1">
+</div></head>
+  <body class="tutorials-controller tutorial-single" data-env="production" ,="" data-prefix="/community" data-user-id="" data-facebook-app-id="694818843983011">
+    <script>
+//<![CDATA[
+
+//]]>
+</script>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KHWBBT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KHWBBT');</script>
+<!-- End Google Tag Manager -->
+    
+
+    <div class="outside_viewport">
+        <div style="top: 72px;" class="table-of-contents  tocify sticky"><ul style="display: none;" class="tocify-header" id="tocify-header0"><li data-unique="prerequisites" class="tocify-item tocify-focus"><a>Prerequisites</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header1"><li data-unique="step-one-—-install-the-nginx-web-server" class="tocify-item"><a>Step One — Install the Nginx Web Server</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header2"><li data-unique="step-two-—-install-mysql-to-manage-site-data" class="tocify-item"><a>Step Two — Install MySQL to Manage Site Data</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header3"><li data-unique="step-three-—-install-php-for-processing" class="tocify-item"><a>Step Three — Install PHP for Processing</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header4"><li data-unique="step-four-—-configure-nginx-to-use-our-php-processor" class="tocify-item"><a>Step Four — Configure Nginx to Use our PHP Processor</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header5"><li data-unique="step-five-—-create-a-php-file-to-test-configuration" class="tocify-item"><a>Step Five — Create a PHP File to Test Configuration</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header6"><li data-unique="conclusion" class="tocify-item"><a>Conclusion</a></li></ul></div>
+  <div id="share-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Share</h1>
+          <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+        </div>
+        <div class="modal-body">
+
+          <div class="social-sharing social-sharing-container">
+            <ul class="bottom ">
+              <li class="shareBtn" id="sbTwitter">
+                <a href="http://twitter.com/share?text=How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-icon share-popup" title="Share on Twitter">
+                  <span class="sIcon icon-bird"></span>
+                </a>
+                
+                <a href="http://twitter.com/share?text=How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-link share-popup" title="Share on Twitter">
+                  Twitter
+                </a>
+                
+              </li>
+
+              <li class="shareBtn" id="sbFacebook">
+                <a class="share-icon facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                  <span class="sIcon icon-facebook-B"></span>
+                </a>
+
+                <a class="share-link facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                  Facebook
+                </a>
+              </li>
+              <li class="shareBtn" id="sbGoogle">
+                <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-icon share-popup" title="Share on Google+">
+                  <span class="sIcon icon-google-plus-B"></span>
+                </a>
+
+                <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-link share-popup" title="Share on Google+">
+                  Google+
+                </a>
+              </li>
+              <li class="shareBtn" id="sbYC">
+                <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-icon share-popup " target="_blank" title="Submit to Hacker News">
+                  <span class="sIcon icon-hacker-news"></span>
+                </a>
+
+                <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-link share-popup" target="_blank" title="Submit to Hacker News">
+                  Hacker News
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="contents-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Contents</h1>
+          <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+        </div>
+        <div class="modal-body">
+
+          <div class="table-of-contents-modal open tocify"><ul style="display: none;" class="tocify-header" id="tocify-header0"><li data-unique="prerequisites" class="tocify-item tocify-focus"><a>Prerequisites</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header1"><li data-unique="step-one-—-install-the-nginx-web-server" class="tocify-item"><a>Step One — Install the Nginx Web Server</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header2"><li data-unique="step-two-—-install-mysql-to-manage-site-data" class="tocify-item"><a>Step Two — Install MySQL to Manage Site Data</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header3"><li data-unique="step-three-—-install-php-for-processing" class="tocify-item"><a>Step Three — Install PHP for Processing</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header4"><li data-unique="step-four-—-configure-nginx-to-use-our-php-processor" class="tocify-item"><a>Step Four — Configure Nginx to Use our PHP Processor</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header5"><li data-unique="step-five-—-create-a-php-file-to-test-configuration" class="tocify-item"><a>Step Five — Create a PHP File to Test Configuration</a></li></ul><ul style="display: none;" class="tocify-header" id="tocify-header6"><li data-unique="conclusion" class="tocify-item"><a>Conclusion</a></li></ul></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="share-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Share</h1>
+          <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+        </div>
+        <div class="modal-body">
+
+          <div class="social-sharing social-sharing-container">
+            <ul class="top ">
+              <li class="shareBtn" id="sbTwitter">
+                <a href="http://twitter.com/share?text=How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-icon share-popup" title="Share on Twitter">
+                  <span class="sIcon icon-bird"></span>
+                </a>
+                
+                <a href="http://twitter.com/share?text=How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-link share-popup" title="Share on Twitter">
+                  Twitter
+                </a>
+                
+              </li>
+
+              <li class="shareBtn" id="sbFacebook">
+                <a class="share-icon facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                  <span class="sIcon icon-facebook-B"></span>
+                </a>
+
+                <a class="share-link facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                  Facebook
+                </a>
+              </li>
+              <li class="shareBtn" id="sbGoogle">
+                <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-icon share-popup" title="Share on Google+">
+                  <span class="sIcon icon-google-plus-B"></span>
+                </a>
+
+                <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-link share-popup" title="Share on Google+">
+                  Google+
+                </a>
+              </li>
+              <li class="shareBtn" id="sbYC">
+                <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-icon share-popup " target="_blank" title="Submit to Hacker News">
+                  <span class="sIcon icon-hacker-news"></span>
+                </a>
+
+                <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-link share-popup" target="_blank" title="Submit to Hacker News">
+                  Hacker News
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+    <div id="newsletter-signup-dialog" class="newsletter-signups-dialog reveal" data-newsletter-signup-dialog="" data-article-target=".content-body">
+  <div class="pull-right">
+  <a href="javascript:;" class="newsletter-signups-dialog-dismiss" data-newsletter-signup-dismiss="">×</a>
+
+</div>
+<h4 class="newsletter-signups-dialog-title">
+  Sign up for our newsletter.
+</h4>
+<p class="newsletter-signups-dialog-description">
+  Get the latest tutorials on SysAdmin and open source topics.
+</p>
+<form class="newsletter-signup" id="new_newsletter_signup" data-newsletter-signup="true" action="/community/newsletter_signup" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden">
+
+  <input data-newsletter-signup-field="url" name="newsletter_signup[url]" id="newsletter_signup_url" type="hidden">
+  <input data-newsletter-signup-field="title" name="newsletter_signup[title]" id="newsletter_signup_title" type="hidden">
+
+  <div class="newsletter-signup-ajax-error" data-newsletter-signup-ajax-error=""></div>
+
+
+  <div class="form-group">
+    <input placeholder="email@example.com" required="required" class="field" name="newsletter_signup[email]" id="newsletter_signup_email" type="email">
+  </div>
+
+  <button data-disable-with="Sign Up" class="button blue-button">
+    Sign Up
+  </button>
+
+</form>
+
+</div>
+
+
+    </div>
+
+      <div class="mobile-nav">
+  
+<div class="account-buttons">
+    <div id="entrance">
+      <a id="sign-up" class="button" href="https://www.digitalocean.com/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+      <a id="log-in" class="button" href="https://www.digitalocean.com/community/auth/digitalocean">Log In</a>
+    </div>
+</div>
+    
+  <a class="close-panel icon-close" href="javascript:void(0);"></a>
+
+  <form class="mobile-search" action="/community/search" accept-charset="UTF-8" method="get"><input name="utf8" value="✓" type="hidden">
+    <span class="icon icon-search-thin"></span>
+    <input name="q" id="q" placeholder="Search" type="text">
+    <button name="button" type="submit" class="icon-btn">submit</button>
+</form>
+  
+<nav>
+
+  <ul>
+    <li><a href="https://www.digitalocean.com/community/tutorials">Tutorials</a></li>
+    <li><a href="https://www.digitalocean.com/community/questions">Questions</a></li>
+    <li><a href="https://www.digitalocean.com/community/projects">Projects</a></li>
+    <li class="mobile-nav-only"><a href="https://www.digitalocean.com/">Main Site</a></li>
+  </ul>
+</nav>
+
+  
+</div>
+
+
+      
+    	<header>
+  <div class="main-menu-container">
+    <div class="wrapper">
+      <div class="logo">
+        <a class="" href="https://www.digitalocean.com/">
+          <span class="icon icon-cloud"></span>
+</a>
+        <a class="" href="https://www.digitalocean.com/community">
+          <span class="logo-community-text">Community</span>
+</a>      </div>
+      
+      <a class="mobile-nav-toggle icon-menu-thin" data-role="left">
+        <span>Menu</span>
+      </a>
+
+      
+<nav>
+
+  <ul>
+    <li><a href="https://www.digitalocean.com/community/tutorials">Tutorials</a></li>
+    <li><a href="https://www.digitalocean.com/community/questions">Questions</a></li>
+    <li><a href="https://www.digitalocean.com/community/projects">Projects</a></li>
+    <li class="mobile-nav-only"><a href="https://www.digitalocean.com/">Main Site</a></li>
+  </ul>
+</nav>
+
+      
+      
+<div class="account-buttons">
+    <div id="entrance">
+      <a id="sign-up" class="button" href="https://www.digitalocean.com/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+      <a id="log-in" class="button" href="https://www.digitalocean.com/community/auth/digitalocean">Log In</a>
+    </div>
+</div>
+      <div class="header-search open">
+  <form action="/community/search" accept-charset="UTF-8" method="get"><input name="utf8" value="✓" type="hidden">
+    <span class="icon icon-search-thin"></span>
+    <input name="q" id="q" placeholder="Search" autocomplete="off" spellcheck="off" class="header-search-input" data-algolia-application-id="6ZHEUVKJ88" data-algolia-api-key="c5470567eae7fa1177d43222e18ba086" type="text">
+    <button name="button" type="submit" class="icon-btn">submit</button>
+</form></div>
+
+<div class="search-results-dropdown dropdown" data-root-path="https://www.digitalocean.com/community">
+  <div class="container">
+    <div class="header-search-results-list"></div>
+
+    <div id="btn-wrap">
+      <a class="more-search-results" data-search-path="/community/search" href="https://www.digitalocean.com/community/search">
+        <span class="icon-mag"></span>
+        View All Results
+</a>    </div>
+  </div>
+</div>
+
+<script type="text/template" id="autocomplete-hits-template">
+  <div class="inner-search">
+    <ul>
+        {{#hits}}
+          <li>
+            <span class='icon icon-{{type}}'></span>
+            <a href='{{url}}'>{{{_highlightResult.title.value}}}</a>
+          </li>
+        {{/hits}}
+    </ul>
+  </div>
+</script>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  
+
+  <div class="wrapper">
+    
+  </div>
+</header>
+      
+        <div class="flash-container"></div>
+
+
+      
+      
+      <div class="wrapper layout-wrapper">
+
+        
+
+
+
+
+
+
+<div class="section-content section-content-growable content">
+  <div class="postable-info-bar-container">
+  <div class="postable-info-bar">
+    <div class="left-section">
+        <div class="tutorial-author-avatar">
+          <a href="https://www.digitalocean.com/community/users/jellingwood"><div class="mod-avatar mod-avatar-small"><img alt="jellingwood" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/60d901f61a6146e14a3e989bc1f4ef11.png" height="80" width="80"><span data-original-title="MOD" class="mod-star" title="" data-toggle="tooltip" data-container="body"><span class="mod-star-icon"></span></span></div></a>
+        </div>
+
+        <div class="author-and-date">
+          <div class="tutorial-author">
+            <div class="by">By: </div>
+            <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a>
+          </div>
+        </div>
+
+      <div class="upvotes upvoted tutorial-upvote"><form data-upvotable="tutorial_1148" data-upvotable-type="tutorial" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=1148&amp;upvote%5Bupvotable_type%5D=Tutorial" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="h/qq2iHwx8G7OpPXLxK3Nz/lUIJ4LWnDqa1H/R2+WzEWMszCQPGESB70pJGm8eByCLU2zuv7rNM7Ge7ml8FLTg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="" title="Do you find this tutorial helpful? Show the author by Hearting it!" data-placement="bottom"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count ">162</div></div>
+
+        <div class="tutorial-comments-count">
+          <span class="icon icon-new-comment"></span>
+          111
+        </div>
+
+
+    </div>
+
+    <div class="right-section">
+      <div class="section-item social-sharing-item">
+        <div class="sharing">
+  <a class="share-button" href="#" data-toggle="modal" data-target="#share-modal">
+    <span class="icon icon-share-square"></span>
+    <span class="share-button-text">
+      Share
+    </span>
+  </a>
+</div>
+
+
+      </div>
+
+        <div class="section-item table-of-contents-triggers"><div class="toc-trigger ">
+  <a href="javascript:void(0);">
+    <span class="title">Contents</span>
+    <span class="icon icon-close-light"></span>
+    <span class="icon icon-arrow-down"></span>
+  </a>
+</div>
+
+
+
+<div class="toc-trigger-mobile" data-toggle="modal" data-target="#contents-modal">
+  <a href="javascript:void(0);">
+    <span class="title">Contents</span>
+    <span class="icon icon-arrow-down"></span>
+  </a>
+</div>
+
+
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="container">
+
+      <div class="info-cta">
+    <a class="icon-close-light" href="javascript:void();"></a>
+    We hope you find this tutorial helpful. In addition to guides like 
+this one, we provide simple cloud infrastructure for developers. <a href="https://www.digitalocean.com/?utm_medium=community&amp;utm_source=community_gencta&amp;utm_campaign=needaserver&amp;utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04">
+        Learn more →
+</a>  </div>
+
+  
+    <h1 class="content-title">How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04</h1>
+
+    <span class="meta-section tags">
+      <span class="meta-value"><span class="tutorial-date">Apr 25, 2014</span> <span class="hashtag-icon"></span> <a class="" href="https://www.digitalocean.com/community/tags/getting-started?type=tutorials">Getting Started</a>, <a class="" href="https://www.digitalocean.com/community/tags/nginx?type=tutorials">Nginx</a>, <a class="" href="https://www.digitalocean.com/community/tags/mysql?type=tutorials">MySQL</a>, <a class="" href="https://www.digitalocean.com/community/tags/php?type=tutorials">PHP</a> <a class="" href="https://www.digitalocean.com/community/tags/ubuntu?type=tutorials">Ubuntu</a></span>
+    </span>
+  </div>
+
+  <div class="container">
+      <div class="tutorial-series-container collapsed">
+    <div class="section-content">
+
+      <h2 class="tutorial-series-heading">Tutorial Series</h2>
+
+            <div class="tutorial-series-toggle">
+              This tutorial is part 2 of 4 in the series:
+              <a data-reveal="fast" href="#tutorial_series_44">Introduction to Nginx and LEMP on Ubuntu 14.04</a>
+            </div>
+
+          <div id="tutorial_series_44" class="tutorial-series hidden">
+            <a class="icon-close" href="javascript:void(0);"></a>
+            <h3 class="series-title"><a href="https://www.digitalocean.com/community/tutorial_series/introduction-to-nginx-and-lemp-on-ubuntu-14-04">Introduction to Nginx and LEMP on Ubuntu 14.04</a></h3>
+
+              <div class="description">
+                This tutorial series helps sysadmins set up a new web 
+server using the LEMP stack, focusing on Nginx setup with virtual 
+blocks. This will let you serve multiple websites from one Droplet.
+
+You'll start by setting up your Ubuntu 14.04 server and end with 
+multiple virtual blocks set up for your websites. An Nginx configuration
+ guide is included at the end for reference.
+              </div>
+            <ol class="tutorial-series-list">
+
+    <li class="">
+      <h2><a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Initial Server Setup with Ubuntu 14.04</a></h2>
+
+      <div class="feedable-date">April 17, 2014</div>
+      <div class="meta">
+        <div class="points">
+          <span class="icon-upvote-heart-small"></span>
+          480
+        </div>
+
+        <div class="response-count">
+          <span class="icon icon-new-comment"></span>
+          135
+        </div>
+
+          <span class="author">By <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></span>
+      </div>
+      <div class="arrow-left"></div>
+    </li>
+    <li class="active">
+      <h2><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04">How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04</a></h2>
+
+      <div class="feedable-date">April 25, 2014</div>
+      <div class="meta">
+        <div class="points">
+          <span class="icon-upvote-heart-small"></span>
+          162
+        </div>
+
+        <div class="response-count">
+          <span class="icon icon-new-comment"></span>
+          115
+        </div>
+
+          <span class="author">By <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></span>
+      </div>
+      <div class="arrow-left"></div>
+    </li>
+    <li class="">
+      <h2><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-14-04-lts">How To Set Up Nginx Server Blocks (Virtual Hosts) on Ubuntu 14.04 LTS</a></h2>
+
+      <div class="feedable-date">April 25, 2014</div>
+      <div class="meta">
+        <div class="points">
+          <span class="icon-upvote-heart-small"></span>
+          157
+        </div>
+
+        <div class="response-count">
+          <span class="icon icon-new-comment"></span>
+          65
+        </div>
+
+          <span class="author">By <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></span>
+      </div>
+      <div class="arrow-left"></div>
+    </li>
+    <li class="">
+      <h2><a href="https://www.digitalocean.com/community/tutorials/understanding-the-nginx-configuration-file-structure-and-configuration-contexts">Understanding the Nginx Configuration File Structure and Configuration Contexts</a></h2>
+
+      <div class="feedable-date">November 18, 2014</div>
+      <div class="meta">
+        <div class="points">
+          <span class="icon-upvote-heart-small"></span>
+          44
+        </div>
+
+        <div class="response-count">
+          <span class="icon icon-new-comment"></span>
+          2
+        </div>
+
+          <span class="author">By <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></span>
+      </div>
+      <div class="arrow-left"></div>
+    </li>
+</ol>
+  <a class="prev-tutorial" href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Previous Tutorial</a>
+  <a class="next-tutorial" href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-14-04-lts">Next Tutorial</a>
+
+          </div>
+    </div>
+  </div>
+
+  </div>
+
+    <div class="content-body tutorial-content tutorial-content-legacy" data-growable-markdown="">
+      <h3 id="introduction">Introduction</h3>
+
+<p>The LEMP software stack is a group of software that can be used to 
+serve dynamic web pages and web applications.  This is an acronym that 
+describes a Linux operating system, with an Nginx web server.  The 
+backend data is stored in MySQL and the dynamic processing is handled by
+ PHP.</p>
+
+<p>In this guide, we will demonstrate how to install a LEMP stack on an 
+Ubuntu 14.04 server.  The Ubuntu operating system takes care of the 
+first requirement.  We will describe how to get the rest of the 
+components up and running.</p>
+
+<p><span class="note"><strong>Note:</strong> The LEMP Stack can be installed automatically on your Droplet by adding <a href="http://do.co/1LGk9EC">this script</a> to its User Data when launching it. Check out <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-droplet-metadata">this tutorial</a> to learn more about Droplet User Data.<br></span></p>
+
+<div data-unique="prerequisites" name="prerequisites"></div><h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before you complete this tutorial, you should have a regular, non-root user account on your server with <code>sudo</code> privileges.  You can learn how to set up this type of account by completing steps 1-4 in our <a href="https://www.digitalocean.com/community/articles/initial-server-setup-with-ubuntu-14-04">Ubuntu 14.04 initial server setup</a>.</p>
+
+<p>Once you have your account available, sign into your server with that
+ username.  You are now ready to begin the steps outlined in this guide.</p>
+
+<div data-unique="step-one-—-install-the-nginx-web-server" name="step-one-—-install-the-nginx-web-server"></div><h2 id="step-one-—-install-the-nginx-web-server">Step One — Install the Nginx Web Server</h2>
+
+<p>In order to display web pages to our site visitors, we are going to employ Nginx, a modern, efficient web server.</p>
+
+<p>All of the software we will be getting for this procedure will come 
+directly from Ubuntu's default package repositories.  This means we can 
+use the <code>apt</code> package management suite to complete the installation.</p>
+
+<p>Since this is our first time using <code>apt</code> for this session, we should start off by updating our local package index.  We can then install the server:</p>
+<pre class="code-pre "><code langs="">sudo apt-get update
+sudo apt-get install nginx
+</code></pre>
+<p>In Ubuntu 14.04, Nginx is configured to start running upon installation.</p>
+
+<p>You can test if the server is up and running by accessing your server's domain name or public IP address in your web browser.</p>
+
+<p>If you do not have a domain name pointed at your server and you do 
+not know your server's public IP address, you can find it by typing one 
+of the following into your terminal:</p>
+
+<pre>ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
+</pre>
+
+<pre><span class="highlight">111.111.111.111</span>
+<span class="highlight">fe80::601:17ff:fe61:9801</span>
+</pre>
+
+<p>Or you could try using:</p>
+
+<pre>curl http://icanhazip.com
+</pre>
+
+<pre><span class="highlight">111.111.111.111</span>
+</pre>
+
+<p>Try one of the lines that you receive in your web browser.  It should take you to Nginx's default landing page:</p>
+
+<pre>http://<span class="highlight">server_domain_name_or_IP</span>
+</pre>
+
+<p><img src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/nginx_default.png" alt="Nginx default page"></p>
+
+<p>If you see the above page, you have successfully installed Nginx.</p>
+
+<div data-unique="step-two-—-install-mysql-to-manage-site-data" name="step-two-—-install-mysql-to-manage-site-data"></div><h2 id="step-two-—-install-mysql-to-manage-site-data">Step Two — Install MySQL to Manage Site Data</h2>
+
+<p>Now that we have a web server, we need to install MySQL, a database 
+management system, to store and manage the data for our site.</p>
+
+<p>You can install this easily by typing:</p>
+<pre class="code-pre "><code langs="">sudo apt-get install mysql-server
+</code></pre>
+<p>You will be asked to supply a root (administrative) password for use within the MySQL system.</p>
+
+<p>The MySQL database software is now installed, but its configuration is not exactly complete yet. </p>
+
+<p>First, we need to tell MySQL to generate the directory structure it 
+needs to store its databases and information.  We can do this by typing:</p>
+<pre class="code-pre "><code langs="">sudo mysql_install_db
+</code></pre>
+<p>Next, you'll want to run a simple security script that will prompt 
+you to modify some insecure defaults.  Begin the script by typing:</p>
+<pre class="code-pre "><code langs="">sudo mysql_secure_installation
+</code></pre>
+<p>You will need to enter the MySQL root password that you selected during installation.</p>
+
+<p>Next, it will ask if you want to change that password.  If you are 
+happy with your MySQL root password, type "N" for no and hit "ENTER".  
+Afterwards, you will be prompted to remove some test users and 
+databases.  You should just hit "ENTER" through these prompts to remove 
+the unsafe default settings.</p>
+
+<p>Once the script has been run, MySQL is ready to go.</p>
+
+<div data-unique="step-three-—-install-php-for-processing" name="step-three-—-install-php-for-processing"></div><h2 id="step-three-—-install-php-for-processing">Step Three — Install PHP for Processing</h2>
+
+<p>Now we have Nginx installed to serve our pages and MySQL installed to
+ store and manage our data, but we still need something to connect these
+ two pieces and to generate dynamic content.  We can use PHP for this.</p>
+
+<p>Since Nginx does not contain native PHP processing like some other web servers, we will need to install <code>php5-fpm</code>, which stands for "fastCGI process manager".  We will tell Nginx to pass PHP requests to this software for processing.</p>
+
+<p>We can install this module and will also grab an additional helper 
+package that will allow PHP to communicate with our database backend.  
+The installation will pull in the necessary PHP core files.  Do this by 
+typing:</p>
+<pre class="code-pre "><code langs="">sudo apt-get install php5-fpm php5-mysql
+</code></pre>
+<h3 id="configure-the-php-processor">Configure the PHP Processor</h3>
+
+<p>We now have our PHP components installed, but we need to make a slight configuration change to make our setup more secure.</p>
+
+<p>Open the main <code>php5-fpm</code> configuration file with root privileges:</p>
+<pre class="code-pre "><code langs="">sudo nano /etc/php5/fpm/php.ini
+</code></pre>
+<p>What we are looking for in this file is the parameter that sets <code>cgi.fix_pathinfo</code>.  This will be commented out with a semi-colon (;) and set to "1" by default.</p>
+
+<p>This is an extremely insecure setting because it tells PHP to attempt
+ to execute the closest file it can find if a PHP file does not match 
+exactly.  This basically would allow users to craft PHP requests in a 
+way that would allow them to execute scripts that they shouldn't be 
+allowed to execute.</p>
+
+<p>We will change both of these conditions by uncommenting the line and setting it to "0" like this:</p>
+<pre class="code-pre "><code langs="">cgi.fix_pathinfo=0
+</code></pre>
+<p>Save and close the file when you are finished.</p>
+
+<p>Now, we just need to restart our PHP processor by typing:</p>
+<pre class="code-pre "><code langs="">sudo service php5-fpm restart
+</code></pre>
+<p>This will implement the change that we made.</p>
+
+<div data-unique="step-four-—-configure-nginx-to-use-our-php-processor" name="step-four-—-configure-nginx-to-use-our-php-processor"></div><h2 id="step-four-—-configure-nginx-to-use-our-php-processor">Step Four — Configure Nginx to Use our PHP Processor</h2>
+
+<p>Now, we have all of the required components installed.  The only 
+configuration change we still need to do is tell Nginx to use our PHP 
+processor for dynamic content.</p>
+
+<p>We do this on the server block level (server blocks are similar to 
+Apache's virtual hosts).  Open the default Nginx server block 
+configuration file by typing:</p>
+<pre class="code-pre "><code langs="">sudo nano /etc/nginx/sites-available/default
+</code></pre>
+<p>Currently, with the comments removed, the Nginx default server block file looks like this:</p>
+
+<pre>server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+
+    server_name localhost;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+</pre>
+
+<p>We need to make some changes to this file for our site.</p>
+
+<ul>
+<li>First, we need to add an <code>index.php</code> option as the first value of our <code>index</code> directive to allow PHP index files to be served when a directory is requested.</li>
+<li>We also need to modify the <code>server_name</code> directive to point to our server's domain name or public IP address.</li>
+<li>The actual configuration file includes some commented out lines that
+ define error processing routines.  We will uncomment those to include 
+that functionality.</li>
+<li>For the actual PHP processing, we will need to uncomment a portion of another section.  We will also need to add a <code>try_files</code> directive to make sure Nginx doesn't pass bad requests to our PHP processor.</li>
+</ul>
+
+<p>The changes that you need to make are in red in the text below:</p>
+
+<pre>server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /usr/share/nginx/html;
+    index <span class="highlight">index.php</span> index.html index.htm;
+
+    server_name <span class="highlight">server_domain_name_or_IP</span>;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    <span class="highlight">error_page 404 /404.html;</span>
+    <span class="highlight">error_page 500 502 503 504 /50x.html;</span>
+    <span class="highlight">location = /50x.html {</span>
+        <span class="highlight">root /usr/share/nginx/html;</span>
+    <span class="highlight">}</span>
+
+    <span class="highlight">location ~ \.php$ {</span>
+        <span class="highlight">try_files $uri =404;</span>
+        <span class="highlight">fastcgi_split_path_info ^(.+\.php)(/.+)$;</span>
+        <span class="highlight">fastcgi_pass unix:/var/run/php5-fpm.sock;</span>
+        <span class="highlight">fastcgi_index index.php;</span>
+        <span class="highlight">fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span>
+        <span class="highlight">include fastcgi_params;</span>
+    <span class="highlight">}</span>
+}
+</pre>
+
+<p>When you've made the above changes, you can save and close the file.</p>
+
+<p>Restart Nginx to make the necessary changes:</p>
+<pre class="code-pre "><code langs="">sudo service nginx restart
+</code></pre>
+<div data-unique="step-five-—-create-a-php-file-to-test-configuration" name="step-five-—-create-a-php-file-to-test-configuration"></div><h2 id="step-five-—-create-a-php-file-to-test-configuration">Step Five — Create a PHP File to Test Configuration</h2>
+
+<p>Your LEMP stack should now be completely set up.  We still should test to make sure that Nginx can correctly hand <code>.php</code> files off to our PHP processor.</p>
+
+<p>We can do this by creating a test PHP file in our document root.  Open a new file called <code>info.php</code> within your document root in your text editor:</p>
+<pre class="code-pre "><code langs="">sudo nano /usr/share/nginx/html/info.php
+</code></pre>
+<p>We can type this into the new file.  This is valid PHP code that will return formatted information about our server:</p>
+<pre class="code-pre "><code langs="">&lt;?php
+phpinfo();
+?&gt;
+</code></pre>
+<p>When you are finished, save and close the file.</p>
+
+<p>Now, you can visit this page in your web browser by visiting your server's domain name or public IP address followed by <code>/info.php</code>:</p>
+
+<pre>http://<span class="highlight">server_domain_name_or_IP</span>/info.php
+</pre>
+
+<p>You should see a web page that has been generated by PHP with information about your server:</p>
+
+<p><img src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/php_info.png" alt="PHP page info"></p>
+
+<p>If you see a page that looks like this, you've set up PHP processing with Nginx successfully.</p>
+
+<p>After you test this, it's probably best to remove the file you 
+created as it can actually give unauthorized users some hints about your
+ configuration that may help them try to break in.  You can always 
+regenerate this file if you need it later.</p>
+
+<p>For now, remove the file by typing:</p>
+<pre class="code-pre "><code langs="">sudo rm /usr/share/nginx/html/info.php
+</code></pre>
+<div data-unique="conclusion" name="conclusion"></div><h2 id="conclusion">Conclusion</h2>
+
+<p>You should now have a LEMP stack configured on your Ubuntu 14.04 
+server.  This gives you a very flexible foundation for serving web 
+content to your visitors.</p>
+
+<div class="author">By Justin Ellingwood</div>
+
+    </div>
+</div>
+
+<div class="tutorial-footer">
+  <div class="tutorial-footer-details">
+  <div class="section-content tutorial-public-actions">
+    <div class="share-subscribe-actions">
+      <div class="upvotes upvoted tutorial-upvote large-upvotes"><form data-upvotable="tutorial_1148" data-upvotable-type="tutorial" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=1148&amp;upvote%5Bupvotable_type%5D=Tutorial" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="h/qq2iHwx8G7OpPXLxK3Nz/lUIJ4LWnDqa1H/R2+WzEWMszCQPGESB70pJGm8eByCLU2zuv7rNM7Ge7ml8FLTg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="" title="Do you find this tutorial helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count ">162</div></div>
+      <span class="meta-section opt-in-switch off signed-out-subscribe">
+  <span class="meta-label subscribe-label">
+    <span class="subscription-label subscribe">Subscribe</span>
+    <span class="subscription-label subscribed">Subscribed</span>
+  </span>
+  <span class="meta-value"><a data-toggle="modal" data-target="#sign-in-modal" class="mini-switch-container" href="javascript:void(0);"><div class="mini-switch off signed-out-subscribe"><div class="switch-handle"></div></div></a></span>
+</span>
+
+      <div class="sharing">
+  <a class="share-button" href="#" data-toggle="modal" data-target="#share-modal">
+    <span class="icon icon-share-square"></span>
+    <span class="share-button-text">
+      Share
+    </span>
+  </a>
+</div>
+
+
+    </div>
+  </div>
+
+  <div class="section-content tutorial-contributors one">
+      <div class="tutorial-footer-user">
+        <div class="tutorial-footer-user-avatar-container">
+          <a href="https://www.digitalocean.com/community/users/jellingwood"><div class="mod-avatar mod-avatar-small"><img alt="jellingwood" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/60d901f61a6146e14a3e989bc1f4ef11.png" height="80" width="80"><span data-original-title="MOD" class="mod-star" title="" data-toggle="tooltip" data-container="body"><span class="mod-star-icon"></span></span></div></a>
+        </div>
+        <div class="user-info">
+          <div class="tutorial-user-type">Author:</div>
+          <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+
+    <div class="tutorial-series-container ">
+    <div class="section-content">
+
+      <h2 class="tutorial-series-heading">Tutorial Series</h2>
+
+
+          <div id="tutorial_series_44" class="tutorial-series ">
+            
+            <h3 class="series-title"><a href="https://www.digitalocean.com/community/tutorial_series/introduction-to-nginx-and-lemp-on-ubuntu-14-04">Introduction to Nginx and LEMP on Ubuntu 14.04</a></h3>
+
+              <div class="description">
+                This tutorial series helps sysadmins set up a new web 
+server using the LEMP stack, focusing on Nginx setup with virtual 
+blocks. This will let you serve multiple websites from one Droplet.
+
+You'll start by setting up your Ubuntu 14.04 server and end with 
+multiple virtual blocks set up for your websites. An Nginx configuration
+ guide is included at the end for reference.
+              </div>
+            <ol class="tutorial-series-list">
+
+    <li class="">
+      <h2><a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Initial Server Setup with Ubuntu 14.04</a></h2>
+
+      <div class="feedable-date">April 17, 2014</div>
+      <div class="meta">
+        <div class="points">
+          <span class="icon-upvote-heart-small"></span>
+          480
+        </div>
+
+        <div class="response-count">
+          <span class="icon icon-new-comment"></span>
+          135
+        </div>
+
+          <span class="author">By <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></span>
+      </div>
+      <div class="arrow-left"></div>
+    </li>
+    <li class="active">
+      <h2><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04">How To Install Linux, nginx, MySQL, PHP (LEMP) stack on Ubuntu 14.04</a></h2>
+
+      <div class="feedable-date">April 25, 2014</div>
+      <div class="meta">
+        <div class="points">
+          <span class="icon-upvote-heart-small"></span>
+          162
+        </div>
+
+        <div class="response-count">
+          <span class="icon icon-new-comment"></span>
+          115
+        </div>
+
+          <span class="author">By <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></span>
+      </div>
+      <div class="arrow-left"></div>
+    </li>
+    <li class="">
+      <h2><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-14-04-lts">How To Set Up Nginx Server Blocks (Virtual Hosts) on Ubuntu 14.04 LTS</a></h2>
+
+      <div class="feedable-date">April 25, 2014</div>
+      <div class="meta">
+        <div class="points">
+          <span class="icon-upvote-heart-small"></span>
+          157
+        </div>
+
+        <div class="response-count">
+          <span class="icon icon-new-comment"></span>
+          65
+        </div>
+
+          <span class="author">By <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></span>
+      </div>
+      <div class="arrow-left"></div>
+    </li>
+    <li class="">
+      <h2><a href="https://www.digitalocean.com/community/tutorials/understanding-the-nginx-configuration-file-structure-and-configuration-contexts">Understanding the Nginx Configuration File Structure and Configuration Contexts</a></h2>
+
+      <div class="feedable-date">November 18, 2014</div>
+      <div class="meta">
+        <div class="points">
+          <span class="icon-upvote-heart-small"></span>
+          44
+        </div>
+
+        <div class="response-count">
+          <span class="icon icon-new-comment"></span>
+          2
+        </div>
+
+          <span class="author">By <a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></span>
+      </div>
+      <div class="arrow-left"></div>
+    </li>
+</ol>
+
+          </div>
+    </div>
+  </div>
+
+  <div class="tutorial-ctas">
+  <div class="section-content">
+    <div class="cta-description">
+      <h2>Spin up an SSD cloud server in under a minute.</h2>
+
+      <p>Simple setup. Full root access. Straightforward pricing.</p>
+
+      <a class="cloud-tutorial-cta" href="https://www.digitalocean.com/?utm_medium=community&amp;utm_source=community_gencta&amp;utm_campaign=needaserver&amp;utm_content=how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04">Deploy Server</a>
+    </div>
+  </div>
+</div>
+    <div class="related-tutorials">
+    <div class="section-content">
+      <h2>Related Tutorials</h2>
+
+      <ul>
+        <li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/how-to-use-filezilla-to-transfer-and-manage-files-securely-on-your-vps">How To Use Filezilla to Transfer and Manage Files Securely on your VPS</a></li>
+<li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-composer-on-ubuntu-14-04">How To Install and Use Composer on Ubuntu 14.04</a></li>
+<li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-debian-8">Initial Server Setup with Debian 8</a></li>
+<li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/the-docker-ecosystem-an-introduction-to-common-components">The Docker Ecosystem: An Introduction to Common Components</a></li>
+<li><a class="related-link" href="https://www.digitalocean.com/community/tutorials/understanding-digitalocean-droplet-backups">Understanding DigitalOcean Droplet Backups</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="content-comments">
+  <div class="section-content">
+    <div class="tutorial commentable" id="tutorial_1148">
+
+  <div class="comments-header">
+    <h4 class="comments-count"><span>111 Comments</span></h4>
+  </div>
+
+  <div class="response no-avatar  response-form">
+
+  <div class="js-display-on-error flash error hidden"></div>
+  <form class="content-form disabled-form" id="new_comment" action="/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04/comments" accept-charset="UTF-8" data-remote="true" method="post"><input disabled="disabled" name="utf8" value="✓" type="hidden">
+    <div style="height: auto;" class="meltdown_wrap"><div class="meltdown_topmargin"></div><div class="meltdown_bar"><ul class="meltdown_controls meltdown_controls_preview"><li data-original-title="Toggle Preview" title="" class="meltdown_control-preview meltdown_control meltdown_controlbutton disabled"><span>Preview</span></li></ul><div class="preview-header">Markdown Preview</div><ul class="meltdown_controls meltdown_controls_main"><li data-original-title="Bold" title="" class="meltdown_control-bold meltdown_control meltdown_controlbutton disabled"><span unselectable="on">B</span></li><li data-original-title="Italics" title="" class="meltdown_control-italics meltdown_control meltdown_controlbutton disabled"><span unselectable="on">I</span></li><li data-original-title="Header 1" title="" class="meltdown_control-h1 meltdown_control meltdown_controlbutton disabled"><span unselectable="on">H1</span></li><li data-original-title="Header 2" title="" class="meltdown_control-h2 meltdown_control meltdown_controlbutton disabled"><span unselectable="on">H2</span></li><li data-original-title="Header 3" title="" class="meltdown_control-h3 meltdown_control meltdown_controlbutton disabled"><span unselectable="on">H3</span></li><li data-original-title="Unordered List" title="" class="meltdown_control-ul meltdown_control meltdown_controlbutton disabled"><span unselectable="on">UL</span></li><li data-original-title="Ordered List" title="" class="meltdown_control-ol meltdown_control meltdown_controlbutton disabled"><span unselectable="on">OL</span></li><li data-original-title="Link" title="" class="meltdown_control-link meltdown_control meltdown_controlbutton disabled"><span unselectable="on">Link</span></li><li data-original-title="Code" title="" class="meltdown_control-code meltdown_control meltdown_controlbutton disabled"><span unselectable="on">Code</span></li><li data-original-title="Highlight" title="" class="meltdown_control-highlight meltdown_control meltdown_controlbutton disabled"><span unselectable="on">Highlight</span></li><li data-original-title="Table" title="" class="meltdown_control-table meltdown_control meltdown_controlbutton disabled"><span unselectable="on">Table</span></li></ul></div><div class="meltdown_editor-wrap"><div class="meltdown_editor-deco"><textarea style="overflow: hidden; word-wrap: break-word; resize: none; height: 120px;" disabled="disabled" name="comment[content]" id="comment_content" placeholder="Leave a comment..." class="js-comment-content tutorial-comment-field meltdown_editor" data-markdown="true"></textarea></div></div><div class="meltdown_preview-wrap"><div class="meltdown_preview-wrap2"><div class="meltdown_preview-error-message">Could not load preview. <a href="#">Try again</a></div><div class="meltdown_preview-loading-message">Loading preview...</div><div class="meltdown_preview content-body"></div></div></div><div class="meltdown_bottommargin"></div></div>
+
+      <div class="log-in-notice "><a href="https://www.digitalocean.com/community/auth/digitalocean">Log In to Comment</a></div>
+
+    <div class="clearfix"></div>
+</form></div>
+
+
+  <div class="comments">
+    <ul class="response-list">
+          <a class="hidden" rel="nofollow" data-remote="true" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04/comments">Load</a>
+    <li style="" id="comment_12530" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/rich636856"><img alt="rich636856" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/a9de7c5c192eaaaca225753174b2b3f6.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/rich636856">rich636856</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12530">April 25, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Step Four:
+ The location block provided results in error:
+nginx: [emerg] unknown directive "fast_cgi_split_path_info" in /etc/nginx/sites-enabled/default:56
+
+Need to remove the underscore between fast and cgi:
+fastcgi_split_path_info ^(.+\.php)(/.+)$; </div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12530" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12530&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="JPesMr6feIiD+u+7dV+DI0tdI1ZIblkXpWWVmLd/a+i1P8oq3547ASY02P38vNRmfA1FGtu4nAc30TyDPQB7lw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12530" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12530">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12530"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12531" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/rich636856"><img alt="rich636856" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/a9de7c5c192eaaaca225753174b2b3f6.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/rich636856">rich636856</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12531">April 25, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Step Two I installed mysql-server-5.6, when I run the mysql_install_db command I get the following error:
+
+user@host:~$ sudo mysql_install_db
+FATAL ERROR: Could not find my-default.cnf
+
+If you compiled from source, you need to run 'make install' to
+copy the software into the correct location ready for operation.
+
+If you are using a binary release, you must either be at the top
+level of the extracted archive, or pass the --basedir option
+pointing to that location.
+
+Any idea what Dir I should be running this from or what --basedir option to use?</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes upvoted comment-upvote"><form data-upvotable="comment_12531" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12531&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="gbqV/ofEcAxSd4y04heUkyyZ+B0x7sEKErw1HusdIYwQcvPm5sUzhfe5u/Jr9MPWG8meUaI4BBqACJwFYWIx8w==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12531" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count ">1</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12531">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+      <li id="comment_23151" data-level="1" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/arturkohut"><img alt="arturkohut" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/919f39e663ca311d61e7cac8ce919ada.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/arturkohut">arturkohut</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=23151">November 23, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body "><p>I have the same issue when installing mysql-server-5.6 on fresh installed ubuntu 14.04.</p>
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes upvoted comment-upvote"><form data-upvotable="comment_23151" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=23151&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="tlMk+M58ZWdUQEjvmotJj8YuRA+ovvznI6shhIeJWbgnm0Lgr30m7vGOf6kTaB7K8X4iQztoOfexH4ifDfZJxw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=23151" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count ">1</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_23151">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_23151"></div>
+</div>
+    </div>
+
+  </li>
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12531"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12558" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/andrewdavidtanner87"><img alt="andrewdavidtanner87" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/74e74c12e30cc17dfe0abb1b5c138d14.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/andrewdavidtanner87">andrewdavidtanner87</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12558">April 27, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Brilliant tutorial, thanks Justin!
+
+Really informative and I'm very happy you explained what every configuration means exactly.
+
+Good work :)</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12558" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12558&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="POXNMtW9PVnd6zGJ+uuMQexnDr1T+JBaV1EZbg7j5a2tLasqtLx+0HglBs9zCNsE2zdo8cAuVUrF5bB1hJz10g==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12558" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12558">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12558"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12577" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/davidprimadi"><img alt="davidprimadi" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/1e6467e48584aa1576ccbf29cd6cf0f6.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/davidprimadi">davidprimadi</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12577">April 28, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Hii..
+how to install wordpress with nginx on ubuntu 14.04?
+any tutorial here?
+can i use this tutorial: https://www.digitalocean.com/community/articles/how-to-install-wordpress-with-nginx-on-ubuntu-12-04 ?
+
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12577" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12577&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="ZNaVflcyqi7V9M/axD9XmHmglpg3koUQKVYNhefOguT1HvNmNjPpp3A6+JxN3ADdTvDw1KREQAC74qSebbGSmw==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12577" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12577">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12577"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12580" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/asb"><div class="mod-avatar mod-avatar-small"><img alt="asb" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/a6051c05ce7dca251d644a1404210973.png" height="80" width="80"><span data-original-title="MOD" class="mod-star" title="" data-toggle="tooltip" data-container="body"><span class="mod-star-icon"></span></span></div></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/asb">asb</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12580">April 28, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">@davidprimadi: It should be more or less the same on 14.04 as on 12.04. Let us know how it goes!</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12580" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12580&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="pigX6ZgFX6qf7/UWgsKJfs50wGhogMv1g+JsN211q8c34HHx+QQcIzohwlALId47+SSmJPtWDuURVsUs5wq7uA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12580" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12580">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12580"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12590" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/davidprimadi"><img alt="davidprimadi" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/1e6467e48584aa1576ccbf29cd6cf0f6.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/davidprimadi">davidprimadi</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12590">April 28, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">it's work!</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12590" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12590&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="SLkSb3TiBPb3FUe3kgLfM6a8KahQpUQprS5Yf8dBQrvZcXR3FeNHf1LbcPEb4Yh2kexP5MNzgTk/mvFkTT5SxA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12590" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12590">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12590"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12595" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/asb"><div class="mod-avatar mod-avatar-small"><img alt="asb" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/a6051c05ce7dca251d644a1404210973.png" height="80" width="80"><span data-original-title="MOD" class="mod-star" title="" data-toggle="tooltip" data-container="body"><span class="mod-star-icon"></span></span></div></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/asb">asb</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12595">April 28, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Great! Glad to hear it.</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12595" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12595&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="cT6/z+n711nK7zink0jqrnSarYcsU9EP3GCTiJsAMV/g9tnXiPqU0G8hD+Eaq73rQ8rLy7+FFB9O1DqTEX8hIA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12595" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12595">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12595"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12605" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/brandon-88141e7f-2d94-46cc-88b1-cd2aa8b92e33"><img alt="brandon-" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/4a4137db0be1814b512b101023c2e554.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/brandon-88141e7f-2d94-46cc-88b1-cd2aa8b92e33">brandon-</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12605">April 28, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">In step 5 of the 12.04 LEMP install tutorial, the instructions state to make the following change in the /etc/php5/fpm/pool.d/www.conf:
+
+change:  listen = 127.0.0.1:9000 to listen = /var/run/php5-fpm.sock  
+
+However in Step 3 this 14.04 tutorial we are not instructed to do so.  Any reason why?</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12605" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12605&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="OoaI1zrWXUL7XLRhiFALGiQq7QUC01bLgzO1c73J99GrTu7PW9cey16SgycBs1xfE3qLSZEFk9sRhxxoN7bnrg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12605" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12605">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12605"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12610" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/asb"><div class="mod-avatar mod-avatar-small"><img alt="asb" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/a6051c05ce7dca251d644a1404210973.png" height="80" width="80"><span data-original-title="MOD" class="mod-star" title="" data-toggle="tooltip" data-container="body"><span class="mod-star-icon"></span></span></div></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/asb">asb</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12610">April 28, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">@brandon:
+
+In 14.04, php5-fpm defaults to using the socket file instead of communicating over 127.0.0.1:9000. So the reason you don't need to change it is because it should already read "listen = /var/run/php5-fpm.sock"</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes upvoted comment-upvote"><form data-upvotable="comment_12610" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12610&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="v9AfwPo03aRr3PkNimcMHFnDqR3FbifCmfaxEV9eTx8uGHnYmzWeLc4SzksDhFtZbpPPUVa44tILQhgK1SFfYA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12610" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count ">1</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12610">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12610"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12694" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/ajgarciaba"><img alt="ajgarciaba" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/b01a495093bb637a3e4b709151991836.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/ajgarciaba">ajgarciaba</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12694">May  1, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Great!! It's works!! Congrats!!</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12694" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12694&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="DvmOHuFiPXGet7gTRryoBZu0w09Q9OtbTvbH+azc13OfMegGgGN++Dt5j1XPX/9ArOSlA8MiLkvcQm7iJqPHDA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12694" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12694">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12694"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12777" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/donovan"><img alt="donovan" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/0004cea525687bb2b131615643f2c2b4.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/donovan">donovan</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12777">May  4, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Hi I get this error when I  try start ngninx any ideas?
+
+2014/05/04 14:10:57 [emerg] 4272#0: "fastcgi_pass" directive is duplicate in /etc/nginx/sites-enabled/default:62
+
+</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12777" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12777&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="F+ucI7jgJC/ne2U2oJMVHvFwcbj/JkayAeVcTvQYvh2GI/o72eFnpkK1UnApcEJbxiAX9Gzwg6KTUfVVfmeuYg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12777" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12777">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12777"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12778" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/donovan"><img alt="donovan" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/0004cea525687bb2b131615643f2c2b4.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/donovan">donovan</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12778">May  4, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">nevermind got it</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12778" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12778&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="KGtk5SSqYWRqppT6oJjhuB/5hBh3RB/11b+9I0od9Q65owL9Rasi7c9oo7wpe7b9KKniVOSS2uVHCxQ4wGLlcQ==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12778" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12778">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12778"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_12962" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/maisdotsolutions"><img alt="maisdotsolutions" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/38634e0217a54a526907868fb55c9c82.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/maisdotsolutions">maisdotsolutions</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12962">May 10, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Hi,
+
+Excuse me for my ignorance, but I have a problem. I am using Ubuntu 14.04 and just create it.
+
+In "Step Two - Install MySQL Data to Manage Site" , appears this Warning:
+
+140510 18:00:33 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+
+Soon after, in step "sudo mysql_install_db" appears:
+
+Installing MySQL system tables...
+140510 18:01:58 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+OK
+Filling help tables...
+140510 18:01:58 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+OK
+To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+To do so, start the server, then issue the following commands:
+/usr/bin/mysqladmin -u root password 'new-password'
+/usr/bin/mysqladmin -u root -h MaisSolutions password 'new-password'
+Alternatively you can run:
+/usr/bin/mysql_secure_installation
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+See the manual for more instructions.
+You can start the MySQL daemon with:
+cd /usr ; /usr/bin/mysqld_safe &amp;
+You can test the MySQL daemon with mysql-test-run.pl
+cd /usr/mysql-test ; perl mysql-test-run.pl
+Please report any problems at http://bugs.mysql.com/
+
+What can be? Do you have a solution? Thank you very much!
+
+Best regards,
+Leandro Naves</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_12962" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=12962&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="KI9ZQkZ5rkbRRVbcVH+o0OQ5pVFN/HgTciRQcy+tss+5Rz9aJ3jtz3SLYZrdnP+V02nDHd4qvQPgkPlopdKisA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=12962" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_12962">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_12962"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_13002" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/kamaln7"><div class="mod-avatar mod-avatar-small"><img alt="kamaln7" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/215b6bc15b5cf772f9c4477a3ba0544b.jpg" height="80" width="80"><span data-original-title="MOD" class="mod-star" title="" data-toggle="tooltip" data-container="body"><span class="mod-star-icon"></span></span></div></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/kamaln7">kamaln7</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13002">May 12, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">@maisdotsolutions: That's fine, it's just telling you that <code>/etc/mysql/my.cnf</code> has a deprecated option, "key_buffer", which will be removed in a later version of MySQL. Just to be safe, edit <code>/etc/mysql/my.cnf</code> and replace <code>key_buffer</code> with <code>key_buffer_size</code>:
+<pre>sudo nano /etc/mysql/my.cnf</pre></div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_13002" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=13002&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="LCWZt5564FOh2aVKzmpc6Ysh3CHvdBmjG8JYvrwcl4i97f+v/3uj2gQXkgxHiQusvHG6bXyi3LOJdvGlNmOH9w==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13002" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_13002">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_13002"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_13004" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/adsf"><img alt="adsf" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/f0b6bcec5308152fc4f528992cc0359b.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/adsf">adsf</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13004">May 12, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">installation of mysql produced the following error
+[Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+
+what should i do?</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_13004" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=13004&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="9TtR0iIqeXwH4VVnD5vX9xPUfIj1nYtMrM4KKDwT5/lk8zfKQys69aIvYiGGeICyJIQaxGZLTlw+eqMztmz3hg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13004" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_13004">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_13004"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_13005" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/adsf"><img alt="adsf" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/f0b6bcec5308152fc4f528992cc0359b.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/adsf">adsf</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13005">May 12, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">In another tutorial  https://www.digitalocean.com/community/articles/how-to-install-nginx-on-ubuntu-14-04-lts
+you say
+
+We can make sure that our web server will restart automatically when the server is rebooted by typing:
+
+sudo update-rc.d nginx defaults
+ 
+ 
+So is this step needed or not?</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_13005" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=13005&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="YFhJN7r5DEZVLimodhsUwnkSUXz2bR63rtDXxujGp3/xkC8v2/hPz/DgHu7/+EOHTkI3MGW726c8ZH7dYrm3AA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13005" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_13005">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_13005"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_13015" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/kamaln7"><div class="mod-avatar mod-avatar-small"><img alt="kamaln7" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/215b6bc15b5cf772f9c4477a3ba0544b.jpg" height="80" width="80"><span data-original-title="MOD" class="mod-star" title="" data-toggle="tooltip" data-container="body"><span class="mod-star-icon"></span></span></div></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/kamaln7">kamaln7</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13015">May 13, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">@asdf: <blockquote>installation of mysql produced the following error [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.</blockquote> Take a look at my response to maisdotsolutions right above your comment.
+<blockquote>So is this step needed or not?</blockquote>You don't <em>have</em> to run it, but you can run it to <em>make sure</em> nginx starts on boot, which it should do by default.</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_13015" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=13015&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="8/Y5a9vycGsKepjXzKj+2AQVyYqZAAewikGZQgRvqMViPl9zuvMz4q+0r5FFS6mdM0WvxgrWwqAY9TBZjhC4ug==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13015" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_13015">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_13015"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_13166" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/jasonmbaumgartner"><img alt="jasonmbaumgartner" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/20913b551a5b7718fb84d5e265d0fdf2.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/jasonmbaumgartner">jasonmbaumgartner</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13166">May 20, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">This is a really nice and concise guide to getting up and running with a basic LEMP stack.  There is one suggestion I would like to make, though.
+
+When making changes to the nginx configuration file, it is not necessary to restart the nginx service.  Instead of running the command "sudo service nginx restart", you can simply reload the configuration with this command:
+
+nginx -s reload
+
+It's a small minor point, but some people may find it helpful if they don't want to have the service stopped even if it is temporarily. 
+
+Great guide!</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_13166" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=13166&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="D8tVJfIpih+l0HAwDI1iBhOjr0gSsP63t0Oi98FXrXeeAzM9kyjJlgAeR3aFbjVDJPPJBIFmO6cl9wvsSyi9CA==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13166" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_13166">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_13166"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_13351" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/kradllit"><img alt="kradllit" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/3ea3eec41cbc9c85d30cd811b6613d4d.jpg" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/kradllit">kradllit</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13351">May 26, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">Awesome Tutorial! Tnx!</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_13351" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=13351&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="T8sOemm69YUb8LSxQrZtlSzdwDHUv/fzJnsgqgLIJ3XeA2hiCLu2DL4+g/fLVTrQG42mfUdpMuO0z4mxiLc3Cg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13351" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_13351">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_13351"></div>
+</div>
+    </div>
+
+  </li>
+
+      <li style="" id="comment_13504" data-level="0" class="comment-container">
+    <div class="response    " data-highlight="">
+      <div class="response-avatar comment-response-avatar">
+        <a href="https://www.digitalocean.com/community/users/servidigitalneiva"><img alt="servidigitalneiva" class="avatar avatar-small" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/2bac4757ab192bae801020e25e6ad146.png" height="80" width="80"></a>
+      </div>
+
+      <div>
+        <span class="response-name"><a class="username" href="https://www.digitalocean.com/community/users/servidigitalneiva">servidigitalneiva</a></span>
+        <span class="response-time"><a rel="nofollow" class="post-time-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13504">June  2, 2014</a></span>
+
+        
+      </div>
+
+          <div class="response-body content-body legacy">I follow the guide, but I go to phpmyadmin throws a 404, as it would solve. 
+thanks</div>
+
+      
+
+      <div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+
+
+      <div class="content-actions">
+  <div class="comment-actions">
+    <div class="upvotes comment-upvote"><form data-upvotable="comment_13504" data-upvotable-type="comment" class="upvote-form upvote signed-out-upvote" action="/community/upvotes/toggle?upvote%5Bupvotable_id%5D=13504&amp;upvote%5Bupvotable_type%5D=Comment" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="L9G2yZpFCh1iq5dGatUtQu94w92AWLfVZZIR56I7J22+GdDR+0RJlMdloADjNnoH2CilkROOcsX3Jrj8KEQ3Eg==" type="hidden">
+    <button type="submit" disabled="disabled" data-toggle="modal" data-target="#sign-in-modal"><span class="icon-upvote-heart-small upvote-heart" data-toggle="modal" data-target="#sign-in-modal" data-return-url="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04?comment=13504" title="Do you find this comment helpful? Show the author by Hearting it!" data-placement="top"></span></button>
+
+</form><span class="upvote-text"><span class="hearted-text">Hearted</span><span class="heart-text">Heart</span></span><div class="upvote-count hidden">0</div></div>
+
+
+    
+    
+    
+  </div>
+
+  <div class="comment-moderation-actions">
+    <ul class="comment-moderation-actions-list ">
+      
+
+
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="response-comments">
+      <div class="comment commentable" id="comment_13504">
+
+
+  <div class="comments">
+    <ul class="response-list">
+      
+
+
+
+    </ul>
+  </div>
+
+
+  <div id="reply_anchor_comment_13504"></div>
+</div>
+    </div>
+
+  </li></ul><div class="comment-pagination"><span class="previous_page disabled">Previous</span> <em class="current">1</em> <a rel="next nofollow" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04/comments?page=2">2</a> <a rel="nofollow" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04/comments?page=3">3</a> <a rel="nofollow" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04/comments?page=4">4</a> <a rel="nofollow" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04/comments?page=5">5</a> <a class="next_page" rel="next nofollow" href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04/comments?page=2">Next</a></div>
+
+      <div style="display: none;" class="comments-spinner"><div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+</div>
+  </div>
+
+  <div class="load-more-container"><a class="load-more" href="javascript:void(0);"><span class="load-more-text">Load More Comments</span><div style="display: none;" class="comments-spinner"><div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+</div></a></div>
+</div>
+
+
+  </div>
+</div>
+
+<div class="creative-commons">
+  <a class="creative-commons-image" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img rel="license" alt="Creative Commons License" src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/creativecommons-654928f5ebfbb75f4543af8903eabfe4.png"></a>
+    <div class="license-text">This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</div>
+</div>
+
+
+
+
+
+        <div class="clearfix"></div>
+    	</div>
+
+    	<footer class="footer">
+  <div class="footer-icon">
+    <span class="icon icon-sammy"></span>
+  </div>
+
+  <div class="copyright">
+    Copyright © 2015 DigitalOcean™ Inc.
+  </div>
+
+  <ul class="main-nav-links">
+    <li><a href="https://www.digitalocean.com/community">Community</a></li>
+    <li><a href="https://www.digitalocean.com/community/tutorials">Tutorials</a></li>
+    <li><a href="https://www.digitalocean.com/community/questions">Questions</a></li>
+    <li><a href="https://www.digitalocean.com/community/projects">Projects</a></li>
+    <li><a href="https://www.digitalocean.com/community/tags">Tags</a></li>
+    <li>
+      <a href="https://www.digitalocean.com/community/tutorials/feed">
+        RSS <span class="icon-rss"></span>
+</a>    </li>
+  </ul>
+
+  <br>
+
+  <ul class="secondary-nav-links">
+
+    <li><a href="https://www.digitalocean.com/legal/terms/">Terms, Privacy, &amp; Copyright</a></li>
+    <li><a href="https://www.digitalocean.com/security/">Security</a></li>
+      <li><a data-toggle="modal" data-target="#sign-in-modal" href="#">Report a Bug</a></li>
+    <li><a href="https://www.digitalocean.com/community/get-paid-to-write">Get Paid to Write</a></li>
+  </ul>
+</footer>
+
+
+
+
+
+    <div id="sign-in-modal" class="modal fade mini-modal" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Sign Up</h1>
+        <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+      </div>
+      <div class="modal-body">
+        <div class="sign-in-message">Not so fast, you must have an account before you can do that.</div>
+
+        <div class="sign-in-modal-actions">
+          <a class="sign-in-link button blue-button" data-default-url="/community/auth/digitalocean" href="https://www.digitalocean.com/community/auth/digitalocean">Log In</a>
+          <a class="sign-up-link button green-button" data-default-url="/community/auth/digitalocean?display=sessionless+register" href="https://www.digitalocean.com/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+  <script>
+    $(function() {
+      init_sharing();
+      new NewsletterSignup();
+      new GrowableMarkdown({ target: '[data-growable-markdown]' });
+    });
+  </script>
+
+  <div id="report-a-bug-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Report a Bug</h1>
+          <a class="close-button" data-dismiss="modal" href=""><span class="icon icon-close-light"></span></a>
+        </div>
+        <div class="modal-body">
+          <div class="report-a-bug-message text-center">Use this form to report bugs related to the Community</div>
+          <div class="report-a-bug-actions do-form">
+            <div class="form-wrap">
+              <form class="new_bug_report" id="new_bug_report" action="/community/bug_reports" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="h/qq2iHwx8G7OpPXLxK3Nz/lUIJ4LWnDqa1H/R2+WzEWMszCQPGESB70pJGm8eByCLU2zuv7rNM7Ge7ml8FLTg==" type="hidden">
+                <fieldset>
+                  <div class="field">
+                    <input placeholder="Name" name="bug_report[name]" id="bug_report_name" type="text">
+                  </div>
+                  <div class="field">
+                    <input placeholder="Email" required="required" name="bug_report[email]" id="bug_report_email" type="text">
+                  </div>
+                  <div class="field">
+                      <textarea style="overflow: hidden; word-wrap: break-word; resize: none; height: 125px;" placeholder="Message" required="required" name="bug_report[message]" id="bug_report_message"></textarea>
+                  </div>
+
+                  <div class="field actions">
+                    <input name="commit" value="Submit" class="button" type="submit">
+                  </div>
+                </fieldset>
+</form>            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+<textarea id="autosizejs" class="autosizejs" tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px none; padding: 0px; box-sizing: content-box; word-wrap: break-word; height: 0px ! important; min-height: 0px ! important; overflow: hidden; transition: none 0s ease 0s ; font-family: &quot;proxima-nova&quot;,sans-serif; font-size: 17px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; word-spacing: 0px; text-indent: 0px; line-height: 23.8px; width: 58px;">Message
+</textarea><a style="display: none; position: fixed; z-index: 2147483647;" href="#top" id="scrollUp">Scroll to top</a><div style="position: absolute; top: 300px; width: 100%; border-top: 1px dotted rgb(0, 255, 255); z-index: 2147483647;" id="scrollUp-active"></div><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/jb3BUxkAISL.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div><script id="" type="text/javascript">adroll_custom_data={article_tag:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006667995'),tutorial_difficulty:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006667996'),content_type:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006667997'),author:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006667998'),is_community_page:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006667999'),user_signed_in:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006668000'),user_droplet_count:google_tag_manager["GTM-KHWBBT"].macro('gtm1445006668001')};</script>
+<script id="" type="text/javascript">var _qevents=_qevents||[];(function(){var a=document.createElement("script");a.src=("https:"==document.location.protocol?"https://secure":"http://edge")+".quantserve.com/quant.js";a.async=!0;a.type="text/javascript";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();_qevents.push({qacct:"p-ezk6DY8pwNxCt",labels:"_fp.event.Community"});</script>
+<noscript>
+<img src="//pixel.quantserve.com/pixel/p-ezk6DY8pwNxCt.gif?labels=_fp.event.Community" style="display: none;" border="0" height="1" width="1" alt="Quantcast">
+</noscript>
+<script id="" type="text/javascript">(function(){var a=window._fbq||(window._fbq=[]);if(!a.loaded){var b=document.createElement("script");b.async=!0;b.src="//connect.facebook.net/en_US/fbds.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);a.loaded=!0}a.push(["addPixelId","1428881624071898"])})();window._fbq=window._fbq||[];window._fbq.push(["track","PixelInitialized",{}]);</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1428881624071898&amp;ev=PixelInitialized"></noscript><script id="" type="text/javascript">(function(b,c,e,g,d){var f,a;b[d]=b[d]||[];f=function(){var a={ti:"4047822"};a.q=b[d];b[d]=new UET(a);b[d].push("pageLoad")};a=c.createElement(e);a.src=g;a.async=1;a.onload=a.onreadystatechange=function(){var b=this.readyState;b&&"loaded"!==b&&"complete"!==b||(f(),a.onload=a.onreadystatechange=null)};c=c.getElementsByTagName(e)[0];c.parentNode.insertBefore(a,c)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script><noscript><img src="//bat.bing.com/action/0?ti=4047822&amp;Ver=2" height="0" width="0" style="display:none; visibility: hidden;"></noscript>
+<script src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/pixel" id="" type="text/javascript"></script>
+<div id="batBeacon0.7288768156486478" style="width:0px; height:0px; display:none; visibility:hidden;"><img src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/0.txt" id="batBeacon0.08234863955425742" style="width:0px; height:0px; display:none; visibility:hidden;" height="0" width="0"><img src="How%20To%20Install%20Linux,%20nginx,%20MySQL,%20PHP%20%28LEMP%29%20stack%20on%20Ubuntu%2014.04%20_%20DigitalOcean_fichiers/0_002.txt" id="batBeacon0.8726654898507729" style="width:0px; height:0px; display:none; visibility:hidden;" height="0" width="0"></div></body></html>

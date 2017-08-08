@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<header>
+	<!--meta charset="utf-8"-->
+</header>
+<body>
+
+<canvas id="c" width="700" heigth="150"></canvas>
+
+<script type="text/javascript">
+
+	c = document.querySelector('#c');
+	ctxt = c.getContext('2d');
+
+	/*ctxt.strokeStyle = '#33CC33';	
+	ctxt.strokeRect(50, 50, 100, 100);
+
+	ctxt.beginPath();
+
+	ctxt.moveTo(75,75);
+	ctxt.lineTo(125, 75);
+	ctxt.lineTo(125, 125);
+	
+	ctxt.fillStyle = 'blue';
+	ctxt.fill();
+
+	//ctxt.strokeText('Hello Nicolacity!', 50, 10);
+	//ctxt.fillText('Hello Nicolacity!', 50, 10);
+
+	*/
+	ctxt.font = '36pt Impact';
+	ctxt.Align =  'center';
+	
+	ctxt.fillStyle = 'white';
+	ctxt.fillText('Hello MIMES!', c.width/2 , 40);
+
+	ctxt.strokeStyle = 'black';
+	ctxt.lineWidth = 3;
+	ctxt.strokeText('Hello MIMES!',c.width/2 , 40);
+
+	console.log('cool');
+
+</script>
+
+</body>
+</html>

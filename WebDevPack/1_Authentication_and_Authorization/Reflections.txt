@@ -1,0 +1,58 @@
+Websecurity two main principles: Authentication & Authorization
+
+
+*** Lesson 1 ***
+There are many features to implements with some priorities.
+Three inevitable are: Strong pwd, Secure communication, Secure pwd storage.
+
+Some features must be implemented on the client side via Java Script, some features must be implemented on the server side, and some on both sides.
+E.g.  	
+
+
+Authentication: Process of verifying that you are who you say you are.
+Authorization: Do you have the rights to the ressource you are trying to access.
+
+E.g.: making sure users have strong pwd must be insured on both side, secure pwd storage must be insured on server side, protection agaisnt man in the middle attack must be insured on both side.
+
+Usually Authorization happens after Authentication, but these two concepts can happen disjointly as well.
+
+E.g. of Authoriztion without Authentication: coupon (right to a discount without having to identify), long randomized URL used by google drive and dropbox (when you have the URL ypu can access), session hijacking with cookies for example.
+
+*** 3rd party authentication & authirization
+
+Most widely used standard for authorization is OAuth, specifically deisgned to be used on the web with http
+Open ID connect also is a tech build on OAuth 2.0
+
+*** Lesson 2 *** Creating Google Sign in
+OAuth flows
+
+Flow in websecurity refers to the way information is exchanged between a client, a server, and an Oauth provider, to insure secure communication accross the internet.
+
+Client side Auth Flow, all the code to authenthicate the user is initiated via JS from the user's browser (useful for single page browser based web app)
+User Authenticates OAuth provider grants access token.
+OAuth also support mobile authirisation
+
+There are pros and cons for Client side,Sever side, the type of implementation depends on the type and needs of the app.
+
+Google+ uses a hybridise flow for loggin.
+
+Creating the sign in:
+in https://console.developers.google.com, create a new project
+- in the Credentials menu, fill up the OAuth consent screen info, this will provide the App client ID and App client secret. 
+- in the Credentials tab of the Credentials menu, add the Authorized JavaScript origins.
+
+Important also is the notion of token.
+
+*** Lesson 3 *** Local permission system
+
+Python Code rem:
+if 'username' not in login_session: i.e. look for login_session['username']
+
+In case some non public area can be reach via the URL, like for edition or deletion, implement protection to check that the user reching the page has the rights to do the actions she is trying to do.
+
+*** Lesson 4 *** Adding Facebook and other providers
+
+FB OAuth page impl
+To add other OAuth providers, the first place to start is the OAuth developer page of that provider.
+
+There are variation between providers, but the overall flow to obtain, verify, and use TOken for API  call should be the same

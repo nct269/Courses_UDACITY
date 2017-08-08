@@ -1,0 +1,10 @@
+
+
+CS7641 Machine Learning, taught by Charles Isbell and Michael Littman:
+https://www.youtube.com/watch?v=_ocNerSvh5Y&list=PLAwxTw4SYaPnidDwo9e2c7ixIsu_pdSNp
+
+RL course by David Silver (videos, slides)
+http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html
+
+A painless QLearning tutorial:
+http://mnemstudio.org/path-finding-q-learning-tutorial.htm

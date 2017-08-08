@@ -1,0 +1,11 @@
+"""le fichier py appelant est le main, pr lancer faire if __name__ = '__main__'"""
+
+->Path & Co
+import os
+print os.getcwd() (repertoire d'ou est execute python)
+print __name__
+print os.path.dirname(os.path.abspath(__file__))
+
+
+->Charger un package a partir du Python Package index: ds le command pront
+python -m pip install pandas

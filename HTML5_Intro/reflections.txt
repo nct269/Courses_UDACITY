@@ -1,0 +1,9 @@
+Images in Javascript are loaded assynchroneously,meaning any work on the imge must be done after it is loaded.
+-> Hence for the callback one must use image.onload
+drawImage has three signatures for drawing in a Canvas object
+
+Command to run python simple server
+insure that python.exe location is in the path
+in the command prompt og in the desired folder
+to use the default port 8000 type
+python -m SimpleHTTPServer

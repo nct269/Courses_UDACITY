@@ -1,0 +1,33 @@
+<STYLE TYPE="text/css">
+<!--
+
+	A				{text-decoration:none;}
+	A:link, A:visited		{text-decoration:none;}
+	A:hover				{color: #ff0000;}
+
+	H1				{font-size:22px; font-family: arial, sans-serif; font-weight:bold;}
+	H2				{font-size:20px; font-family: arial, sans-serif; font-weight:bold;}
+	H3				{font-size:18px; font-family: arial, sans-serif; font-weight:bold;}
+	H4				{font-size:16px; font-family: arial, sans-serif; font-weight:bold;}
+	H5				{font-size:14px; font-family: arial, sans-serif; font-weight:bold;}
+	H6				{font-size:12px; font-family: arial, sans-serif; font-weight:bold; margin: 15px 0px 15px 0px;}
+
+	.default			{font-size:16px; font-family: arial, sans-serif;}
+	.minusone			{font-size:14px; font-family: arial, sans-serif;}
+	.minusonesymbol			{font-size:14px; font-family: symbol;}
+	.minustwo			{font-size:11px; font-family: arial, sans-serif;}
+	.minustwosymbol			{font-size:11px; font-family: symbol;}
+
+	.nav				{font-size:13px; font-family: verdana, arial, helvetica, geneva;}
+	.searchbox			{font-size:10px; font-family: verdana, arial, helvetica, geneva; height:20px; width:90px;}
+	.searchboxlarge			{font-size:10px; font-family: verdana, arial, helvetica, geneva; height:20px; width:120px;}
+
+	.inputbox			{font-size:12px; font-family: arial, sans-serif; width:140px; font-weight: bold;}
+	.descbox			{font-size:12px; font-family: arial, sans-serif; width:240px; font-weight: bold; height:300px;}
+	.selecttext			{font-size:12px; font-family: arial, sans-serif; font-weight: bold;}
+	.editbox			{font-size:12px; font-family: arial, sans-serif; width:340px; font-weight: bold;}
+	.headertext			{font-size:14px; font-family: arial, sans-serif; font-weight: bold;}
+	.admintd			{font-family: arial; font-size: 12px; font-weight: bold;}
+
+// -->
+</STYLE>

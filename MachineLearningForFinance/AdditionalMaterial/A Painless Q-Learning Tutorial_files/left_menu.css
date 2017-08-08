@@ -1,0 +1,150 @@
+
+div.indexPageLeftColumn {
+	width: 250px;
+	float: left;
+}
+
+.leftColumn {
+	width: 150px;
+	float: left;
+}
+
+div.leftMenuTitleBar {
+	width: 228px;
+	height: 20px;
+	line-height: 20px;
+	float: left;
+	background-color: #CCCCCC;
+	color: #000000;
+	text-align: center;
+	font-weight: bold;
+}
+
+.leftMenuTitleDouble {
+	width: 95px;
+	height: 38px;
+	margin-top: 5px;
+	float: left;
+	line-height: 18px;
+	font-size: 10pt;
+	padding-left: 35px;
+	padding-top: 2px;
+	background-image: url('../images/left_menu_title_double1a.gif');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+.leftMenuTitleSingle {
+	width: 95px;
+	height: 18px;
+	margin-top: 5px;
+	float: left;
+	line-height: 18px;
+	font-size: 10pt;
+	padding-left: 35px;
+	padding-top: 2px;
+	background-image: url('../images/left_menu_title_single1.gif');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+.leftMenuItemDouble {
+	width: 86px;
+	height: 38px;
+	float: left;
+	line-height: 18px;
+	font-size: 10pt;
+	padding-left: 44px;
+	padding-top: 2px;
+	background-image: url('../images/left_menu_item_double1a.gif');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+.leftMenuItemSingle {
+	width: 86px;
+	height: 18px;
+	float: left;
+	line-height: 18px;
+	font-size: 10pt;
+	padding-left: 44px;
+	padding-top: 2px;
+	background-image: url('../images/left_menu_item_single1.gif');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+.leftLastMenuItemDouble {
+	width: 86px;
+	height: 38px;
+	float: left;
+	line-height: 18px;
+	font-size: 10pt;
+	padding-left: 44px;
+	padding-top: 2px;
+	background-image: url('../images/left_menu_item_double2a.gif');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+.leftLastMenuItemSingle {
+	width: 86px;
+	height: 18px;
+	float: left;
+	line-height: 18px;
+	font-size: 10pt;
+	padding-left: 44px;
+	padding-top: 2px;
+	background-image: url('../images/left_menu_item_single2.gif');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+
+.leftMenuBottomSpacer {
+	width: 250px;
+	height: 20px;
+	float: left;
+}
+
+div.mostVisitedPagesBlock {
+	width: 228px;
+	margin-bottom: 20px;
+	float: left;
+	border-top: 3px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 3px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+}
+
+div.mostVisitedTitleBar {
+	width: 228px;
+	height: 20px;
+	line-height: 20px;
+	float: left;
+	background-color: #CCCCCC;
+	color: #000000;
+	text-align: center;
+	font-weight: bold;
+}
+
+div.mostVisitedContentBlock {
+	width: 208px;
+	line-height: 16px;
+	margin-left: 10px;
+	float: left;
+}
+
+div.mostVisitedContentBlock p {
+	margin-top: 12px;
+}
+
+div.mostVisitedContentBlock a {
+	text-decoration: none;
+}
+
+div.mostVisitedBottomSpacer {
+	width: 228px;
+	height: 10px;
+	float: left;
+}
+

@@ -1,0 +1,3 @@
+http://www.jarloo.com/get-historical-stock-data/
+
+http://ichart.finance.yahoo.com/table.csv?s=AAPL+IBM

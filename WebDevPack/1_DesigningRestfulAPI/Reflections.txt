@@ -1,0 +1,2 @@
+Python:
+functons, classes, dictionnaries, properties, decorators, lambda funcions

@@ -1,0 +1,33 @@
+App for Checking password security:
+https://howsecureismypassword.net/
+
+Password Storage - Hashing vs. Encrypting
+http://www.darkreading.com/safely-storing-user-passwords-hashing-vs-encrypting/a/d-id/1269374
+
+Man-in-the-Middle Attacks
+https://en.wikipedia.org/wiki/Man-in-the-middle_attack
+
+Free SSL: Let’s Encrypt is a free, automated, and open Certificate Authority.
+https://letsencrypt.org	
+
+Session hijacking
+https://en.wikipedia.org/wiki/Session_hijacking
+
+OAuth flow doc:
+https://aaronparecki.com/oauth-2-simplified/
+https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
+
+Google dev oauthplayground/
+https://developers.google.com/oauthplayground/
+
+Google dev console:
+https://console.developers.google.com
+
+FB dev
+https://developers.facebook.com/apps
+
+
+Other popular OAuth providers:
+http://login.amazon.com/website
+https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/
+https://developer.paypal.com/docs/integration/direct/paypal-oauth2/

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html dir="ltr" class="redesign " data-ffo-opensanslight="true" data-ffo-opensans="true" lang="en-US"><head prefix="og: http://ogp.me/ns#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"><script src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/42869b6ed3" type="text/javascript"></script><script src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/nr-686.js"></script><script src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/analytics.js" async=""></script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgAEV1RTGwABU1NSAAQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:23,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&t(4),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:10,2:9,3:7,4:11,5:3,6:24,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],6:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:10,2:9,3:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],7:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=t("ee").create(),i=t(1)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:25,ee:"QJf3ax",gos:"7eSDFh"}],8:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:25,ee:"QJf3ax"}],9:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:25,ee:"QJf3ax"}],10:[function(t,e){function n(t,e,n){t[0]=o(t[0],"fn-",null,n)}var r=t("ee").create(),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:25,ee:"QJf3ax"}],11:[function(t,e){function n(){f.inPlace(this,p,"fn-")}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:7,2:25,ee:"QJf3ax"}],12:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=n(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c>u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:13,3:11,4:7,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],13:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],14:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:23,2:24,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):void(r.q&&(r.q[t]||(r.q[t]=[]),r.q[t].push(e)))}var r=t("ee").create();e.exports=n,n.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document;t(2);var u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-686.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:23,2:14,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],23:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],24:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],25:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:24,ee:"QJf3ax"}]},{},["G9z0Bl",4,12,6,5]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":1,"licenseKey":"42869b6ed3","agent":"js-agent.newrelic.com/nr-686.min.js","transactionName":"b1QHMUtVDRdSW0YKXVYeIxBXVxcNXFYdCEdVUEsSUF8KSkVRVxRBAlUKBkxZBgpH","applicationID":"3172075","errorBeacon":"bam.nr-data.net","applicationTime":171}</script>
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+        
+    <title>Manipulating video using canvas - Web API Interfaces | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="https://developer.mozilla.org/en-US/">
+  <link rel="copyright" href="#copyright">
+
+              <link rel="stylesheet" media="all" href="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/mdn-min.css">
+
+      
+    <link rel="stylesheet" media="all" href="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/wiki-min.css">
+
+    
+    
+  <!-- common social tags -->
+    <meta property="og:type" content="website">
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/opengraph-logo.png">
+  <meta property="og:site_name" content="Mozilla Developer Network">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://developer.mozilla.org/media/img/opengraph-logo.png">
+  <meta name="twitter:site" content="@MozDevNet">
+  <meta name="twitter:creator" content="@MozDevNet">
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://developer.cdn.mozilla.net/media/img/favicon144.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://developer.cdn.mozilla.net/media/img/favicon114.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://developer.cdn.mozilla.net/media/img/favicon72.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="https://developer.cdn.mozilla.net/media/img/favicon57.png">
+  <!-- basic favicon -->
+          <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon32.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script src="https://developer.cdn.mozilla.net/media/js/libs/html5.js"></script>
+  <![endif]-->
+
+    <link rel="alternate" type="application/json" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas$json">
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas">
+
+            <link rel="alternate" hreflang="es" href="https://developer.mozilla.org/es/docs/Web/HTML/anipular_video_por_medio_de_canvas" title="Manipular video por medio de canvas">
+          <link rel="alternate" hreflang="fr" href="https://developer.mozilla.org/fr/docs/HTML/Manipulating_video_using_canvas" title="Manipulation vidéo avec la balise canvas">
+      
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="Manipulating video using canvas">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas">
+  <meta name="twitter:title" content="Manipulating video using canvas">
+    <meta property="og:description" content="View this live example.">
+  <meta name="description" content="View this live example.">
+  <meta name="twitter:description" content="View this live example.">
+  
+      <script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+            // dimension4 == "top contributors"
+        ga('set', 'dimension4', 'Yes');
+    
+    
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+  </head>
+<body data-slug="Web/API/Canvas_API/Manipulating_video_using_canvas" contextmenu="edit-history-menu" class="document  ">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+                    (function(){
+  var FLAGS = {
+    'dirtiness_tracking': true,'fellowship_applications_open': false,'header_feedback': false,'header_tools': false,'helpfulness': false,'kumaediting': false,'mdn10_logo': true,'mdn10_tile': true,'page_move': false,'promote_script': false,'redirect_messages': false,'registration_disabled': false,'search_explanation': false,'search_suggestions': false,'share_links': false,'top_contributors': true,'wiki_samples': false,'wiki_spellcheck': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': false,'store_revision_ips': true,'dumb_doc_urls': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+                
+        // This represents the site configuration
+        win.mdn = {
+            build: '1c10dc3',
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to media (images, CSS, JS) in MDN
+            mediaPath: 'https://developer.cdn.mozilla.net/media/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+                        notifications: [],
+                        // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            }
+        };
+
+        // Ensures gettext always returns something, is always set
+        win.gettext = function(x) {
+            return x;
+        }
+    })(window);
+</script>
+  
+
+  <ul id="nav-access">
+    <li><a href="#document-main" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+          <li><a href="#q" id="skip-search">Skip to search</a></li>
+      </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="https://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+            <a href="https://developer.mozilla.org/en-US/" class="logo logo-mdn10">Mozilla Developer Network</a>
+    
+    <div id="nav-sec">
+        
+                          
+    
+    <form>
+      <div class="oauth-login-container">
+          <div class="oauth-login-options" tabindex="0">
+              <span class="oauth-login-options-text">
+                <span class="oauth-login-options-text-icons">Sign in with</span>
+                <span class="oauth-login-options-text-no-icons">Sign in</span>
+              </span>
+              <span class="oauth-icon oauth-persona launch-persona-login" data-service="Persona" data-next="/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas" title="Persona"><i class="icon-user" aria-hidden="true"></i></span>
+              <span class="oauth-icon oauth-github" data-service="GitHub" data-href="/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FAPI%2FCanvas_API%2FManipulating_video_using_canvas" title="GitHub"><i class="icon-github" aria-hidden="true"></i></span>
+          </div>
+          <div class="oauth-login-picker" aria-hidden="true">
+              <ul>
+                  <li><a href="https://developer.mozilla.org/en-US/users/signin" class="login-link launch-persona-login" data-next="/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas" data-service="Persona"><i class="icon-user" aria-hidden="true"></i>Persona</a></li>
+                  <li><a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FAPI%2FCanvas_API%2FManipulating_video_using_canvas" class="login-link" data-service="GitHub"><i class="icon-github" aria-hidden="true"></i>GitHub</a></li>
+              </ul>
+          </div>
+      </div>
+    </form>
+                        </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Platform<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Apps">Apps</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References &amp; Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learn the Web</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/demos/">Demos</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Firefox">Firefox</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Marketplace">Firefox Marketplace</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Firefox_OS">Firefox OS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Persona">Persona</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/demos/">Demos</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Connect">Connect</a></li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input id="main-q" name="q" placeholder="Search" data-value="" type="search">
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+   <!-- end is_zone -->
+
+
+    <div role="main" class="wiki-main-content" id="document-main"><div class="center">
+            <div class="article-meta">
+        <!-- action buttons -->
+        
+        
+        
+
+  <ul class="page-buttons" data-sticky="false"><li><button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false"><span>Languages</span><i aria-hidden="true" class="icon-globe"></i></button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+                                                <li><bdi><a rel="internal" href="https://developer.mozilla.org/es/docs/Web/HTML/anipular_video_por_medio_de_canvas" title="Manipular video por medio de canvas">Español</a></bdi></li>
+                                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/fr/docs/HTML/Manipulating_video_using_canvas" title="Manipulation vidéo avec la balise canvas">Français</a></bdi></li>
+                              
+                              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas$locales" rel="nofollow, noindex" id="translations-add">Add a translation</a></li>
+                          </ul>
+          </div>
+        </div></li><li class="page-buttons-edit"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas$edit" class="button" data-optimizely-hook="button-edit-doc" id="edit-button">Edit<i aria-hidden="true" class="icon-pencil"></i></a></li><li><button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false"><span>Advanced</span><i aria-hidden="true" class="icon-cog"></i></button>
+
+        <div class="submenu js-submenu" id="advanced-menu-submenu">
+          <!-- this page -->
+          <div class="submenu-column">
+            <div class="title">Advanced</div>
+            <ul>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas$history" rel="nofollow, noindex">History</a></li>
+                                                                
+                
+                                                                <li class="page-print"><a href="#" onclick="return window.print();">Print this page</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+
+        <!-- crumbs -->
+          <nav class="crumbs" role="navigation"><ol xmlns:v="http://rdf.data-vocabulary.org/#" aria-label="breadcrumbs">
+    <li typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US" rel="v:url" property="v:title">MDN</a></li>
+          <li class="crumb" typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US/docs/Web" rel="v:url" property="v:title">Web technology for developers</a></li>
+          <li class="crumb" typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US/docs/Web/API" rel="v:url" property="v:title">Web API Interfaces</a></li>
+          <li class="crumb" typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" rel="v:url" property="v:title">Canvas API</a></li>
+        <li class="crumb" typeof="v:Breadcrumb" property="v:title">Manipulating video using canvas</li>
+  </ol></nav>
+      </div>
+
+      <!-- heading -->
+      <div id="wiki-document-head" class="document-head">
+          <span class="from-search-previous-box">
+            <a class="button from-search-previous only-icon disabled" title="Previous Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-left"></i></a>
+          </span>
+          <span class="from-search-navigate-wrap">
+            <a href="#" class="from-search-navigate"><span class="from-search-navigate-up"><i aria-hidden="true" class="icon-double-angle-up"></i></span><span class="from-search-navigate-down"><i aria-hidden="true" class="icon-double-angle-down"></i></span></a>
+          </span>
+          <div class="from-search-toc submenu">
+            <span class="title">Your Search Results</span>
+            <ol></ol>
+          </div>
+          <span class="from-search-next-box">
+            <a class="button from-search-next only-icon disabled" title="Next Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-right"></i></a>
+          </span>
+
+        <h1>Manipulating video using canvas</h1>
+
+        
+                <div class="contributor-avatars" data-all-text="Show all…&lt;span class='hidden'&gt;contributors&lt;/span&gt;">
+            <span class="quickstat">
+            by 7 contributors:            </span>
+            <ul>
+                            <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/fscholz" title="View profile: fscholz">
+                <img alt="fscholz" src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/e24391c9174352988d819a9b9ea77c9e.jpg" class="avatar loaded"></a>
+                </li>
+                            <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/teoliTest2" title="View profile: teoliTest2">
+                <img alt="teoliTest2" src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/5217c19185715da9fc4e43afa63eeb8a.png" class="avatar loaded"></a>
+                </li>
+                            <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/teoli" title="View profile: teoli">
+                <img alt="teoli" src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/d0d90148e08e3b64ccf75c46f31442c5.png" class="avatar loaded"></a>
+                </li>
+                            <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/jswisher" title="View profile: jswisher">
+                <img alt="jswisher" src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/38185c2812cbcae186ebbe4a82910661.jpg" class="avatar loaded"></a>
+                </li>
+                            <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/inma_610" title="View profile: inma_610">
+                <img alt="inma_610" src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/bdc39d1a570f34b1aca764a6dd682258.png" class="avatar loaded"></a>
+                </li>
+                            <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/J%C3%BCrgen%20Jeka" title="View profile: Jürgen Jeka">
+                <img alt="Jürgen Jeka" src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/5769ea27a1744c986f4ff3cf44674daf.png" class="avatar loaded"></a>
+                </li>
+                            <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/Sheppy" title="View profile: Sheppy">
+                <img alt="Sheppy" src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/945076feb88f2d7003891ffbf06f32bf.jpg" class="avatar loaded"></a>
+                </li>
+                        </ul>
+        </div>
+        
+      </div>
+      
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-right-present wiki-left-present">
+
+                    <!-- additional controls row; hidden unless needed -->
+          <div id="wiki-controls" class="column-container column-container-reverse">
+            <div class="column-strip">
+              <!-- Show TOC "show" link -->
+            </div>
+            <div class="column-half">
+            </div>
+            <div class="column-strip quick-links hidden">
+              <a href="#show-quick-links" class="title smaller" id="show-quick-links"><i aria-hidden="true" class="icon-caret-down"></i>Show Sidebar</a>
+            </div>
+          </div>
+          
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+                          <!-- TOC, approvals, etc -->
+              <div class="column-strip wiki-column" id="wiki-right">
+                            <!-- table of contents -->
+              <div style="width: 289px; top: 0px; max-height: 701px;" id="toc" class="toc toggleable fixed">
+                <a aria-haspopup="true" href="#toc" class="title toggler" data-open-icon="icon-plus" data-closed-icon="icon-minus">In This Article<i class="icon-minus"></i></a>
+                <ol class="toggle-container">
+                  <li><a href="#The_document_content" rel="internal">The document content</a></li><li><a href="#The_JavaScript_code" rel="internal">The JavaScript code</a><ol><li><a href="#Initializing_the_chroma-key_player" rel="internal">Initializing the chroma-key player</a></li><li><a href="#The_timer_callback" rel="internal">The timer callback</a></li><li><a href="#Manipulating_the_video_frame_data" rel="internal">Manipulating the video frame data</a></li></ol></li><li><a href="#See_also" rel="internal">See also</a>
+                </li></ol>
+                              </div>
+                            </div>
+            
+                                                  
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-half wiki-column text-content">
+
+              
+              
+                                                                                          
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                                                      <div><section id="Quick_Links"><!-- --></section></div>
+
+<div class="summary">
+<p>By combining the capabilities of the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" class="internal" title="En/HTML/Element/Video"><code>video</code></a> element with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas" class="internal" title="En/Canvas"><code>canvas</code></a>,
+ you can manipulate video data in real time to incorporate a variety of 
+visual effects to the video being displayed. This tutorial demonstrates 
+how to perform chroma-keying (also known as the "green screen effect") 
+using JavaScript code.</p>
+</div>
+
+<p><a href="https://developer.mozilla.org/samples/video/chroma-key/index.xhtml" class="external external-icon" title="https://developer.mozilla.org/editor/fckeditor/core/editor/samples/video/chroma-key/index.xhtml">View this live example</a>.</p>
+
+<h2 id="The_document_content">The document content</h2>
+
+<p>The XHTML document used to render this content is shown below.</p>
+
+<pre data-number="" class="brush: html  language-html"><code class=" language-html">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/1999/xhtml<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token style"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span>
+      <span class="token selector">body </span><span class="token punctuation">{</span>
+        <span class="token property">background</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+        <span class="token property">color</span><span class="token punctuation">:</span>#CCCCCC<span class="token punctuation">;</span> 
+      <span class="token punctuation">}</span>
+      <span class="token selector">#c2 </span><span class="token punctuation">{</span>
+        <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url(foo.png)</span><span class="token punctuation">;</span>
+        <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token selector">div </span><span class="token punctuation">{</span>
+        <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+        <span class="token property">border</span> <span class="token punctuation">:</span>1px solid #444444<span class="token punctuation">;</span>
+        <span class="token property">padding</span><span class="token punctuation">:</span>10px<span class="token punctuation">;</span>
+        <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+        <span class="token property">background</span><span class="token punctuation">:</span>#3B3B3B<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token script"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/javascript;version<span class="token punctuation">=</span>1.8<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span> <span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>processor.doLoad()<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>video<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>video.ogv<span class="token punctuation">"</span></span> <span class="token attr-name">controls</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>c1<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>160<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>96<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>c2<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>160<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>96<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><div style="top: 0px;" data-start="1" class="line-number"></div><div style="top: 19px;" data-start="2" class="line-number"></div><div style="top: 38px;" data-start="3" class="line-number"></div><div style="top: 57px;" data-start="4" class="line-number"></div><div style="top: 76px;" data-start="5" class="line-number"></div><div style="top: 95px;" data-start="6" class="line-number"></div><div style="top: 114px;" data-start="7" class="line-number"></div><div style="top: 133px;" data-start="8" class="line-number"></div><div style="top: 152px;" data-start="9" class="line-number"></div><div style="top: 171px;" data-start="10" class="line-number"></div><div style="top: 190px;" data-start="11" class="line-number"></div><div style="top: 209px;" data-start="12" class="line-number"></div><div style="top: 228px;" data-start="13" class="line-number"></div><div style="top: 247px;" data-start="14" class="line-number"></div><div style="top: 266px;" data-start="15" class="line-number"></div><div style="top: 285px;" data-start="16" class="line-number"></div><div style="top: 304px;" data-start="17" class="line-number"></div><div style="top: 323px;" data-start="18" class="line-number"></div><div style="top: 342px;" data-start="19" class="line-number"></div><div style="top: 361px;" data-start="20" class="line-number"></div><div style="top: 380px;" data-start="21" class="line-number"></div><div style="top: 399px;" data-start="22" class="line-number"></div><div style="top: 418px;" data-start="23" class="line-number"></div><div style="top: 437px;" data-start="24" class="line-number"></div><div style="top: 456px;" data-start="25" class="line-number"></div><div style="top: 475px;" data-start="26" class="line-number"></div><div style="top: 494px;" data-start="27" class="line-number"></div><div style="top: 513px;" data-start="28" class="line-number"></div><div style="top: 532px;" data-start="29" class="line-number"></div><div style="top: 551px;" data-start="30" class="line-number"></div><div style="top: 570px;" data-start="31" class="line-number"></div><div style="top: 589px;" data-start="32" class="line-number"></div><div style="top: 608px;" data-start="33" class="line-number"></div><div style="top: 627px;" data-start="34" class="line-number"></div></code></pre>
+
+<p>The key bits to take away from this are:</p>
+
+<ol>
+ <li>This document establishes two <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas" class="internal" title="En/Canvas"><code>canvas</code></a> elements, with the IDs <code>c1</code> and <code>c2</code>.&nbsp; Canvas <code>c1</code> is used to display the current frame of the original video, while <code>c2</code> is used to display the video after performing the chroma-keying effect; <code>c2</code> is preloaded with the still image that will be used to replace the green background in the video.</li>
+ <li>The JavaScript code is imported from a script named <code>main.js</code>; this script uses JavaScript 1.8 features, so that version is specified in line 22 when importing the script.</li>
+ <li>When the document loads, the <code>processor.doLoad()</code>&nbsp;method in <code>main.js</code> gets run.</li>
+</ol>
+
+<h2 id="The_JavaScript_code">The JavaScript code</h2>
+
+<p>The JavaScript code in <code>main.js</code> consists of three methods.</p>
+
+<h3 id="Initializing_the_chroma-key_player">Initializing the chroma-key player</h3>
+
+<p>The <code>doLoad()</code>&nbsp;method is called when the 
+XHTML&nbsp;document initially loads.&nbsp; This method's job is to 
+prepare the variables needed by the chroma-key processing code, and to 
+set up an event listener so we can detect when the user starts playing 
+the video.</p>
+
+<pre data-number="" class="brush: js  language-js"><code class=" language-js">doLoad<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById<span class="token punctuation">(</span></span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>c1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById<span class="token punctuation">(</span></span><span class="token string">"c1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>ctx1 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>c1<span class="token punctuation">.</span><span class="token function">getContext<span class="token punctuation">(</span></span><span class="token string">"2d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>c2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById<span class="token punctuation">(</span></span><span class="token string">"c2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>ctx2 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>c2<span class="token punctuation">.</span><span class="token function">getContext<span class="token punctuation">(</span></span><span class="token string">"2d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>video<span class="token punctuation">.</span><span class="token function">addEventListener<span class="token punctuation">(</span></span><span class="token string">"play"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        self<span class="token punctuation">.</span>width <span class="token operator">=</span> self<span class="token punctuation">.</span>video<span class="token punctuation">.</span>videoWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        self<span class="token punctuation">.</span>height <span class="token operator">=</span> self<span class="token punctuation">.</span>video<span class="token punctuation">.</span>videoHeight <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        self<span class="token punctuation">.</span><span class="token function">timerCallback<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><div style="top: 0px;" data-start="1" class="line-number"></div><div style="top: 19px;" data-start="2" class="line-number"></div><div style="top: 38px;" data-start="3" class="line-number"></div><div style="top: 57px;" data-start="4" class="line-number"></div><div style="top: 76px;" data-start="5" class="line-number"></div><div style="top: 95px;" data-start="6" class="line-number"></div><div style="top: 114px;" data-start="7" class="line-number"></div><div style="top: 133px;" data-start="8" class="line-number"></div><div style="top: 152px;" data-start="9" class="line-number"></div><div style="top: 171px;" data-start="10" class="line-number"></div><div style="top: 190px;" data-start="11" class="line-number"></div><div style="top: 209px;" data-start="12" class="line-number"></div><div style="top: 228px;" data-start="13" class="line-number"></div></code></pre>
+
+<p>This code grabs references to the elements in the XHTML document that are of particular interest, namely the <code>video</code> element and the two <code>canvas</code>
+ elements.&nbsp; It also fetches references to the graphics contexts for
+ each of the two canvases. &nbsp;These will be used when we're actually 
+doing the chroma-keying effect.</p>
+
+<p>Then <code>addEventListener()</code>&nbsp;is called to begin watching the <code>video</code>
+ element so that we obtain notification when the user presses the play 
+button on the video.&nbsp; In response to the user beginning playback, 
+this code fetches the width and height of the video, halving each (we 
+will be halving the size of the video when we perform the chroma-keying 
+effect), then calls the <code>timerCallback()</code>&nbsp;method to start watching the video and computing the visual effect.</p>
+
+<h3 id="The_timer_callback">The timer callback</h3>
+
+<p>The timer callback is called initially when the video starts playing 
+(when the "play" event occurs), then takes responsibility for 
+establishing itself to be called periodically in order to launch the 
+keying effect for each frame.</p>
+
+<pre data-number="" class="brush: js  language-js"><code class=" language-js">timerCallback<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>video<span class="token punctuation">.</span>paused <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>video<span class="token punctuation">.</span>ended<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">computeFrame<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token function">setTimeout<span class="token punctuation">(</span></span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        self<span class="token punctuation">.</span><span class="token function">timerCallback<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><div style="top: 0px;" data-start="1" class="line-number"></div><div style="top: 19px;" data-start="2" class="line-number"></div><div style="top: 38px;" data-start="3" class="line-number"></div><div style="top: 57px;" data-start="4" class="line-number"></div><div style="top: 76px;" data-start="5" class="line-number"></div><div style="top: 95px;" data-start="6" class="line-number"></div><div style="top: 114px;" data-start="7" class="line-number"></div><div style="top: 133px;" data-start="8" class="line-number"></div><div style="top: 152px;" data-start="9" class="line-number"></div><div style="top: 171px;" data-start="10" class="line-number"></div></code></pre>
+
+<p>The first thing the callback does is check to see if the video is 
+even playing; if it's not, the callback returns immediately without 
+doing anything.</p>
+
+<p>Then it calls the <code>computeFrame()</code>&nbsp;method, which performs the chroma-keying effect on the current video frame.</p>
+
+<p>The last thing the callback does is call <code>setTimeout()</code>&nbsp;to
+ schedule itself to be called again as soon as possible.&nbsp; In the 
+real world, you would probably schedule this to be done based on 
+knowledge of the video's frame rate.</p>
+
+<h3 id="Manipulating_the_video_frame_data">Manipulating the video frame data</h3>
+
+<p>The <code>computeFrame()</code>&nbsp;method, shown below, is responsible for actually fetching a frame of data and performing the chroma-keying effect.</p>
+
+<pre data-number="" class="brush: js  language-js"><code class=" language-js">computeFrame<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>ctx1<span class="token punctuation">.</span><span class="token function">drawImage<span class="token punctuation">(</span></span><span class="token keyword">this</span><span class="token punctuation">.</span>video<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>width<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> frame <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ctx1<span class="token punctuation">.</span><span class="token function">getImageData<span class="token punctuation">(</span></span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>width<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> l <span class="token operator">=</span> frame<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> r <span class="token operator">=</span> frame<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">+</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">let</span> g <span class="token operator">=</span> frame<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">let</span> b <span class="token operator">=</span> frame<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>g <span class="token operator">&gt;</span> <span class="token number">100</span> <span class="token operator">&amp;&amp;</span> r <span class="token operator">&gt;</span> <span class="token number">100</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">&lt;</span> <span class="token number">43</span><span class="token punctuation">)</span>
+        frame<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>ctx2<span class="token punctuation">.</span><span class="token function">putImageData<span class="token punctuation">(</span></span>frame<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><div style="top: 0px;" data-start="1" class="line-number"></div><div style="top: 19px;" data-start="2" class="line-number"></div><div style="top: 38px;" data-start="3" class="line-number"></div><div style="top: 57px;" data-start="4" class="line-number"></div><div style="top: 76px;" data-start="5" class="line-number"></div><div style="top: 95px;" data-start="6" class="line-number"></div><div style="top: 114px;" data-start="7" class="line-number"></div><div style="top: 133px;" data-start="8" class="line-number"></div><div style="top: 152px;" data-start="9" class="line-number"></div><div style="top: 171px;" data-start="10" class="line-number"></div><div style="top: 190px;" data-start="11" class="line-number"></div><div style="top: 209px;" data-start="12" class="line-number"></div><div style="top: 228px;" data-start="13" class="line-number"></div><div style="top: 247px;" data-start="14" class="line-number"></div><div style="top: 266px;" data-start="15" class="line-number"></div></code></pre>
+
+<p>When this routine is called, the video element is displaying the most recent frame of video data, which looks like this:</p>
+
+<p><img src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/video.png" style="width: 320px; height: 192px;" class="internal default" alt="video.png"></p>
+
+<p>In line 2, that frame of video is copied into the graphics context <code>ctx1</code>
+ of the first canvas, specifying as the height and width the values we 
+previously saved to draw the frame at half size.&nbsp; Note that you can
+ simply pass the video element into the context's <code>drawImage()</code>&nbsp;method to draw the current video frame into the context.&nbsp; The result is:</p>
+
+<p><img src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/sourcectx.png" style="width: 160px; height: 96px;" class="internal default" alt="sourcectx.png"></p>
+
+<p>Line 3 fetches a copy of the raw graphics data for the current frame of video by calling the <code>getImageData()</code>&nbsp;method
+ on the first context.&nbsp; This provides raw 32-bit pixel image data 
+we can then manipulate.&nbsp; Line 4 computes the number of pixels in 
+the image by dividing the total size of the frame's image data by four.</p>
+
+<p>The <code>for</code> loop that begins on line 6 scans through the 
+frame's pixels, pulling out the red, green, and blue values for each 
+pixel, and compares the values against predetermined numbers that are 
+used to detect the green screen that will be replaced with the still 
+background image imported from <code>foo.png</code>.</p>
+
+<p>Every pixel in the frame's image data that is found that is within 
+the parameters that are considered to be part of the green screen has 
+its alpha value replaced with a zero, indicating that the pixel is 
+entirely transparent.&nbsp; As a result, the final image has the entire 
+green screen area 100% transparent, so that when it's drawn into the 
+destination context in line 13, the result is an overlay onto the static
+ backdrop.</p>
+
+<p>The resulting image looks like this:</p>
+
+<p><img src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/output.png" style="width: 161px; height: 96px;" class="internal default" alt="output.png"></p>
+
+<p>This is done repeatedly as the video plays, so that frame after frame is processed and displayed with the chroma-key effect.</p>
+
+<p><a href="https://developer.mozilla.org/samples/video/chroma-key/index.xhtml" class="external external-icon" title="https://developer.mozilla.org/editor/fckeditor/core/editor/samples/video/chroma-key/index.xhtml">View this live example</a>.</p>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video" class="internal" title="En/Using audio and video in Firefox">Using audio and video</a></li>
+</ul>
+                                                </article>
+
+            
+
+              
+                <!-- contributors -->
+                <div class="wiki-block contributors">
+                  <h2 class="offscreen">Document Tags and Contributors</h2>
+                                      <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+              <li><a href="https://developer.mozilla.org/en-US/docs/tag/Canvas">Canvas</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/tag/video">video</a></li>
+          </ul>
+  </div>
+
+                                      <div class="contributors-sub"> <i aria-hidden="true" class="icon-group"></i><strong>Contributors to this page:</strong>         <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>,             <a href="https://developer.mozilla.org/en-US/profiles/teoliTest2">teoliTest2</a>,             <a href="https://developer.mozilla.org/en-US/profiles/teoli">teoli</a>,             <a href="https://developer.mozilla.org/en-US/profiles/jswisher">jswisher</a>,             <a href="https://developer.mozilla.org/en-US/profiles/inma_610">inma_610</a>,             <a href="https://developer.mozilla.org/en-US/profiles/J%C3%BCrgen%20Jeka">Jürgen Jeka</a>,             <a href="https://developer.mozilla.org/en-US/profiles/Sheppy">Sheppy</a>     </div>                  
+                                      <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-clock-o"></i><strong>Last updated by:</strong>
+                      <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>,
+                      <time datetime="2015-01-17T09:59:00-08:00">Jan 17, 2015, 9:59:00 AM</time>
+                    </div>
+                                  </div>
+                          </div>
+
+                          <!-- quick links and zone subnav strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+              
+                <a href="#quick-links" class="title smaller" id="quick-links-toggle"><i aria-hidden="true" class="icon-caret-up"></i>Hide Sidebar</a>
+
+                
+                                  <!-- quick links -->
+                    <div class="quick-links" id="quick-links">
+    <div class="title see-also">See also</div>
+     
+ <ol> 
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"><strong>Canvas API</strong></a></li> 
+  <li data-closed="" class="toggleable current" data-default-state="open"><a aria-haspopup="true" class="toggler" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial"><i aria-hidden="true" class="icon-caret-down"></i><strong>Canvas tutorial</strong></a> 
+   <ol aria-expanded="true" style="display: block;" class="toggle-container"> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage">Basic usage</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes">Drawing shapes</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors">Applying styles and colors</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text">Drawing text</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images">Using images</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Transformations">Transformations</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Compositing">Compositing and clipping</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations">Basic animations</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_animations">Advanced animations</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas">Pixel manipulation</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility">Hit regions and accessibility</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas">Optimizing the canvas</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Finale">Finale</a></li> 
+   </ol> 
+  </li> 
+  <li data-closed="" class="toggleable current" data-default-state="open"><a aria-haspopup="true" class="toggler" href="#"><i aria-hidden="true" class="icon-caret-down"></i><strong>Examples</strong></a> 
+   <ol aria-expanded="true" style="display: block;" class="toggle-container"> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/A_basic_ray-caster">A basic raycaster</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Canvas">Canvas code snippets</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas">Drawing DOM objects into a canvas</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas">Manipulating video using canvas</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/demos/tag/tech:canvas">Canvas demos in MDN Demo Studio</a></li> 
+   </ol> 
+  </li> 
+  <li data-closed="" class="toggleable current" data-default-state="open"><a aria-haspopup="true" class="toggler" href="#"><i aria-hidden="true" class="icon-caret-down"></i><strong>Interfaces</strong></a> 
+   <ol aria-expanded="true" style="display: block;" class="toggle-container"> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement" title="The HTMLCanvasElement interface provides properties and methods for manipulating the layout and presentation of canvas elements. The HTMLCanvasElement interface also inherits the properties and methods of the HTMLElement interface."><code>HTMLCanvasElement</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D" title="The CanvasRenderingContext2D interface provides the 2D rendering context for the drawing surface of a &lt;canvas&gt; element."><code>CanvasRenderingContext2D</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient" title="The CanvasGradient interface represents an opaque object describing a gradient. It is returned by the methods CanvasRenderingContext2D.createLinearGradient() or CanvasRenderingContext2D.createRadialGradient()."><code>CanvasGradient</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern" title="The CanvasPattern interface represents an opaque object describing a pattern, based on a image, a canvas or a video, created by the CanvasRenderingContext2D.createPattern() method."><code>CanvasPattern</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ImageData" title="The ImageData interface represents the underlying pixel data of an area of a &lt;canvas&gt; element. It is created using the ImageData() constructor or creator methods on the CanvasRenderingContext2D object associated with a canvas: createImageData() and getImageData(). It can also be used to set a part of the canvas by using putImageData()."><code>ImageData</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics" title="The TextMetrics interface represents the dimension of a text in the canvas, as created by the CanvasRenderingContext2D.measureText() method."><code>TextMetrics</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Path2D" title="The Path2D interface of the Canvas 2D API is used to declare paths that are then later used on CanvasRenderingContext2D objects. The path methods of the CanvasRenderingContext2D interface are present on this interface as well and are allowing you to create paths that you can retain and replay as required on a canvas."><code>Path2D</code></a> <span class="sidebar-icon"><span title="This is an experimental API that should not be used in production code."><i class="icon-beaker"> </i></span></span></li> 
+   </ol> 
+  </li> 
+  <li><strong><a href="https://developer.mozilla.org/en-US/docs/MDN">Documentation:</a></strong></li> 
+  <li data-closed="true" class="toggleable" data-default-state="closed"><a aria-haspopup="true" class="toggler" href="#"><i aria-hidden="true" class="icon-caret-right"></i>Useful lists</a> 
+   <ol style="display: none;" class="toggle-container"> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/tag/Canvas">Pages tagged "Canvas"</a></li> 
+   </ol> 
+  </li> 
+  <li data-closed="true" class="toggleable" data-default-state="closed"><a aria-haspopup="true" class="toggler" href="#"><i aria-hidden="true" class="icon-caret-right"></i>Contribute</a> 
+   <ol style="display: none;" class="toggle-container"> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Doc_status/API/Canvas">Canvas doc status</a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/MDN">The MDN project</a></li> 
+   </ol> 
+  </li> 
+ </ol> 
+
+  </div>
+                
+                <!-- approvals -->
+                
+              
+              </div>
+                      </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas$edit" label="Edit page"></menuitem>
+    <menuitem data-action="/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas$history" label="View page history"></menuitem>
+  </menu>
+  </div></main>
+
+  <!-- Footer -->
+  <footer><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+                <p>
+          <bdi>© 2005-2015 Mozilla Developer Network and individual contributors<br> Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a> · <a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a> · <a href="https://www.mozilla.org/about/legal/terms/mozilla">Terms</a> · <a href="https://www.mozilla.org/privacy/websites/">Privacy</a> · <a href="https://www.mozilla.org/privacy/websites/#cookies">Cookies</a> · <a href="https://github.com/mozilla/kuma">Contribute to the code</a></bdi>        </p>
+              </div>
+      <div class="column-strip">
+                        <form class="languages go" method="get" action="/en-US/docs/Web">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Web/API/Canvas_API/Manipulating_video_using_canvas" selected="selected">
+          English (US)
+        </option>
+                  <option value="/es/docs/Web/HTML/anipular_video_por_medio_de_canvas">
+            Español
+          </option>          <option value="/fr/docs/HTML/Manipulating_video_using_canvas">
+            Français
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+                </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+    <script src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/build1c10dc3"></script>
+  
+      <!--[if lte IE 8]><script src="/media/js/libs/selectivizr-1.0.2/selectivizr-build.js"></script><![endif]-->
+
+    <script src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/include.js"></script>
+<form id="_persona_login" method="post" action="/users/persona/signin" data-csrf-token-url="/users/persona/csrf" data-request="{&quot;siteName&quot;: &quot;Mozilla Developer Network&quot;, &quot;siteLogo&quot;: &quot;/media/img/opengraph-logo.png&quot;}">
+  <input name="csrfmiddlewaretoken" value="" id="_persona_csrf_token" type="hidden">
+  <input name="next" value="" id="_persona_next_url" type="hidden">
+  <input name="process" value="" id="_persona_process" type="hidden">
+  <input name="assertion" id="_persona_assertion" type="hidden">
+</form>
+
+    <script src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/main-min.js"></script>
+
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+
+    
+
+          <script src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/wiki-min.js"></script><script src="Manipulating%20video%20using%20canvas%20-%20Web%20API%20Interfaces%20_%20MDN_fichiers/syntax-prism-min.js" async="" data-manual=""></script>
+      
+    <script type="text/javascript">
+      if(window.jQuery) jQuery('.from-search-toc').mozSearchResults('');
+
+            mdn.optimizely.push(['activate', 2796520257]);
+  </script>
+    
+</body></html>

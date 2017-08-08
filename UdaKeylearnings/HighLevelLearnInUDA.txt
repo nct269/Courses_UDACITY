@@ -1,0 +1,112 @@
+Ressources discovered:
+
+Google appengine
+Django, Djinja II
+Boostrap
+D3 (Data Driven Documents)
+
+
+Courses key findings:
+
+WebDev:
+Pasword Hashing;
+Event Handlers;
+DOM;
+Get & Post HTTP requests, 
+HTML Templates;
+Google appengine free web hosting;
+Google Non rel DB;
+Indexation;
+
+Mobile Web Dev:
+Responsvive design (flex-box, display flex);
+Chrome/Firefox dev tool;
+Chrome time/load line register tool;
+Responsive image, sizing vs compression;
+PLugging a mobile device on Chrome, could not make it in Firefox;
+Touch event locked to the object touched, Chrome "moving touch", e.g. for sliding on the synthesizer keyboard.
+Notion of data loading and caching to minimize the antena antenna power consumption.
+#To be finished
+
+Make your 2048:
+Game 2048 :-)
+Github account
+
+Intro to HTML and CSS:
+Technique to decompose a page layout (box model)
+Technique to superimpose your work on the desired layout usint transparence
+Use of Boostrap
+
+How to use git and github:
+All git command
+Set of parameters to custmize the gitbash terminal
+init, clone, add, commit, branch, remote, fetch, merge, pull, push
+Workstream for collaborative projects. 
+Use of github, clone, for, pull request, 
+Rem: I use my dropbox as a server for my shared projects to avoid github where everything has to be public
+
+Java Script:
+Look at the index skeleton to create the website dynamically
+In Javascript all is object including function
+JSON structure and JSON validation
+No class in Java Script
+foo['1'] and foo[1] are the same, all is turned into strings at the end
+var foo = function(){} and function foo(){} are almost the same execpt in the second the whole function is declared on the tp
+JavaScript does not include block-level scope. (e.g if-statements and any of the loops, do not create their own scope).
+Existence of jQuery library
+Data driven display
+Using of google map API, map anchoring to a tag and tag insertion (append, prepend), insertion of pins, addition of marker overlay
+
+jQuery
+jQuery is a javascript library allowing Fast selection, easy DOM manipulation, cross-browser compatibility.
+When manipulating the DOM, be careful to esacpe all the input.
+jQuery and $ stands for the same thing, hence $ is used as a shortcut to call jQuery
+jQuery can be loaded from a CDN (content delivery network) for speed reason and to be able to use the browser's cash functionality.
+Some mininfied versions exist
+$('div') return the collection of DOM elements with the div tag, $('.foo') return the collection DOM elements with class foo, $('#foo')  return the DOM element with the ID foo.
+Method to go up & down the DOM. Up: parent(), parents() ; Down : children(), find(); (e.g. find('div') , find('.foo'))
+Method to manipulate the sibblings: last(), first()
+in jQuery functions syntaxe is frequently as follow: one parameter selects the specified value, two modifiy the specified value ( e.g. attr('id') return the id, att('id', 'foo') sets the element id to foo.
+style propeties can be manipulated as well with css() but it should be avoided as much as possible.
+jQuery uses anonymous function to work on object collection. 
+In this case one can use the index as variable and the key word this refers to the current element in the set $('this') when the collection is a set of jQuery element. ($('this') works inside each() and html(), but not in text() nor in jQuery.each() );
+html or text of a jQuery element can be access with html(), text()
+html(string), text(string) ; html(function), text(function) can be used to set the value.
+Inserting element in the DOM: after(), before() and insertAfter(), insetBefore(); be careful they have different syntax (X.after(Y) insert Y ater X, X.insertAfter(Y) inset X after Y)
+each(function()) is an important function to iterate over a collection of jQuery elements (note the diff between each and jQuery.each())
+$(function(){}); alllow to execute a function not when it is met but when the DOM is ready
+
+AJAX 
+Asynchronous JavaScript and XML requests (now mainly used with JS but XML kept in the name since sounds cool).
+Request sent asynchroneously allowing the browser to work on something else while waiting the answer.
+These request are attached to callBack function to be executed once the answer is here.
+To work with AJAX request the web browser network tool is really important to see what's going on.
+AJAX request are used by big websites (facebook, twitter, reddit,...) to call and add content to the DOM on the fly without reloading the page.
+Most of the avaliable API use AJAX requests.
+There are plenty of API, using API and combining them to create new functionalities are a good way to make the web evolve.
+API API DB: http://www.programmableweb.com/apis/directory
+Google API: https://developers.google.com/apis-explorer/#p/
+Some APIs require authentification some do not.
+AJAX is linked to jQuery, jQuery function to call jSon $.getJSON(URI, function (data) {...}).error(function (e) {...}); 
+The function in getJSON is the callBack function reciving the request answer as parameter, the chained error function is used to catch errors, it has as well a callBack function receiving the error as input.
+-> Same-origin policy: Under the policy, a web browser permits scripts contained in a first web page to access data in a second web page, but only if both web pages have the same origin
+Check per API what should be used to circunvent it JSONP or Cross-Origin Resource Sharing.
+JSONP insert scripts into the targeted webpage that can be executed independently from the source, the web site receiving the request has control over what is executed.
+The Same-origin policy does not apply on the server side.
+Rem: No error handling is possible with JSONP, the response status is always success, hance use timeout function and cleartimeout in case of succes.
+E.g.
+var wikiRequestTimeout = setTimeout ( function (){ $wikiElem.text("failed to get Wikipedia ressources."); }, 5000 );
+
+    $.ajax({
+        url: wikiURL,
+        dataType: 'jsonp',
+        //jsonp:callBack 
+        success: function(response){...
+        	clearTimeout(wikiRequestTimeout);
+        }
+    });
+The sequence to build a personnalized webpage is:
+1/Request genreic html 2/ Request specific html 3/Render generic html 4/Render specific html
+This technic allows to get content on the screen very fast on the page.
+Requests can be set in the header script, and triggered once the DOM is ready, using $(function(){}); the callback rendering function will be executed once the answers are ready and sent back.
+

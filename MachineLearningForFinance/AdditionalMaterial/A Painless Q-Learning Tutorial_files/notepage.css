@@ -1,0 +1,86 @@
+.content_subheader1 {
+	margin: 10px 0px 10px 20px;
+}
+
+.topic_main_menu {
+	width: 598px;
+}
+
+.topic_main_left {
+	float: left;
+	width: 337px;
+}
+
+.topic_main_right {
+	float: right;
+	width: 260px;
+}
+
+.topic_menu_item {
+	background-image: url('../images/content_marker1.png');
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	padding: 0px 0px 0px 20px;
+	margin-bottom: 10px;
+}
+
+.topic_icon_thumb {
+	float: left;
+}
+
+.topic_icon_title {
+	float: left;
+	margin-left: 10px;
+}
+
+.topic_icon_text {
+	clear: both;
+}
+
+.topic_main_list {
+	margin: 0px 0px 0px 20px;
+}
+
+.topic_main_list ul {
+	margin: 0px 0px 10px 0px;
+}
+
+.topic_main_list ol {
+	margin: 0px 0px 10px 0px;
+}
+
+.topic_main_list li {
+	margin: 0px 0px 0px 20px;
+}
+
+.topic_regular_list {
+	margin: 0px 0px 0px 20px;
+}
+
+.topic_regular_list ul {
+	margin: 10px 0px 10px 0px;
+}
+
+.topic_regular_list ol {
+	margin: 10px 0px 10px 0px;
+}
+
+.topic_regular_list li {
+	margin: 10px 0px 0px 20px;
+}
+
+.example_box_frame_400 {
+	width: 404px;
+	padding: 0px 85px 0px 85px;
+}
+
+.biege_box_400 {
+	width: 380px;
+	padding: 10px 10px 10px 10px;
+	
+	background-color: #F5F5DC;
+}
+
+
+
+
