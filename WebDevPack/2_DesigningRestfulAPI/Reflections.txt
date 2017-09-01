@@ -1,0 +1,281 @@
+Python:
+functions, classes, dictionnaries, properties, decorators, lambda funcions
+
+OAUTH 2 authentification and authorization worflows
+
+*** Lesson 1: Waht's and Why's of APIs ***
+
+API: Application Programming Interface (the word gets thrown around a lot in the CS communoty)
+It refers to any method of communication between two entities of code.
+
+APIs are a great way for controlling the exposure of code.
+Allowing for internal functionnalities to be used form the outside world, without exposing the internal code.
+
+see: twilio (Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale)
+see: digital ocean
+see: wolframalpha
+see: https://en.wikipedia.org/wiki/Wolfram_Alpha
+
+Web APIs make possible the execution of code on other machines via the internet: 
+
+Mashup: new application created by calling and using several web API
+
+In short, stateless servers make your applications scalable. Check out  this article if you are interested in learning more about why RESTful applications are stateless.
+https://ruben.verborgh.org/blog/2012/08/24/rest-wheres-my-state/
+
+OSI model:
+To make devices (with different OS, spec...) communicate with each other, a set of rules must be in place. This set of rules are called protocols.
+A common abstraction to conceptualize this is with the OSM, Open Systems Interconnection model.
+
+OSI characterizes the communication functions of the computing system without getting to caught up with the specifics of each of different type of computers.
+It allows the model to focus on the operabilty of diverse communication systems with standard protocols.
+
+The model partitions communication systems into abstraction layers. Orignial model defines 7 layers. A layer serves the layer above it and is served by the layer below it.
+
+A variety of communication protocol can exist within one layer, but they all have to be able to receive and hand off data to the adjacent layers.
+
+When it comes to developping web applicatiosn and API designs, deisgners mainly focus on the Application layer in the OSI model, and the OS can handle the complexty of the lower levels for us in most cases.
+
+*** Focus on the Application layer:
+Sitting on top of the different OSI model layer is the application layer, responible for setting the all of protocols in which the applications exchange data.
+THe most popular application level protocol is HTTP (Hyper Text Transfer Protocol). 
+HTTP functions via a serie of requests and responses between clients and servers respectively.
+Other application layer protocols are FTP, SSH, IMAP, POP, ...
+
+Rem: The original OSI model has the application layer as the highest level set of protocols for communicating accross the internet. But other sets of protocol for sending and receiving information via APIs also exist.
+
+TO understand and organise these technologies one  can introduce two more layers on top of the application layer: The "Web Service" and the "Message Formatting" Layers.
+
+*** Focus on Web Service layer: 
+THe Web Service layer refers to the protocol that can sit on top of the application layers, and determine the format in wich APIs will send and receive, i.e. ways to communicate between machines.
+Old most popular is SOAP (Simple Object Access Protocol), it uses XML language to transfer sets of information in the form objects.
+SOAP usually sits on top of the HTTP protocol, but can also function with SMTP.
+
+-> REST (REpresentational State model) is the up and coming protocol. It is more a set of styles and guidelines, since it leverages the features of HTTP to transfer information, meaning that HTTP verbs handle the mangement of a server resources. (GET, POST, PUT, DELETE, ...)
+
+It takes the HTTP protocol and applies a few constraints to clarify communication and ressource management.
+-1 Sepearation between Client and Server, (the Client request the ressource, the Server responses with the requested ressource)
+rem: a machine can function both as a server and and as a client, but during the time of a HTTP request and response cylcle, it assumes either the request of the information, or the holder of that information.
+
+-2 RESTful architecture must be stateless, meaning it is not allowed to remember the state of another machine during the communication process.
+Each request from a client must be treated as if it was the first request received by the server from that client.
+A server should not remember its client and readjust its state accordingly.
+The server should only give back the most up to date information about its state and allow for modifications if the client is authorized to do so.
+rem: Using token for example can be used to create a stateless design that seems state remembering to the user.
+rem: A statful architecture remembers the client activity between requests (login session, cart memorized,...)
+
+-3 Response messages from the server to the client must be explicitely labelled as cacheable or non cacheable.
+This way the information can be cached by the client if the information hasn't changed since the last request.
+
+-4 Unifrom interface: RESTful architectures must have a uniform interface between all clients and servers.
+Gaining access to an endpoint is the same for any machines trying to access this information.
+
+-5 Layered system: A REST-based solution can be comprised of multiple architectural layers, and no one layer can "see past" the next. Layers can be added, removed, modified, or reordered in response to how the solution needs to evolve. 
+
+-6 Code on demand (optional): Code like JavaScript can be sent off for execution from the server to the client.
+It is primarily intended to allow logic within clients (such as Web browsers) to be updated independently from server-side logic. 
+
+Stateless architecture allows for scalabilty.
+https://ruben.verborgh.org/blog/2012/08/24/rest-wheres-my-state/
+
+
+*** Focus on Message Formatting layer: 
+These protocols focus mainly on the data structure that contain the information we want to communicate.
+Most common are XML and JSON.
+XML: eXtensible Markup Language, similar to HTML is readable by humans and machines 
+JSON: Java Script Object Notation, was desgined to ressemble Java Script Code. It has attribute/value pairs making it easy to read for the human eye.
+
+Data structure comparison:
+Rem JSON can be condensed to reduce file size
+
+
+
+*** Lesson 2: 
+Exlporation of popular application API endpoints.
+
+HTTP: can be described as a PULL protocol.
+Communication is always initiated by the client, sending an http request to the server, that answers with an http response.
+
+HTTPS requests composition:
+message header, and optionnal message body.
+
+-Header:
+In the headear the first line is mandatory, it is the request line: containing the HTTP Verb, the URI, the HTTP version number.
+e.g. GET/home.html HTTP/1.1, POST/index.html HTTP/1.1 , DELETE/query.html HTTP/1.1
+
+Then come the optional request headers, a serie of name:value pairs.
+Host: www.puppyshelter.com, Accept: image/gif, image/jpeg, */* , Accept-Language: en-us
+
+The Header and the body must be seaprated by a blank line.
+-Body
+
+Exemple of a request:
+GET puppies.html HTTP/1.1
+Host: www.puppyshelter.com
+Accept: image/gif, image/jpeg, */*
+Accept-Language: en-us
+
+puppyId=12345&name=Fido+Simpspon
+
+HTTPS response composition: 
+Same block structure, header-blankline-optional body
+
+-Header:
+In the headear the first line is mandatory, it is the Status line containing the HTTP Version, the Status Code, the Reason Phrase.
+e.g. of status code and reason phrase "200 OK" "404 Not Found" "403 Forbidden" "500 Internal Server Error"
+
+Similarly to the request then come the optional response headers, a serie of name:value pairs.
+Host: www.puppyshelter.com, Accept: image/gif, image/jpeg, */* , Accept-Language: en-us
+
+-Body
+-the response body 	contains the data that the client requested
+
+Exemple of a response for a get on a webpage:
+
+HTTP/1.1 200 OK
+Date: Fri, 04 Sep 2015
+ContentType:text/html
+
+<h1>Hello world!</h1>
+
+When developping API one must be able to deep dive into the request, tool cURL (command line) and Postman (with GUI) exist to build requests.
+
+using curl, equivalent HTTP <--> CRUD (for most cases)
+GET <--> READ
+POST<--> CREATE
+PUT <--> UPDATE/CREATE
+PATCH <--> UPDATE
+DELETE-<-->DELETE
+
+Work on Google geocoding and reverse geocoding API
+https://developers.google.com/maps/documentation/geocoding/intro
+
+Example of geolocation request: 
+https://maps.googleapis.com/maps/api/geocode/json?address=Jakarta,+Indonesia&key=API_KEY
+
+Important rem: Gmaps is not the only app with geo location capabilty, e.g. Foursquare has it too.
+
+Foursquare:
+Example of venue request:
+https://api.foursquare.com/v2/venues/search?v=20161016&ll=37.392971%2C-122.076044&query=pizza&intent=checkin&client_id=APP_clientID&client_secret=APP_clientSecret
+
+-Requests from code:
+Once requests havr been built with curl or postman they can be created in python to be embeded in the server-side code.
+
+PythonCode: httplib2 is a comprehensive client library in python.
+PythonCode: json is a library to convert in memory python object to a serialized json representation.
+
+rem: Having a secret key visible in live code is not a safe practice (even if we do it here).
+
+*** Lesson 3: 
+Creating your own API endpoints.
+
+Python flask: from flask import jsonify, jsonify can convert dictionnaries into json objects that can be sent to the client.
+The idea is then to implement a serialize function in the ORM DB that returns a table entry in a dictionnary, this dictionnary can then be converted into json with the jsonify function.
+
+*** Lesson 4:
+Securing your API: Auth and Auth to be managed from the API end point.
+
+User registration logic
+
+-> Password protect a ressource:
+NEVER store user's pwds in clear. store them hashed.
+Hashing function are deterministic one-way functions, they can be used to generat a hsh from a pwd but can't used in the opposite direction.
+They can be used to map digital data of an arbitrary size into digital data of a fixed size.
+
+PythonCode: Library passlib is a package dedicated to pwd hashing.
+PythonCode:Flask-HTTPAuth is a simple extension that simplifies the use of HTTP authentication with Flask routes.
+https://flask-httpauth.readthedocs.io/en/latest/
+The documentation is interesting with simple examples.
+
+In lesson 4 the testerBagels is interesting since it generates post requests with httplib
+
+In HTTP Basic Auth, Credentials are differents from parameters passed into the url.
+Hence one can do a get request without showing the user and pwd in the URL.
+
+-> Token Based Authentication:
+Pwd based authentication is dangerous even though all communication is made via https, at least because the client application must store the user's credentials non encrypted somewhere, to be able to send them with the requestss.
+
+rem: when rendering html paages with flask, we have the ability to use a loginSession object, to store the information about the state of the client between request.
+Flask do this by creating an encrypted cookie that the browser can append of each http request.
+
+Does not work for RESTful API which not always work with a bowser or a client that can securely store and transmit cookies.
+
+To store and communicate credentials a popular solution is to create token (jeton).
+
+A token is a string generated by the server for the client and that can be passed along inside an http request.
+
+the idead is:
+- the client application exchanges authentication credentials for an authentication token
+- for the subsequent request the client just sends the token
+- when the server receive the token it can look up the user's credential and determine whether or not she is authorized to get the information she is requesting.
+
+rem: the token request operation is usually password protected.
+rem: token are usually given an expiration time, after which a new token needs to be obtained. Hence the potential damages if a credential token is leaked is much smaller due to their short life span.
+
+E.g. Simple implementation (No encryption, DB storage)
+- Use a randomly generated string chain and and expiration time, stored in the DB along the user credentials.
+- For its life time the token becomes then a kind of plain text pwd stored unencrypted in the DB. It can be esayly compared with strcompare() and a check of the expiration date.
+
+E.g. Encryption implementaton (Encryption, no DB storage):
+- Use a Cryptographically signed message as a token.
+- The crendential information is then encoded in the token and proteced againt tempering with a strong cryptographic signature.
+
+PythonCode: in flask the ecryption implementaton is based on a packeage called itsdangerous.
+
+rem: in the udacity implementation viewsBagelsToken, the code is made so that it can handle either token authentication ot credential authentication
+rem: in the CURL request print screen for token auth, the pwd sent is blank but could be anythink since in this code the pwd is not used for token authentication.
+
+The code part to implement the encryption implementation are:
+
+Implementation: In the file containing the user data model:
+Generate a secretKey
+Add a method to generate auth tokens: containning the DB info and using the secretkey.
+Add a Static method to verify auth tokens: static since you don't know with which instance of user you are dealing with until after the method is called.
+
+In the server application code:
+Add a decorator verify_password method that can deal with token and/or credentials.
+Add a new endpoint to exchange valid credentials against an auth token.
+
+-> Third party authentication
+If one does not want to store pwd and implement a pwd recovery process.
+Or if one does not want to force the user to create an account and fill a new profile, risk for user retention
+
+Adding OAuth2 to our application allows users to log with their existing accounts, like Google, linkedin, facebook, Github...
+(see course on Authentication_and_Authorization for more doc and info on OAuth2 )
+
+OAuth flow doc:
+https://aaronparecki.com/oauth-2-simplified/
+https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
+
+-> Rate limiting
+With pwd, token and OAuth we can control our Authorization and authentication for our API endpoint.
+With rate limiting we want to deal we the case when any user use the endpoint too much.
+Potential problems and issue dealt with: drop in performance, API access potentially blocked, billing for API not coming for free.
+
+Rate limiting is controlling the amount of request for a certain time period we want to allow for an API user. 
+Rate control can be based on IP address (for non logged in users), login, ... depending on the intent.
+
+Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker
+Redis provides a way to keep track of the endpoint requests, that is also scalable.
+
+Rate limitting detail in UDA:https://classroom.udacity.com/courses/ud388/lessons/4592928861/concepts/52457426020923
+
+Python code: To start redis-server redis-server
+Python code: Use Redis pipeline
+
+Python code: He uses the property syntax coupled with a lambad function to define a sort a class field define with a simple function.
+It is clearer and faster than having a field and a method to update it.
+
+Python code: in Py 2.2 new style objects must inherit from object, e.g. class RateLimit(object):
+
+Rem: 429 error= too many requests
+
+Python code: See the Flask decorator @app.afterrequest
+Python code: from functools import update_wrapper
+
+
+*** Lesson 5:
+Writting Developer-Friendly APIs
+Lesson 5 is a set of good practices to make your API popular.
+One of the key piece of advice is to look at the ref websites do.

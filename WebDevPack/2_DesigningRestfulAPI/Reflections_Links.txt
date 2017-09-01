@@ -1,0 +1,43 @@
+Web APIs protocols:
+https://en.wikipedia.org/wiki/OSI_model
+
+https://www.programmableweb.com/
+
+About REST:
+Why stateless
+https://ruben.verborgh.org/blog/2012/08/24/rest-wheres-my-state/
+
+https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
+
+http://whatisrest.com
+
+
+Working with HTTP requests:
+cURL
+https://curl.haxx.se/docs/manpage.html
+https://www.ethanmick.com/getting-started-with-curl/
+
+POSTMAN
+https://www.getpostman.com/docs
+
+Website with music:
+https://developers.soundcloud.com/
+
+Goole Geolocating API key:
+https://developers.google.com/maps/documentation/geocoding/get-api-key
+https://developers.google.com/maps/documentation/geocoding/intro
+
+Foursquare API:
+https://developer.foursquare.com/
+https://developer.foursquare.com/docs/
+
+Flask tutorial:
+http://flask.pocoo.org/docs/0.10/tutorial/
+
+Redis
+https://redis.io
+
+see: twilio (Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale)
+see: digital ocean
+see: wolframalpha
+see: https://en.wikipedia.org/wiki/Wolfram_Alpha

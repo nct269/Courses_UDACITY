@@ -1,0 +1,49 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Jakarta",
+               "short_name" : "Jakarta",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Indonesia",
+               "short_name" : "ID",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Jakarta, Indonesia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : -5.1843219,
+                  "lng" : 106.972825
+               },
+               "southwest" : {
+                  "lat" : -6.3708331,
+                  "lng" : 106.3831259
+               }
+            },
+            "location" : {
+               "lat" : -6.17511,
+               "lng" : 106.8650395
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -5.1843219,
+                  "lng" : 106.972825
+               },
+               "southwest" : {
+                  "lat" : -6.3708331,
+                  "lng" : 106.3831259
+               }
+            }
+         },
+         "place_id" : "ChIJnUvjRenzaS4RILjULejFAAE",
+         "types" : [ "administrative_area_level_1", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

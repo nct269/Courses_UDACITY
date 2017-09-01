@@ -1,0 +1,2 @@
+Python:
+Import and Install a package: python -m pip install packageName
